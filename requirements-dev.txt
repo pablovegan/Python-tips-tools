@@ -1,0 +1,16 @@
+# Runtime requirements
+--requirement requirements.txt
+
+# Testing
+pytest
+
+# Linting/Tooling
+flake8
+mypy
+black
+twine
+
+# Documentation
+mkdocs
+mkdocstrings
+mkdocstrings[python]
