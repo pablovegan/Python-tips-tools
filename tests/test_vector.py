@@ -1,3 +1,8 @@
+"""We use the @pytest.mark.parametrize decorator to tell the test functions
+what inputs to test when we run pytest. This inputs should include the inputs
+for function we want to test (for example the __add__ method) as well as the expected result.
+"""
+
 import pytest
 
 from my_library import Vector2D
