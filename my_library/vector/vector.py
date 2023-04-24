@@ -1,4 +1,6 @@
 from __future__ import annotations  # We import this module to use the Vector2D type annotation
+from typing import Optional
+import math
 
 import numpy as np
 
@@ -116,7 +118,10 @@ class Vector2D:
         """
         if not isinstance(other_vector, Vector2D):
             return False
-        return self.x == other_vector.x and self.y == other_vector.y
+        # math.isclose returns true or false if the numbers are equal up to a small error
+        equal_x: bool = math.isclose(self.x, other_vector.x, abs_tol=1e-10)
+        equal_y: bool = math.isclose(self.y, other_vector.y, abs_tol=1e-10)
+        return equal_x and equal_y
 
     @property
     def norm(self) -> float:
@@ -129,22 +134,19 @@ class Vector2D:
         """
         return np.sqrt(self.x**2 + self.y**2)
 
-    def projection(self, component: int) -> Vector2D:
-        """Project the vector onto the first or second component.
+    def projection(self, subspace: Optional[Vector2D] = None) -> Vector2D:
+        """By default projects the vector onto its first component. If a vector spanning a subspace
+        is given, then the vector is projected along this subspace.
 
         Args:
-            component (int): The subspace onto which to project the vector.
-                Takes values 0 or 1.
-
-        Raises:
-            ValueError: Component must be either 0 or 1.
+            subspace (Vector2D, optional): vector that spans the subspace onto which to project the vector.
+                Defaults to None.
 
         Returns:
             Vector2D: The projected vector.
         """
-        if component == 0:
-            Vector2D(self.x, 0)
-        elif component == 1:
-            Vector2D(0, self.y)
+        if subspace is None:
+            return Vector2D(self.x, 0)
         else:
-            raise ValueError("Component must be either 0 or 1.")
+            projection_coef: float = (subspace * Vector2D(self.x, self.y)) / subspace.norm ** 2
+            return subspace * projection_coef
