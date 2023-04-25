@@ -1,8 +1,10 @@
 # Python tips and tools
 
-Here I present you some notes meant as a companion to the
+Here I present you some notes meant as a companion to the Python tips and tools talk for the Superconducting Qubit Technology school at Benasque 2023.
 
 ## Getting started
+
+### Conda
 
 The first thing we should do when working on a new project is creating a conda environment that suits our third party library needs (with their corresponding versions), unless we already have one. I suggest you use the light version of conda, `miniconda`, which only installs the standard Python libraries. Then you can always install whatever you need in a new environment.
 
@@ -12,6 +14,8 @@ conda create -n env_name python==3.10
 conda activate env_name
 ```
 
+### Pip and PyPI
+
 Once Python is installed, we can use either pip or conda to install new libraries in our environment. `pip` downloads packages from the PyPI (https://pypi.org/) repository, which usually has more libraries than the conda repository.
 
 
@@ -19,10 +23,15 @@ To simplify our life, we will install the third-party libraries we need from a .
 ```console
 pip install -r requirements-dev.txt
 ```
+
+### Jupyter notebooks
+
 If we also want to run jupyter notebooks, we must install ipykernel: 
 ```console
 pip install ipykernel
 ```
+
+### Git
 
 Finally we create our project folder and initialize git inside it
 ```console
