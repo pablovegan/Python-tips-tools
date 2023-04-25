@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from math import sin, cos, tan
 
-from my_library import Vector
+from my_library.vector import Vector
 
 
 class LinearTransform(ABC):
