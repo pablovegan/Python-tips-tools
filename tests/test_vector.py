@@ -6,25 +6,25 @@ import math
 
 import pytest
 
-from my_library import Vector2D
+from my_library import Vector
 
 
-V1 = Vector2D(0, 0)
-V2 = Vector2D(-1, 1)
-V3 = Vector2D(2.5, -2.5)
-V4 = Vector2D(2, 1)
+V1 = Vector(0, 0)
+V2 = Vector(-1, 1)
+V3 = Vector(2.5, -2.5)
+V4 = Vector(2, 1)
 
 
 @pytest.mark.parametrize(
     ('vector_1', 'vector_2', 'result'),
     (
-        (V1, V2, Vector2D(-1, 1)),
-        (V1, V3, Vector2D(2.5, -2.5)),
-        (V3, V2, Vector2D(1.5, -1.5)),
-        (V3, V1, Vector2D(2.5, -2.5))
+        (V1, V2, Vector(-1, 1)),
+        (V1, V3, Vector(2.5, -2.5)),
+        (V3, V2, Vector(1.5, -1.5)),
+        (V3, V1, Vector(2.5, -2.5))
     )
 )
-def test_add(vector_1: Vector2D, vector_2: Vector2D, result: Vector2D) -> None:
+def test_add(vector_1: Vector, vector_2: Vector, result: Vector) -> None:
     assert vector_1 + vector_2 == result
 
 
@@ -36,19 +36,19 @@ def test_add(vector_1: Vector2D, vector_2: Vector2D, result: Vector2D) -> None:
         (V3, V2, -5.0),
     )
 )
-def test_mul_vec(vector_1: Vector2D, vector_2: Vector2D, result: Vector2D) -> None:
+def test_mul_vec(vector_1: Vector, vector_2: Vector, result: Vector) -> None:
     assert vector_1 * vector_2 == result
 
 
 @pytest.mark.parametrize(
     ('variable_1', 'variable_2', 'result'),
     (
-        (V1, 2.0, Vector2D(0.0, 0.0)),
-        (V2, 2.0, Vector2D(-2.0, 2.0)),
-        (V3, 2.0, Vector2D(5.0, -5.0)),
+        (V1, 2.0, Vector(0.0, 0.0)),
+        (V2, 2.0, Vector(-2.0, 2.0)),
+        (V3, 2.0, Vector(5.0, -5.0)),
     )
 )
-def test_mul_float(variable_1: Vector2D, variable_2: Vector2D, result: float) -> None:
+def test_mul_float(variable_1: Vector, variable_2: Vector, result: float) -> None:
     assert variable_1 * variable_2 == result
 
 
@@ -57,23 +57,23 @@ def test_mul_float(variable_1: Vector2D, variable_2: Vector2D, result: float) ->
     (
         (V1, 0),
         (V2, math.sqrt(2)),
-        (Vector2D(1, 2), math.sqrt(5))
+        (Vector(1, 2), math.sqrt(5))
     )
 )
-def test_norm(vector: Vector2D, result: float) -> None:
+def test_norm(vector: Vector, result: float) -> None:
     assert vector.norm == result
 
 
 @pytest.mark.parametrize(
     ('vector', 'subspace', 'result'),
     (
-        (V1, None, Vector2D(0, 0)),
-        (V2, None, Vector2D(-1, 0)),
-        (V4, Vector2D(1, 1), Vector2D(1.5, 1.5)),
-        (V2, Vector2D(1, 1), Vector2D(0, 0))
+        (V1, None, Vector(0, 0)),
+        (V2, None, Vector(-1, 0)),
+        (V4, Vector(1, 1), Vector(1.5, 1.5)),
+        (V2, Vector(1, 1), Vector(0, 0))
     )
 )
-def test_projection(vector: Vector2D, subspace: Vector2D | None, result: Vector2D) -> None:
+def test_projection(vector: Vector, subspace: Vector | None, result: Vector) -> None:
     assert vector.projection(subspace) == result
 
 

@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from math import sin, cos, tan
 
-from my_library import Vector2D
+from my_library import Vector
 
 
 class LinearTransform(ABC):
@@ -18,7 +18,7 @@ class LinearTransform(ABC):
         self.matrix = matrix
         self.inv_matrix = self._get_inverse()  # we can call an undefined abstract method
 
-    def __call__(self, vector: Vector2D) -> Vector2D:
+    def __call__(self, vector: Vector) -> Vector:
         """Matrix times vector multiplication. The call method allows an instance of this class
         to behave as a function. For example, we can define a linear transformation
         >>> transformation = LinearTransform(some_matrix)
@@ -26,14 +26,14 @@ class LinearTransform(ABC):
         >>> transformation(some_vector)
 
         Args:
-            vector (Vector2D): Vector to transform.
+            vector (Vector): Vector to transform.
 
         Returns:
-            Vector2D: Transformed vector.
+            Vector: Transformed vector.
         """
         x = self.matrix[0][0] * vector.x + self.matrix[0][1] * vector.y
         y = self.matrix[1][0] * vector.x + self.matrix[1][1] * vector.y
-        return Vector2D(x, y)
+        return Vector(x, y)
 
     @abstractmethod
     def _get_inverse(self) -> list[list[float]]:
@@ -47,7 +47,7 @@ class LinearTransform(ABC):
         """
         ...
 
-    def inverse(self, vector: Vector2D) -> Vector2D:
+    def inverse(self, vector: Vector) -> Vector:
         """Apply the inverse of our transformation to a vector.
         When giving a name to a method, you should take into account how would
         you name an instance of this class. For example, if you type
@@ -56,14 +56,14 @@ class LinearTransform(ABC):
         >>> transformation.inverse(some_vector)
 
         Args:
-            vector (Vector2D): Vector to transform.
+            vector (Vector): Vector to transform.
 
         Returns:
-            Vector2D: Transformed vector.
+            Vector: Transformed vector.
         """
         x = self.inv_matrix[0][0] * vector.x + self.inv_matrix[0][1] * vector.y
         y = self.inv_matrix[1][0] * vector.x + self.inv_matrix[1][1] * vector.y
-        return Vector2D(x, y)
+        return Vector(x, y)
 
 
 class Rotation(LinearTransform):

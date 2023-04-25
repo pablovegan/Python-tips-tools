@@ -1,5 +1,14 @@
-from __future__ import annotations  # We import this module to use the Vector2D type annotation
+"""Imports should follow always the same order:
+import python_standard_library
+
+import third_party_libraries
+
+import local_librariess
+"""
+
+from __future__ import annotations  # We import this module to use the Vector type annotation
 from typing import Optional
+import warnings
 import math
 
 import numpy as np
@@ -26,7 +35,7 @@ class NormError(ValueError):
         super().__init__(self.message)
 
 
-class Vector2D:
+class Vector:
     """Class docstrings in Google format should have the arguments of the __init__ method
     and the attributes of the class, but not the methods.
 
@@ -52,18 +61,18 @@ class Vector2D:
     def __repr__(self) -> str:
         """Return the vector representation. We type the following to output
         the vector representation:
-        >>> vector = Vector2D(1,2)
+        >>> vector = Vector(1,2)
         >>> vector
-        vector.Vector2D(1,2)
+        vector.Vector(1,2)
 
         Returns:
             The representation of the vector.
         """
-        return f"vector.Vector2D({self.x}, {self.y})"
+        return f"vector.Vector({self.x}, {self.y})"
 
     def __str__(self) -> str:
         """This method is called when we want to print our vector as a string.
-        >>> vector = Vector2D(1,2)
+        >>> vector = Vector(1,2)
         >>> print(vector)
         (1,2)
 
@@ -72,7 +81,7 @@ class Vector2D:
         """
         return f"({self.x}, {self.y})"
 
-    def __add__(self, other_vector: Vector2D) -> Vector2D:
+    def __add__(self, other_vector: Vector) -> Vector:
         """Returns the addition vector of the self and the other vector.
 
         Args:
@@ -81,13 +90,13 @@ class Vector2D:
         Returns:
             The addition vector of the self and the other vector.
         """
-        if not isinstance(other_vector, Vector2D):
-            raise TypeError("You must pass in a Vector2D instance!")
+        if not isinstance(other_vector, Vector):
+            raise TypeError("You must pass in a Vector instance!")
         x = self.x + other_vector.x
         y = self.y + other_vector.y
-        return Vector2D(x, y)
+        return Vector(x, y)
 
-    def __mul__(self, other: Vector2D | float) -> Vector2D | float:
+    def __mul__(self, other: Vector | float) -> Vector | float:
         """Return the multiplication of self and the other vector/number.
 
         Args:
@@ -99,12 +108,12 @@ class Vector2D:
         Returns:
             The multiplication of self and the other vector/number.
         """
-        if isinstance(other, Vector2D):
+        if isinstance(other, Vector):
             result: float = self.x * other.x + self.y * other.y
             return result
         if not isinstance(other, int | float):
             raise TypeError("You must pass in an int/float!")
-        return Vector2D(self.x * other, self.y * other)
+        return Vector(self.x * other, self.y * other)
 
     def __eq__(self, other_vector: object) -> bool:
         """Check if the vectors have the same values.
@@ -116,7 +125,7 @@ class Vector2D:
             True, if the both vectors have the same values.
             False, else.
         """
-        if not isinstance(other_vector, Vector2D):
+        if not isinstance(other_vector, Vector):
             return False
         # math.isclose returns true or false if the numbers are equal up to a small error
         equal_x: bool = math.isclose(self.x, other_vector.x, abs_tol=1e-10)
@@ -134,19 +143,20 @@ class Vector2D:
         """
         return np.sqrt(self.x**2 + self.y**2)
 
-    def projection(self, subspace: Optional[Vector2D] = None) -> Vector2D:
+    def projection(self, subspace: Optional[Vector] = None) -> Vector:
         """By default projects the vector onto its first component. If a vector spanning a subspace
         is given, then the vector is projected along this subspace.
 
         Args:
-            subspace (Vector2D, optional): vector that spans the subspace onto which to project the vector.
+            subspace (Vector, optional): vector that spans the subspace onto which to project the vector.
                 Defaults to None.
 
         Returns:
-            Vector2D: The projected vector.
+            Vector: The projected vector.
         """
         if subspace is None:
-            return Vector2D(self.x, 0)
+            warnings.warn('If no subspace is given, the vector is projected onto the first component!')
+            return Vector(self.x, 0)
         else:
-            projection_coef: float = (subspace * Vector2D(self.x, self.y)) / subspace.norm ** 2
+            projection_coef: float = (subspace * self) / subspace.norm ** 2  # self is instance of the Vector class
             return subspace * projection_coef
