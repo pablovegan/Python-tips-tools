@@ -155,8 +155,13 @@ class Vector:
             Vector: The projected vector.
         """
         if subspace is None:
-            warnings.warn('If no subspace is given, the vector is projected onto the first component!')
+            warnings.warn(
+                "If no subspace is given, the vector is projected onto the first component!"
+            )
             return Vector(self.x, 0)
         else:
-            projection_coef: float = (subspace * self) / subspace.norm ** 2  # self is instance of the Vector class
+            # Note that self is instance of the Vector class
+            projection_coef: float = (
+                subspace * self
+            ) / subspace.norm**2
             return subspace * projection_coef

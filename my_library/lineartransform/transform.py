@@ -14,7 +14,8 @@ class LinearTransform(ABC):
         matrix (list[list[float]]): the matrix of our linear transform.
         inv_matrix (list[list[float]]): the matrix of the inverse of our linear transform.
     """
-    def __init__(self, matrix: list[list[float]]):
+
+    def __init__(self, matrix: list[list[float]]) -> None:
         self.matrix = matrix
         self.inv_matrix = self._get_inverse()  # we can call an undefined abstract method
 
@@ -76,12 +77,12 @@ class Rotation(LinearTransform):
         angle (float): angle of the rotation.
     """
 
-    def __init__(self, angle: float):
+    def __init__(self, angle: float) -> None:
         self.angle = angle
         matrix = [[cos(angle), -sin(angle)], [sin(angle), cos(angle)]]
         super().__init__(matrix)
 
-    def _get_inverse(self):
+    def _get_inverse(self) -> list[list[float]]:
         return [[cos(self.angle), sin(self.angle)], [-sin(self.angle), cos(self.angle)]]
 
 
@@ -95,10 +96,10 @@ class Shear(LinearTransform):
         shear_factor (float): cotangent of the shear angle.
     """
 
-    def __init__(self, shear_angle: float):
+    def __init__(self, shear_angle: float) -> None:
         self.shear_factor = 1 / tan(shear_angle)  # shear factor is the cotangent of the shear angle
         matrix = [[1, self.shear_factor], [0, 1]]
         super().__init__(matrix)
 
-    def _get_inverse(self):
+    def _get_inverse(self) -> list[list[float]]:
         return [[1, -self.shear_factor], [0, 1]]
