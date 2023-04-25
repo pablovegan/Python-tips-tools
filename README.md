@@ -1,6 +1,6 @@
 # Python tips and tools
 
-Library description
+Here I present you some notes meant as a companion to the
 
 ## Getting started
 
@@ -11,7 +11,6 @@ So we start creating and activating our environment (if we didn't activate it, w
 conda create -n env_name python==3.10
 conda activate env_name
 ```
-
 
 Once Python is installed, we can use either pip or conda to install new libraries in our environment. `pip` downloads packages from the PyPI (https://pypi.org/) repository, which usually has more libraries than the conda repository.
 
@@ -32,8 +31,9 @@ cd my_project
 git init
 ```
 
+## Python basics
 
-## Code structure
+### Code structure
 
 Once we have a folder for our project, we equip it with the following structure:
 
@@ -60,26 +60,35 @@ Usually you can copy configuration files from other projects (like this one) and
 
 Note that sometimes libraries can be found inside a source folder, `src`, in a similar way to other programming languajes (like Java), but in Python is not really necessary so we can skip it.
 
-## Libraries or packages
+### Libraries or packages
 
 As you may have noticed in the project structure, every folder inside our library needs an `__init__.py` file, which will be called whenever we import our library. Usually this file will just import functions or classes from other files (modules) in our library.
 
-## Modules
+### Modules
+
 Simply, a module is a file consisting of Python code. A module can define functions, classes and variables... Python modules should more or less follow this structure:
 1. Module docstrings should appear at the very beginning, just before the imports. 
-2. After
+2. Imports should follow this order: standard Python library, third party and local libraries, each group separated by one empty line. Also, one should not import from more than one library per line.
+3. Module constants, separated from the imports by two empty lines. Constants should follow the `UPPER_CASE_WITH_UNDERSCORES` naming convention.
+4. Functions, separated again by two empty lines. Function names should follow the `lower_case_with_underscores` convention.
+5. Exception classes.
+6. Normal classes. Classes names should stick to the `CapitalizedWords` convention.
 
-Imports should 
+### Objects and classes
 
-## Objects and classes
+Everything in Python is an **object**, _i.e._ everything can be assigned to a variable or be passed as an argument to a function (the definition of object in Python varies with respect to other languages; in Python not all objects have attributes or methods, neither all admit subclasses).
 
-Everything in Python is an object, _i.e._ a reference to a memory address (?????). When we create a new object of a certain class, the `__new__` method is called in the background, which creates a new empty object that is then initialized through the `__init__` method.
+When we create a new object of a certain class, the `__new__` method is called in the background, which creates a new empty object that is then initialized through the `__init__` method.
 
-## Linting and formatting
+### Variables
 
+A Python **variable** is a symbolic name that is a reference or pointer to an object. In Python, unlike C, different names can point to the same object/memory address. And when an object runs out of references, it is no longer accessible and Python will reclaim the allocated memory so it can be used for something else.
 
+In general, variable names and attributes should follow the `lower_case_with_underscores` naming convention (as with functions). Only constants defined on a module level should be written in `UPPER_CASE_WITH_UNDERSCORES`.
 
-## Documentation
+Variable names should be readable and meaningful, avoiding undescriptive names like single letters or cryptic abbreviations.
+
+### Documentation
 
 Docstrings should always be added to your modules and functions. The idea when coding is to make simple functions with one single purpose, so 
 
@@ -88,6 +97,14 @@ https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html
 We use the autoDocstrings extension for VSCode to create Google style docstrings in a fast and easy way. Once our function is type annotated, we type """ or ''' and click in Generate Docstrings. It will automatically create the template using the annotated inputs and outputs of the function, as well as exceptions raised in the function.
 
 If you want to create nice looking documentation and then upload it to a website (for free in Github Pages) you can follow this tutorial (uses `mkdocs`): https://realpython.com/python-project-documentation-with-mkdocs/.
+
+## Tools
+### Linting and formatting
+
+Linters like `Pylint` or `Flake8` (which is the one I prefer, since it doesn't complain as much) help us find mismatches between our code and the conventions stablished by the python community in the PEP8 guidelines. In summary, an indispensable tool for a programmer.
+
+
+
 
 ## Uploading to PyPI
 
