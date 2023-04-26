@@ -1,7 +1,11 @@
-"""We use the @pytest.mark.parametrize decorator to tell the test functions
-what inputs to test when we run pytest. This inputs should include the inputs
+"""All functions and methods should be tested. All of them!! This helps us catch errors
+in our library and avoids propagating them into ever more complicated functions.
+
+We will use the library pytest, which allows to test multiple inputs for each test function.
+For that we use the @pytest.mark.parametrize decorator. This inputs should include the inputs
 for function we want to test (for example the __add__ method) as well as the expected result.
 """
+
 import math
 
 import pytest
