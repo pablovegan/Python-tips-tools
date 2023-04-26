@@ -4,4 +4,4 @@ from .linear_transform import Rotation, Shear
 
 or
 """
-from mylibrary.linearmap.linear_map import LinearTransform, Rotation, Shear
+from mylibrary.linearmap.linear_map import LinearMap, Rotation, Shear

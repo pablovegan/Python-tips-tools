@@ -168,7 +168,7 @@ class Vector:
             Vector: The projected vector.
         """
         if subspace is None:
-            warnings.warn("If no subspace is given, the vector is projected onto the first component!")
+            warnings.warn("If no subspace is given, the vector is projected onto the first component!", stacklevel=2)
             return Vector(self.x, 0)
         else:
             # Note that self is the instance of the Vector class

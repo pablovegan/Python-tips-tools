@@ -10,7 +10,7 @@ from math import sqrt
 import pytest
 from numpy import pi as PI
 
-from mylibrary import Vector, Rotation, Shear, LinearTransform
+from mylibrary import Vector, Rotation, Shear, LinearMap
 
 
 V1 = Vector(2, 1)
@@ -32,7 +32,7 @@ S2 = Shear(PI / 3)
         (R2, V2, Vector(sqrt(2), 0))
     )
 )
-def test_rotation(rotation: LinearTransform, vector: Vector, result: Vector) -> None:
+def test_rotation(rotation: LinearMap, vector: Vector, result: Vector) -> None:
     assert rotation(vector) == result
 
 
@@ -45,7 +45,7 @@ def test_rotation(rotation: LinearTransform, vector: Vector, result: Vector) -> 
         (R2, V2, V2)
     )
 )
-def test_inverse_rotation(rotation: LinearTransform, vector: Vector, result: Vector) -> None:
+def test_inverse_rotation(rotation: LinearMap, vector: Vector, result: Vector) -> None:
     rotated_vector = rotation(vector)
     assert rotation.inverse(rotated_vector) == result
 
@@ -59,7 +59,7 @@ def test_inverse_rotation(rotation: LinearTransform, vector: Vector, result: Vec
         (S2, V2, Vector(1 - 1 / sqrt(3), -1))
     )
 )
-def test_shear(shear: LinearTransform, vector: Vector, result: Vector) -> None:
+def test_shear(shear: LinearMap, vector: Vector, result: Vector) -> None:
     assert shear(vector) == result
 
 
@@ -72,6 +72,6 @@ def test_shear(shear: LinearTransform, vector: Vector, result: Vector) -> None:
         (S2, V2, V2)
     )
 )
-def test_inverse_shear(shear: LinearTransform, vector: Vector, result: Vector) -> None:
+def test_inverse_shear(shear: LinearMap, vector: Vector, result: Vector) -> None:
     shear_vector = shear(vector)
     assert shear.inverse(shear_vector) == result
