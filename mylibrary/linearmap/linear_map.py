@@ -1,18 +1,18 @@
 from abc import ABC, abstractmethod
 from math import sin, cos, tan
 
-from my_library.vector import Vector
+from mylibrary.vector import Vector
 
 
-class LinearTransform(ABC):
-    """The matrix of our linear transform will consist on a list of rows with
+class LinearMap(ABC):
+    """The matrix of our linear map will consist on a list of rows with
 
     Args:
-        matrix (list[list[float]]): matrix of our linear transformation.
+        matrix (list[list[float]]): matrix of our linear map.
 
     Attributes:
-        matrix (list[list[float]]): the matrix of our linear transform.
-        inv_matrix (list[list[float]]): the matrix of the inverse of our linear transform.
+        matrix (list[list[float]]): the matrix of our linear map.
+        inv_matrix (list[list[float]]): the matrix of the inverse of our linear map.
     """
 
     def __init__(self, matrix: list[list[float]]) -> None:
@@ -24,17 +24,17 @@ class LinearTransform(ABC):
         to behave as a function.
 
         Args:
-            vector (Vector): Vector to transform.
+            vector (Vector): Vector to map.
 
         Returns:
             Vector: Transformed vector.
 
         Examples:
-            We can define a linear transformation and then apply the tranform to a vector
+            We can define a linear map and then apply the tranform to a vector
             as if it were a function:
 
-            >>> transformation = LinearTransform(some_matrix)
-            >>> transformation(some_vector)
+            >>> map = LinearMap(some_matrix)
+            >>> map(some_vector)
 
         """
         x = self.matrix[0][0] * vector.x + self.matrix[0][1] * vector.y
@@ -54,7 +54,7 @@ class LinearTransform(ABC):
         ...  # the three dots mean "ellipsis"
 
     def inverse(self, vector: Vector) -> Vector:
-        """Apply the inverse of our transformation to a vector.
+        """Apply the inverse of our map to a vector.
         When giving a name to a method, you should take into account how would
         you name an instance of this class.
 
@@ -65,10 +65,10 @@ class LinearTransform(ABC):
             Vector: Transformed vector.
 
         Examples:
-            If we create a transformation object, we can call the inverse method:
+            If we create a LinearMap object, we can call the inverse method:
 
-            >>> transformation = LinearTransform(some_matrix)
-            >>> transformation.inverse(some_vector)
+            >>> map = LinearMap(some_matrix)
+            >>> map.inverse(some_vector)
 
         """
         x = self.inv_matrix[0][0] * vector.x + self.inv_matrix[0][1] * vector.y
@@ -76,7 +76,7 @@ class LinearTransform(ABC):
         return Vector(x, y)
 
 
-class Rotation(LinearTransform):
+class Rotation(LinearMap):
     """Two dimensional rotation of a certain angle.
 
     Args:
@@ -95,7 +95,7 @@ class Rotation(LinearTransform):
         return [[cos(self.angle), sin(self.angle)], [-sin(self.angle), cos(self.angle)]]
 
 
-class Shear(LinearTransform):
+class Shear(LinearMap):
     """Shear transformation parallel to the x axis.
 
     Args:

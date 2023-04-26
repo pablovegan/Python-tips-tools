@@ -65,21 +65,23 @@ Once we have a folder for our project, we equip it with the following structure:
 ├── setup.cfg
 ├── pyproject.toml
 ├── ... other config files ...
-├── my_library
+├── mylibrary
 │   ├── __init__.py
 │   ├── vector
 │   │   ├── __init__.py
 │   │   └── vector.py
-│   └── linear_transform
+│   └── linearmap
 │       ├── __init__.py
-│       └── transform.py
+│       └── linear_map.py
 ├── tests
 │   ├── __init__.py
-│   ├── test_linear_transform.py
+│   ├── test_linear_map.py
 │   └── test_vector.py
 └── examples
     └── example.ipynb
 ```
+
+Folders in our library should have `lowercasenames` names, without underscores.
 
 Usually you can copy configuration files from other projects (like this one) and tweak them to fit your needs.
 
@@ -218,7 +220,7 @@ One disadvantage of interpreted languages over compiled ones is that they are ge
 
 
 ## Other things to look into
-- Abstract classes: a basic example of an abstract class can be found in the `transform.py` module of our library. Basically, abstract classes allow us to define abstract methods in a super class that we can later code explicitly in all its subclasses.
+- Abstract classes: a basic example of an abstract class can be found in the `linear_map.py` module of our library. Basically, abstract classes allow us to define abstract methods in a super class that we can later code explicitly in all its subclasses.
 - Exception handling: basically `try-except` statements. They work very well with custom error classes. An example can be found in the `3-exceptions.ipynb` notebook inside the `examples` folder.
 - Iterators and generators: look up the functions `iter()` and `next()`, and the keyword `yield`.
 - Function and class decorators: decorators are a simple sintax to transform certain functions or classes.

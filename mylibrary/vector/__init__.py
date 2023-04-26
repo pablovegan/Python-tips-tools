@@ -1,6 +1,6 @@
 """To import from the vector.py file we can either type
 
-from my_library.vector.vector import Vector2D, NormError
+from mylibrary.vector.vector import Vector2D, NormError
 
 or
 """

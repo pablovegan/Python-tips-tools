@@ -10,7 +10,7 @@ import math
 
 import pytest
 
-from my_library import Vector
+from mylibrary import Vector
 
 
 V1 = Vector(0, 0)

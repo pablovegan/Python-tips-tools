@@ -10,7 +10,7 @@ from math import sqrt
 import pytest
 from numpy import pi as PI
 
-from my_library import Vector, Rotation, Shear, LinearTransform
+from mylibrary import Vector, Rotation, Shear, LinearTransform
 
 
 V1 = Vector(2, 1)
