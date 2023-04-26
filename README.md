@@ -61,16 +61,18 @@ Once we have a folder for our project, we equip it with the following structure:
 ├── ... other config files ...
 ├── my_library
 │   ├── __init__.py
-│   ├── vector.py
-│   └── sub_library
-|       ├── __init__.py
-│       └── sub_library
-│── tests
+│   ├── vector
+│   │   ├── __init__.py
+│   │   └── vector.py
+│   └── linear_transform
+│       ├── __init__.py
+│       └── transform.py
+├── tests
 │   ├── __init__.py
+│   ├── test_linear_transform.py
 │   └── test_vector.py
-├── examples
-│   └── example.ipynb
-└── docs
+└── examples
+    └── example.ipynb
 ```
 
 Usually you can copy configuration files from other projects (like this one) and tweak them to fit your needs.
