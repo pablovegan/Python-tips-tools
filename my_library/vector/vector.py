@@ -36,16 +36,17 @@ class NormError(ValueError):
 
 
 class Vector:
-    """Class docstrings in Google format should have the arguments of the __init__ method
+    """Two dimensional vector.
+    Remember that class docstrings in Google format should have the arguments of the __init__ method
     and the attributes of the class, but not the methods.
 
     Args:
-        x (float): first component of the vector
-        y (float): second component of the vector
+        x (float): first component of the vector.
+        y (float): second component of the vector.
 
     Attributes:
-        x (float): first component of the vector
-        y (float): second component of the vector
+        x (float): first component of the vector.
+        y (float): second component of the vector.
 
     Raises:
         NormError: the norm of the vector is greater than the maximum norm.
@@ -112,7 +113,7 @@ class Vector:
         """Return the multiplication of self and the other vector/number.
 
         Args:
-            other: Other vector or scaler value (rhs)
+            other: Other vector or scaler value (rhs).
 
         Raises:
             TypeError: Not int/float passed in.
@@ -131,7 +132,7 @@ class Vector:
         """Check if the vectors have the same values.
 
         Args:
-            other_vector: Other vector (rhs)
+            other_vector: Other vector (rhs).
 
         Returns:
             True, if the both vectors have the same values.
