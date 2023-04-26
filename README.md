@@ -46,7 +46,12 @@ cd my_project
 git init
 ```
 
-*Note*: be sure to push and pull your changes to the cloud when switching between different devices (for example your desktop computer and your laptop). 
+or we can clone this repository
+```console
+git clone https://github.com/pablovegan/Python-tips-tools-Benasque.git
+```
+
+*Note*: be sure to push and pull your changes to the cloud when switching between different devices (for example your desktop computer and your laptop), if not you can have merge conflicts and, trust me, you don't want that...
 
 ## Python basics
 
@@ -99,20 +104,23 @@ Everything in Python is an **object**, _i.e._ everything can be assigned to a va
 
 When we create a new object of a certain class, the `__new__` method is called in the background, which creates a new empty object that is then initialized through the `__init__` method.
 
+FILL IN WITH METHODS AND ATTRIBUTES (also class attributes)
+Mutable and unmutable types
+
 ### Variables
 
-A Python **variable** is a symbolic name that is a reference or pointer to an object. In Python, unlike other programming languages like C, different names can point to the same object/memory address. And when an object runs out of references, it is no longer accessible and Python will reclaim the allocated memory so it can be used for something else.
+A Python **variable** is a symbolic name that is a reference or pointer to an object. In Python, unlike other programming languages like C, different variables can point to the same object/memory address. 
 
-In general, variable names and attributes should follow the `lower_case_with_underscores` naming convention (as with functions). Only constants defined on a module level should be written in `UPPER_CASE_WITH_UNDERSCORES`.
+When an object runs out of references, it is no longer accessible and Python will reclaim the allocated memory so it can be used for something else.
 
-Variable names should be readable and meaningful, avoiding undescriptive names like single letters or cryptic abbreviations.
+In general, variable names and attributes should follow the `lower_case_with_underscores` naming convention (as with functions). Only constants defined on a module level should be written in `UPPER_CASE_WITH_UNDERSCORES`. Variable names should be readable and meaningful, avoiding undescriptive names like single letters or cryptic abbreviations.
 
 ### Type hints
 Python is both a **strongly typed** and a **dynamically typed** language. Strong typing means that variables do have a type and that the type matters when performing operations on a variable. Dynamic typing means that the type of the variable is determined only during runtime.
 
 Due to dynamic typing, in Python the same variable can have a different type at different times during the execution. Dynamic typing allows for flexibility in programming, but with a price in performance.
 
-Nonetheless, recent versions of Python allow one to add type hints for our variables. For example
+Nonetheless, recent versions of Python allow one to add indicative type hints to our variables. For example
 
 ```Python
 a: int = 3
@@ -122,9 +130,9 @@ def function(text: str) -> str:
     return text + "!!"
 ```
 
-This can help to understand the code, create documentation or catch errors using tools like `mypy`.
+They can be helpful to understand the code, create documentation or even catch errors using tools like `mypy`.
 
-Elaborate type hints such as `Callable`, `Union` or `Optional` can be found in the [`typing` library](https://docs.python.org/es/3/library/typing.html). Note that after Python 3.10 the operator `|` can be used as an "or" between different types. For example, this function accepts either a float or an integer and outputs an integer.
+Elaborate type hints such as `Callable`, `Union` or `Optional` can be found in the [`typing` library](https://docs.python.org/es/3/library/typing.html).Note that after Python 3.10 the operator `|` can be used as an "or" between different types (same use as `Union`). For example, this function accepts either a float or an integer and outputs an integer.
 
 ```Python
 def float_to_int(variable: float | int) -> int:
@@ -139,7 +147,7 @@ One of the most popular styles for docstrings is the [Google style](https://sphi
 
 
 ## Tools
-### Linting
+### Linters
 
 Linters like `Ruff`, `Pylint` or `Flake8` (which is the one I use) help us find mismatches between our code and the conventions stablished by the python community in the [PEP8 guidelines](https://peps.python.org/pep-0008/). In summary, an indispensable tool for a programmer.
 
@@ -154,7 +162,7 @@ flake8 my_library/vector/vector.py
 
 Or, even simpler, we can use the Flake8 extension for VSCode (or whatever tool your IDE provides).
 
-### Formatting
+### Formatters
 
 Keeping track of all the errors and fixing them can be painful... This is where automatic tools to format the code enter. The two most popular are `autopep8` and `black`. I prefer `black` because it requires less configuration. To format our library simply type in the command line
 ```console
@@ -167,7 +175,7 @@ Black by default allows a maximum line length of 80. We can tweak this by adding
 black --line-length 120 my_library
 ```
 
-### Type checking
+### Type checker
 
 The most popular type checker is `mypy`. Provided that we type hinted our functions and variables, this tool checks any mismatches between the expected inputs and outputs and the real ones. It can also highlight deeper errors in your code structure, like violations of Liskov substitution principle.
 
