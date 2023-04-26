@@ -161,11 +161,11 @@ Linters like `Ruff`, `Pylint` or `Flake8` (which is the one I use) help us find 
 
 `Flake8` can be easily run from the command line to highlight all the errors of our library
 ```console
-flake8 my_library
+flake8 mylibrary
 ```
 We can also lint one specific file 
 ```console
-flake8 my_library/vector/vector.py
+flake8 mylibrary/vector/vector.py
 ```
 
 Or, even simpler, we can use the Flake8 extension for VSCode (or whatever tool your IDE provides).
@@ -174,13 +174,13 @@ Or, even simpler, we can use the Flake8 extension for VSCode (or whatever tool y
 
 Keeping track of all the errors and fixing them can be painful... This is where automatic tools to format the code enter. The two most popular are `autopep8` and `black`. I prefer `black` because it requires less configuration. To format our library simply type in the command line
 ```console
-black my_library
+black mylibrary
 ```
 or use the corresponding VSCode extension.
 
 Black by default allows a maximum line length of 80. We can tweak this by adding an option:
 ```console
-black --line-length 120 my_library
+black --line-length 120 mylibrary
 ```
 
 ### Type checker
@@ -188,7 +188,7 @@ black --line-length 120 my_library
 The most popular type checker is `mypy`. Provided that we type hinted our functions and variables, this tool checks any mismatches between the expected inputs and outputs and the real ones. It can also highlight deeper errors in your code structure, like violations of Liskov substitution principle.
 
 ```console
-mypy my_library
+mypy mylibrary
 ```
 Note that sometimes it complaints too much so you may just turn it off...
 
