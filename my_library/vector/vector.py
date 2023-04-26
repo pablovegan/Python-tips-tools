@@ -7,8 +7,8 @@ import local_librariess
 """
 
 from __future__ import annotations  # We import this module to use the Vector type annotation
-from typing import Optional
 import warnings
+from typing import Optional
 import math
 
 import numpy as np
@@ -30,8 +30,8 @@ class NormError(ValueError):
         message (str): The message to display when the exception is raised.
     """
 
-    def __init__(self, norm: float, max_norm: float) -> None:
-        self.message = f"Norm = {norm} but it cannot be greater than {max_norm}."
+    def __init__(self, norm: float) -> None:
+        self.message = f"Norm = {norm} but it cannot be greater than {MAX_NORM}."
         super().__init__(self.message)
 
 
@@ -56,28 +56,37 @@ class Vector:
         self.y = y
 
         if self.norm > MAX_NORM:
-            raise NormError(self.norm, MAX_NORM)
+            raise NormError(self.norm)
 
     def __repr__(self) -> str:
-        """Return the vector representation. We type the following to output
-        the vector representation:
-        >>> vector = Vector(1,2)
-        >>> vector
-        vector.Vector(1,2)
+        """Return the vector representation.
 
         Returns:
             The representation of the vector.
+
+        Examples:
+            We type the following to output the vector representation:
+
+            >>> vector = Vector(1,2)
+            >>> vector
+            vector.Vector(1,2)
+
         """
         return f"vector.Vector({self.x}, {self.y})"
 
     def __str__(self) -> str:
         """This method is called when we want to print our vector as a string.
-        >>> vector = Vector(1,2)
-        >>> print(vector)
-        (1,2)
 
         Returns:
             The vector as a string.
+
+        Examples:
+            To call __str__ simply type
+
+            >>> vector = Vector(1,2)
+            >>> print(vector)
+            (1,2)
+
         """
         return f"({self.x}, {self.y})"
 
@@ -86,6 +95,9 @@ class Vector:
 
         Args:
             other_vector: Other vector (right hand side).
+
+        Raises:
+            TypeError: "Not Vector passed in.
 
         Returns:
             The addition vector of the self and the other vector.
@@ -155,13 +167,9 @@ class Vector:
             Vector: The projected vector.
         """
         if subspace is None:
-            warnings.warn(
-                "If no subspace is given, the vector is projected onto the first component!"
-            )
+            warnings.warn("If no subspace is given, the vector is projected onto the first component!")
             return Vector(self.x, 0)
         else:
-            # Note that self is instance of the Vector class
-            projection_coef: float = (
-                subspace * self
-            ) / subspace.norm**2
+            # Note that self is the instance of the Vector class
+            projection_coef: float = (subspace * self) / subspace.norm**2
             return subspace * projection_coef

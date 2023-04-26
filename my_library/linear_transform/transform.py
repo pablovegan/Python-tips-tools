@@ -21,16 +21,21 @@ class LinearTransform(ABC):
 
     def __call__(self, vector: Vector) -> Vector:
         """Matrix times vector multiplication. The call method allows an instance of this class
-        to behave as a function. For example, we can define a linear transformation
-        >>> transformation = LinearTransform(some_matrix)
-        and then apply the tranform to a vector
-        >>> transformation(some_vector)
+        to behave as a function.
 
         Args:
             vector (Vector): Vector to transform.
 
         Returns:
             Vector: Transformed vector.
+
+        Examples:
+            We can define a linear transformation and then apply the tranform to a vector
+            as if it were a function:
+
+            >>> transformation = LinearTransform(some_matrix)
+            >>> transformation(some_vector)
+
         """
         x = self.matrix[0][0] * vector.x + self.matrix[0][1] * vector.y
         y = self.matrix[1][0] * vector.x + self.matrix[1][1] * vector.y
@@ -46,21 +51,25 @@ class LinearTransform(ABC):
         Returns:
             list[list[float]]: Matrix of the inverse transformation.
         """
-        ...
+        ...  # the three dots mean "ellipsis"
 
     def inverse(self, vector: Vector) -> Vector:
         """Apply the inverse of our transformation to a vector.
         When giving a name to a method, you should take into account how would
-        you name an instance of this class. For example, if you type
-        >>> transformation = LinearTransform(some_matrix)
-        then it is natural to call the inverse as
-        >>> transformation.inverse(some_vector)
+        you name an instance of this class.
 
         Args:
             vector (Vector): Vector to transform.
 
         Returns:
             Vector: Transformed vector.
+
+        Examples:
+            If we create a transformation object, we can call the inverse method:
+
+            >>> transformation = LinearTransform(some_matrix)
+            >>> transformation.inverse(some_vector)
+
         """
         x = self.inv_matrix[0][0] * vector.x + self.inv_matrix[0][1] * vector.y
         y = self.inv_matrix[1][0] * vector.x + self.inv_matrix[1][1] * vector.y

@@ -1,2 +1,2 @@
 from .vector import Vector, NormError
-from .lineartransform import LinearTransform, Rotation, Shear
+from .linear_transform import LinearTransform, Rotation, Shear
