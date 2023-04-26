@@ -19,6 +19,7 @@ So we start creating and activating our environment (if we didn't activate it, w
 conda create -n env_name python==3.10
 conda activate env_name
 ```
+*Note*: always remember to activate your conda environment before using python or installing new libraries. Do not install third party libraries in your base environment!
 
 ### Pip and PyPI
 
