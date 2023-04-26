@@ -148,6 +148,11 @@ One of the most popular styles for docstrings is the [Google style](https://sphi
 
 
 ## Tools
+
+### Tests
+
+FILL IN WITH `PYTEST` STUFF
+
 ### Linters
 
 Linters like `Ruff`, `Pylint` or `Flake8` (which is the one I use) help us find mismatches between our code and the conventions stablished by the python community in the [PEP8 guidelines](https://peps.python.org/pep-0008/). In summary, an indispensable tool for a programmer.
