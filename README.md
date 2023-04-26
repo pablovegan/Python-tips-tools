@@ -2,6 +2,7 @@
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![black](https://img.shields.io/badge/code%20style-black-black)](https://github.com/psf/black)
+[![Test](https://github.com/pablovegan/Python-tips-tools-Benasque/actions/workflows/tests.yml/badge.svg)](https://github.com/pablovegan/Python-tips-tools-Benasque/actions/workflows/tests.yml)
 
 
 
@@ -44,6 +45,8 @@ mkdir my_project
 cd my_project
 git init
 ```
+
+*Note*: be sure to push and pull your changes to the cloud when switching between different devices (for example your desktop computer and your laptop). 
 
 ## Python basics
 
@@ -96,7 +99,7 @@ When we create a new object of a certain class, the `__new__` method is called i
 
 ### Variables
 
-A Python **variable** is a symbolic name that is a reference or pointer to an object. In Python, unlike C, different names can point to the same object/memory address. And when an object runs out of references, it is no longer accessible and Python will reclaim the allocated memory so it can be used for something else.
+A Python **variable** is a symbolic name that is a reference or pointer to an object. In Python, unlike other programming languages like C, different names can point to the same object/memory address. And when an object runs out of references, it is no longer accessible and Python will reclaim the allocated memory so it can be used for something else.
 
 In general, variable names and attributes should follow the `lower_case_with_underscores` naming convention (as with functions). Only constants defined on a module level should be written in `UPPER_CASE_WITH_UNDERSCORES`.
 
@@ -157,6 +160,10 @@ black my_library
 ```
 or use the corresponding VSCode extension.
 
+Black by default allows a maximum line length of 80. We can tweak this by adding an option:
+```console
+black --line-length 120 my_library
+```
 
 ### Type checking
 
@@ -174,7 +181,7 @@ We use the autoDocstrings extension for VSCode to create Google style docstrings
 If you want to create nice looking documentation and then upload it to a website (for free in Github Pages) you can follow [this tutorial](https://realpython.com/python-project-documentation-with-mkdocs/) using `mkdocs`.
 
 
-## Advanced stuff
+## Bit more advanced stuff
 
 ### Uploading to PyPI
 
@@ -194,8 +201,8 @@ One disadvantage of interpreted languages over compiled ones is that they are ge
 ### Automating boring tasks with Github workflows
 
 
-### Other stuff to look into
-- Abstract classes
-- Exception handling
-- Function and class decorators 
-- Pre-commits
+## Other things to look into
+- Abstract classes: a basic example of an abstract class can be found in the `transform.py` module of our library. Basically, abstract classes allow us to define abstract methods in a super class that we can later code explicitly in all its subclasses.
+- Exception handling: basically `try-except` statements. They work very well with custom error classes. An example can be found in the `3-exceptions.ipynb` notebook inside the `examples` folder.
+- Function and class decorators: decorators are a simple sintax to transform certain functions or classes.
+- Pre-commits: pre-commits allow us to do certain actions between commiting changes with git. For example, we can check that our code follows the PEP8 guidelines and fix it with black if it doesn't.
