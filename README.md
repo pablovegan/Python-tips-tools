@@ -229,7 +229,7 @@ In this repo, I added a Github workflow to test our Python library in a linux ma
 
 Note: we can add a badge at the beginning of our readme to show that the tests either passed or failed (this is updated automatically each time the tests are run).
 
-![Github workflows](readme_images/github_tests_workflow.png )
+![Github workflows](docs/github_tests_workflow.png)
 
 
 ## Other things to look into
