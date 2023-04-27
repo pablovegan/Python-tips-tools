@@ -64,6 +64,7 @@ Once we have a folder for our project, we equip it with the following structure:
 ├── setup.py
 ├── setup.cfg
 ├── pyproject.toml
+├── requirements.txt
 ├── ... other config files ...
 ├── mylibrary
 │   ├── __init__.py
@@ -83,9 +84,11 @@ Once we have a folder for our project, we equip it with the following structure:
 
 Folders in our library should have `lowercasenames` names, without underscores.
 
-Usually you can copy configuration files from other projects (like this one) and tweak them to fit your needs.
+Usually you can copy configuration files from other projects (like this one) and tweak them to fit your needs. Both `pyproject.toml` and `setup.cfg` contain configuration options for the tools that we use, like `flake8` or `black`. `setup.cfg` also contains the metadata of our library, information like the author or version of the library; this is required when building our library to create an installable package (that we can upload to PyPI). When building the library, the script `setup.py` is used, but we don't need to bother with it at this moment.
 
-Note that sometimes libraries can be found inside a source folder, `src`, in a similar way to other programming languajes (like Java), but in Python is not really necessary so we can skip it.
+Third party dependencies for our library are specified in the `requirements.txt` file, ideally with the version of each library to avoid conflicts with updates or older versions. The resting developer tools that we would like to use, like linters, are added in the `requirements-dev.txt` file.
+
+Finally, note that sometimes the library can be found inside a source folder, `src`, in a similar way to other programming languajes (like Java), but in Python is not really necessary so we can skip it.
 
 ### Libraries or packages
 
