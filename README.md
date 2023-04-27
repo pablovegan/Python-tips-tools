@@ -6,24 +6,25 @@
 
 
 
-Here I present you some notes meant as a companion to the Python tips and tools talk for the Superconducting Qubit Technology school at Benasque 2023.
+Howdy! I present you some notes meant as a companion to the Python tips and tools talk for the Superconducting Qubit Technology school at Benasque 2023. I tried to keep it simple enough so that the essence of a Python project can be understood, but rich enough so that you hopefully learn new things! (No, we are not going to print "hello world" or explain for loops).
 
 ## Getting started
 
 ### Conda
 
-The first thing we should do when working on a new project is creating a conda environment that suits our third party library needs (with their corresponding versions), unless we already have one. I suggest you use the light version of conda, `miniconda`, which only installs the standard Python libraries. Then you can always install whatever you need in a new environment.
+The first thing we should do when working on a new project is to create a conda environment that suits our third party library needs (with their corresponding versions), unless we already have one. I suggest you use the light version of conda, `miniconda`, which only installs the standard Python libraries. Then you can always install whatever you need in a new environment to keep it all clean and tidy.
 
-So we start creating and activating our environment (if we didn't activate it, we would install libraries in the base environment, which is strongly discouraged)
+So, we start creating and _activating_ a new environment
+
 ```console
 conda create -n env_name python==3.10
 conda activate env_name
 ```
-*Note*: always remember to activate your conda environment before using python or installing new libraries. Do not install third party libraries in your base environment!
+*Note*: always remember to activate your conda environment before using python or installing new libraries. Do not install third party libraries in the base environment!
 
 ### Pip and PyPI
 
-Once Python is installed, we can use either pip or conda to install new libraries in our environment. `pip` downloads packages from the [PyPI repository](https://pypi.org/), which usually has more libraries than the conda repository.
+Once Python is installed, we can use either `pip` or `conda` to install new libraries in our environment. `pip` downloads packages from the [PyPI repository](https://pypi.org/), which usually has more libraries than the Conda repository.
 
 
 To simplify our life, we will install the third-party libraries we need from a .txt file named `requirements-dev.txt`, which also installs the dependencies in the `requirements.txt` file (intended just for users of the library, not developers).
@@ -53,6 +54,21 @@ git clone https://github.com/pablovegan/Python-tips-tools-Benasque.git
 ```
 
 *Note*: be sure to push and pull your changes to the cloud when switching between different devices (for example your desktop computer and your laptop), if not you can have merge conflicts and, trust me, you don't want that...
+
+### Text editor or IDE
+
+I'm a [Visual Studio Code](https://code.visualstudio.com/) (VSCode) enjoyer because it is free, lightweight and has lots of useful extensions, but you may also try other IDEs and editors like [PyCharm](), [Sublime](https://www.sublimetext.com/) or [Vim](https://www.vim.org/) (for the nostalgic).
+
+Here are some of the extensions I use in VSCode:
+- Python
+- IntelliCode
+- Jupyters
+- Flake8
+- Black Formatter
+- Mypy Type Checker
+- Gitlens
+- GitHub Pull requests and issues
+- autoDocstring
 
 ## Python basics
 
@@ -96,7 +112,7 @@ As you may have noticed in the project structure, every folder inside our librar
 
 ### Modules
 
-Simply, a module is a file consisting of Python code. A module can define functions, classes and variables... Python modules should more or less follow this structure:
+Simply, a module is a `.py` file consisting of Python code. A module can define functions, classes and variables... Python modules should more or less follow this structure:
 1. Module docstrings should appear at the very beginning, just before the imports. 
 2. Imports should follow this order: standard Python library, third party and local libraries, each group separated by one empty line. Also, one should not import from more than one library per line.
 3. Module constants, separated from the imports by two empty lines. Constants should follow the `UPPER_CASE_WITH_UNDERSCORES` naming convention.
