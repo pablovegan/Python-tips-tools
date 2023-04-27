@@ -62,7 +62,7 @@ I'm a [Visual Studio Code](https://code.visualstudio.com/) (VSCode) enjoyer beca
 Here are some of the extensions I use in VSCode:
 - Python
 - IntelliCode
-- Jupyters
+- Jupyter
 - Flake8
 - Black Formatter
 - Mypy Type Checker
@@ -148,8 +148,8 @@ Nonetheless, recent versions of Python allow one to add indicative type hints to
 a: int = 3
 b: float = 2.0
 
-def function(text: str) -> str:
-    return text + "!!"
+def shouting(text: str) -> str:
+    return text.upper() + "!!"
 ```
 
 They can be helpful to understand the code, create documentation or even catch errors using tools like `mypy`.
@@ -233,6 +233,7 @@ Python is an interpreted language, which means the source code is executed direc
 
 One disadvantage of interpreted languages over compiled ones is that they are generally slower. In the recent years many tools have emerged to accelerate python code; to name some of them:
 - Just in time compilers: Numba, JAX and PyPy.
+- Parallelization with `pathos.multiprocessing` and `mpi4py` (Message Passing Interface for Python).
 - Extend Python with C code: Cython (the `cythonbuilder` library makes our life easier).
 
 ### Automating boring tasks with Github workflows
