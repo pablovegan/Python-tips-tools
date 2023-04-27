@@ -1,2 +1,2 @@
-numpy
-numba
+numpy >= 1.24.0
+numba >= 0.56.0 
