@@ -230,10 +230,11 @@ In this repo, I added a Github workflow to test our Python library in a linux ma
 4. Lint with flake8 and stop if there are any errors.
 5. Run the tests inside the `tests` folder using `pytest`.
 
-Note: we can add a badge at the beginning of our readme to show that the tests either passed or failed (this is updated automatically each time the tests are run).
+The green tick near the commits show that the tests were successful.
 
 ![Github workflows](docs/github_tests_workflow.png)
 
+Note: we can add a badge at the beginning of our readme to show that the tests either passed or failed (this is updated automatically each time the tests are run).
 
 ## Other things to look into
 - Abstract classes: a basic example of an abstract class can be found in the `linear_map.py` module of our library. Basically, abstract classes allow us to define abstract methods in a super class that we can later code explicitly in all its subclasses.
