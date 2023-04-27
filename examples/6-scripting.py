@@ -2,8 +2,8 @@
 arguments given through the terminal when running the script.
 
 Examples:
-    Starting from the main project folder, we need to change
-    directory to `examples` and from there run the script
+    In the terminal, starting from the main project folder, we need
+    to change directory to `examples` and from there run the script:
 
     >>> conda activate env_name
     >>> cd examples
