@@ -218,6 +218,19 @@ One disadvantage of interpreted languages over compiled ones is that they are ge
 
 ### Automating boring tasks with Github workflows
 
+Ordinary tasks in a developers day such as testing (in multiple operating systems and Python versions), releasing packages and uploading them to PyPI, updating the documentation in a website, etc., can all be automated using workflows. Most cloud repositories like Github or Gitlab have them available and are really easy to use (at least the basic ones).
+
+In this repo, I added a Github workflow to test our Python library in a linux machine (provided by Github) with Python version 3.10. The workflow can be found under the `.github/workflows` folder in a `test.yml` file. The basic structure of this file is:
+1. Apply the action when we git push to or pull from the repository.
+2. Create an ubuntu linux machine with python 3.10 installed.
+3. Install `flake8` and `pytest`, as well as the dependencies under the `requirements.txt` file.
+4. Lint with flake8 and stop if there are any errors.
+5. Run the tests inside the `tests` folder using `pytest`.
+
+Note: we can add a badge at the beginning of our readme to show that the tests either passed or failed (this is updated automatically each time the tests are run).
+
+![Github workflows](readme_images/github_tests_workflow.png )
+
 
 ## Other things to look into
 - Abstract classes: a basic example of an abstract class can be found in the `linear_map.py` module of our library. Basically, abstract classes allow us to define abstract methods in a super class that we can later code explicitly in all its subclasses.

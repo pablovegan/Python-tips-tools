@@ -165,3 +165,8 @@ cython_debug/
 # VSCode
 .vscode
 .vscode/
+
+
+# Other stuff
+
+docs
