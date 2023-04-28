@@ -1,9 +1,16 @@
-"""Imports should follow always the same order:
-import python_standard_library
+"""This module contains the vector class and the NormError exception.
 
-import third_party_libraries
+Attributes:
+    MAX_NORM (float): The maximum value of the vector norm allowed in
+        the vector class.
 
-import local_librariess
+Note:
+    Imports should follow always the same order:
+        import python_standard_library
+
+        import third_party_libraries
+
+        import local_librariess
 """
 
 from __future__ import annotations  # We import this module to use the Vector type annotation
@@ -19,25 +26,24 @@ MAX_NORM: float = 100
 
 
 class NormError(ValueError):
-    """Custom exception class. Raised when the norm is greater than the maximum.
+    """Custom exception class. Raised when the norm is greater than MAX_NORM.
     Custom Exception classes are very useful for exception handling.
 
     Args:
         norm (float): The norm of the vector.
-        max_norm (float): The maximum norm allowed.
 
     Attributes:
         message (str): The message to display when the exception is raised.
     """
 
     def __init__(self, norm: float) -> None:
-        self.message = f"Norm = {norm} but it cannot be greater than {MAX_NORM}."
+        self.message = f"Norm = {norm}, but it cannot be greater than {MAX_NORM}."
         super().__init__(self.message)
 
 
 class Vector:
     """Two dimensional vector.
-    Remember that class docstrings in Google format should have the arguments of the __init__ method
+    Remember that class docstrings in Google format should contain the arguments of the __init__ method
     and the attributes of the class, but not the methods.
 
     Args:
@@ -92,16 +98,16 @@ class Vector:
         return f"({self.x}, {self.y})"
 
     def __add__(self, other_vector: Vector) -> Vector:
-        """Returns the addition vector of the self and the other vector.
+        """Returns the addition vector of self and the other vector.
 
         Args:
             other_vector: Other vector (right hand side).
 
         Raises:
-            TypeError: "Not Vector passed in.
+            TypeError: Not Vector passed in.
 
         Returns:
-            The addition vector of the self and the other vector.
+            The addition vector of self and the other vector.
         """
         if not isinstance(other_vector, Vector):
             raise TypeError("You must pass in a Vector instance!")
@@ -113,7 +119,7 @@ class Vector:
         """Return the multiplication of self and the other vector/number.
 
         Args:
-            other: Other vector or scaler value (rhs).
+            other: Other vector or scalar value (rhs).
 
         Raises:
             TypeError: Not int/float passed in.
@@ -129,18 +135,18 @@ class Vector:
         return Vector(self.x * other, self.y * other)
 
     def __eq__(self, other_vector: object) -> bool:
-        """Check if the vectors have the same values.
+        """Check if the vectors have the same values up to some tolerance.
 
         Args:
             other_vector: Other vector (rhs).
 
         Returns:
-            True, if the both vectors have the same values.
+            True, if both vectors have the same values.
             False, else.
         """
         if not isinstance(other_vector, Vector):
             return False
-        # math.isclose returns true or false if the numbers are equal up to a small error
+        # math.isclose returns true if the numbers are equal up to a small error
         equal_x: bool = math.isclose(self.x, other_vector.x, abs_tol=1e-10)
         equal_y: bool = math.isclose(self.y, other_vector.y, abs_tol=1e-10)
         return equal_x and equal_y
@@ -152,7 +158,7 @@ class Vector:
         on top of the method.
 
         Returns:
-            float: euclidean norm of the vector.
+            float: the euclidean norm of the vector.
         """
         return np.sqrt(self.x**2 + self.y**2)
 
@@ -168,7 +174,7 @@ class Vector:
             Vector: The projected vector.
         """
         if subspace is None:
-            warnings.warn("If no subspace is given, the vector is projected onto the first component!", stacklevel=2)
+            warnings.warn("If no subspace is given, the vector is projected onto the first component!")
             return Vector(self.x, 0)
         else:
             # Note that self is the instance of the Vector class
