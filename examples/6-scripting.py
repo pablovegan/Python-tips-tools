@@ -23,7 +23,7 @@ module_path = abspath('..')
 if module_path not in sys.path:
     sys.path.append(module_path)
 
-from mylibrary import Vector  # noqa: E402 (ignore flake8 error)
+from mylibrary import Vector  # noqa: E402 (ignore flake8 error for imports order)
 
 
 if __name__ == '__main__':
