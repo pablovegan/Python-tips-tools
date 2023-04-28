@@ -15,7 +15,7 @@ import numpy as np
 
 
 # Module constants should be on top and use UPPER_CASE_WITH_UNDERSCORES names
-MAX_NORM = 100
+MAX_NORM: float = 100
 
 
 class NormError(ValueError):
