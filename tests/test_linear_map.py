@@ -1,8 +1,9 @@
-"""All functions and methods should be tested. All of them!! This helps us catch errors
-in our library and avoids propagating them into ever more complicated functions.
+"""All functions and methods should be tested. All of them!! This helps us
+catch errors in our library and avoids propagating them into ever more
+complicated functions.
 
-We will use the library pytest, which allows to test multiple inputs for each test function.
-For that we use the @pytest.mark.parametrize decorator.
+We will use the library pytest, which allows to test multiple inputs for
+each test function (using the @pytest.mark.parametrize decorator).
 """
 
 from math import sqrt

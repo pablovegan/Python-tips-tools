@@ -1,4 +1,4 @@
-"""This module contains the vector class and the NormError exception.
+"""This module contains the Vector class and the NormError exception.
 
 Attributes:
     MAX_NORM (float): The maximum value of the vector norm allowed in

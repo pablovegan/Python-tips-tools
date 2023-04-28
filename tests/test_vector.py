@@ -1,9 +1,11 @@
-"""All functions and methods should be tested. All of them!! This helps us catch errors
-in our library and avoids propagating them into ever more complicated functions.
+"""All functions and methods should be tested. All of them!! This helps us
+catch errors in our library and avoids propagating them into ever more
+complicated functions.
 
-We will use the library pytest, which allows to test multiple inputs for each test function.
-For that we use the @pytest.mark.parametrize decorator. This inputs should include the inputs
-for function we want to test (for example the __add__ method) as well as the expected result.
+We will use the library pytest, which allows to test multiple inputs for
+each test function (using the @pytest.mark.parametrize decorator). This inputs
+should include the inputs for the function we want to test (for example the
+__add__ method) as well as the expected result.
 """
 
 import math
@@ -45,15 +47,15 @@ def test_mul_vec(vector_1: Vector, vector_2: Vector, result: Vector) -> None:
 
 
 @pytest.mark.parametrize(
-    ('variable_1', 'variable_2', 'result'),
+    ('vector', 'number', 'result'),
     (
         (V1, 2.0, Vector(0.0, 0.0)),
-        (V2, 2.0, Vector(-2.0, 2.0)),
+        (V2, -3.0, Vector(3.0, -3.0)),
         (V3, 2.0, Vector(5.0, -5.0)),
     )
 )
-def test_mul_float(variable_1: Vector, variable_2: Vector, result: float) -> None:
-    assert variable_1 * variable_2 == result
+def test_mul_float(vector: Vector, number: float, result: float) -> None:
+    assert vector * number == result
 
 
 @pytest.mark.parametrize(

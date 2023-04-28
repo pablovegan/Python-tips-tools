@@ -1,3 +1,7 @@
+"""This module contains the LinearMap abstract class and two subclasses:
+Rotation and Shear.
+"""
+
 from abc import ABC, abstractmethod
 from math import sin, cos, tan
 
@@ -5,10 +9,12 @@ from mylibrary.vector import Vector
 
 
 class LinearMap(ABC):
-    """The matrix of our linear map will consist on a list of rows with
+    """This abstract class will serve us as a base for other linear maps that we
+    will later especify in subclasses.
 
     Args:
-        matrix (list[list[float]]): matrix of our linear map.
+        matrix (list[list[float]]): matrix of our linear map. It consists on a list
+            of rows, each row being a list of the numbers in each column.
 
     Attributes:
         matrix (list[list[float]]): the matrix of our linear map.
@@ -20,8 +26,9 @@ class LinearMap(ABC):
         self.inv_matrix = self._get_inverse()  # we can call an undefined abstract method
 
     def __call__(self, vector: Vector) -> Vector:
-        """Matrix times vector multiplication. The call method allows an instance of this class
-        to behave as a function.
+        """Apply the linear map to a vector (which translates into ordinary matrix
+        times vector multiplication). The call method allows an instance of this
+        class to behave as a function.
 
         Args:
             vector (Vector): Vector to map.
@@ -43,10 +50,12 @@ class LinearMap(ABC):
 
     @abstractmethod
     def _get_inverse(self) -> list[list[float]]:
-        """The code for the abstract method will be specified inside each subclass.
+        """The code for the abstract method will be specified inside each subclass. Because
+        this method is not defined in the LinearMap class, we won't be able to create an
+        instance of this class.
 
-        Because the method is not intended to be part of the user API, the convention is to
-        begin the method's name with an underscore.
+        Also, because the method is not intended to be part of the user API, the convention
+        is to begin the method's name with an underscore.
 
         Returns:
             list[list[float]]: Matrix of the inverse transformation.
@@ -56,7 +65,7 @@ class LinearMap(ABC):
     def inverse(self, vector: Vector) -> Vector:
         """Apply the inverse of our map to a vector.
         When giving a name to a method, you should take into account how would
-        you name an instance of this class.
+        you name an instance of this class (see the example below).
 
         Args:
             vector (Vector): Vector to transform.
