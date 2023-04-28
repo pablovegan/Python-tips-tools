@@ -6,7 +6,9 @@
 
 
 
-Howdy! I present you some notes meant as a companion to the Python tips and tools talk for the Superconducting Qubit Technology school at Benasque 2023. I tried to keep it simple enough so that the essence of a Python project can be understood, but rich enough so that you hopefully learn new things! (No, we are not going to print "hello world" or explain for loops).
+Howdy! I present you some notes meant as a companion to the Python tips and tools talk for the Superconducting Qubit Technology school at Benasque 2023.
+
+Since there are abundant online resources to learn Python, this document is quite succint and schematic. I tried to keep the files simple enough so that the essence of a Python project can be understood, but rich enough so that you, hopefully, learn new things! (No, we are not going to print "hello world" or explain for loops).
 
 ## Getting started
 
@@ -70,6 +72,9 @@ Here are some of the extensions I use in VSCode:
 - GitHub Pull requests and issues
 - autoDocstring
 
+One last tip: you can hide cache folders from the file explorer in `Settings -> Files: Exclude`.
+
+
 ## Python basics
 
 ### Code structure
@@ -127,7 +132,9 @@ Everything in Python is an **object**, _i.e._ everything can be assigned to a va
 When we create a new object of a certain class, the `__new__` method is called in the background, which creates a new empty object that is then initialized through the `__init__` method.
 
 FILL IN WITH METHODS AND ATTRIBUTES (also class attributes)
-Mutable and unmutable types
+
+
+An important thing to be aware of when using Python is that objects fall into two categories: mutable or immutable. An immutable object is the one that cannot be changed after it is created; even when you think you are changing the object, you are really making new objects from old ones. Immutable objects include numbers, strings, and tuples. Almost everything else is mutable, including lists, dicts, and user-defined objects. Mutable means that the value has methods that can change the value in-place. To learn more about this check out the example notebook [`3-mutable-objects.ipynb`](examples/3-mutable-objects.ipynb).
 
 ### Variables
 
@@ -136,6 +143,7 @@ A Python **variable** is a symbolic name that is a reference or pointer to an ob
 When an object runs out of references, it is no longer accessible and Python will reclaim the allocated memory so it can be used for something else.
 
 In general, variable names and attributes should follow the `lower_case_with_underscores` naming convention (as with functions). Only constants defined on a module level should be written in `UPPER_CASE_WITH_UNDERSCORES`. Variable names should be readable and meaningful, avoiding undescriptive names like single letters or cryptic abbreviations.
+
 
 ### Type hints
 Python is both a **strongly typed** and a **dynamically typed** language. Strong typing means that variables do have a type and that the type matters when performing operations on a variable. Dynamic typing means that the type of the variable is determined only during runtime.
