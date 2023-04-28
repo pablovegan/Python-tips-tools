@@ -67,7 +67,6 @@ Here are some of the extensions I use in VSCode:
 - Jupyter
 - Flake8
 - Black Formatter
-- Mypy Type Checker
 - Gitlens
 - GitHub Pull requests and issues
 - autoDocstring
