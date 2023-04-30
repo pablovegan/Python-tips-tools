@@ -1,6 +1,7 @@
 # Python tips and tools
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v1.json)](https://github.com/charliermarsh/ruff)
 [![black](https://img.shields.io/badge/code%20style-black-black)](https://github.com/psf/black)
 [![Test](https://github.com/pablovegan/Python-tips-tools-Benasque/actions/workflows/tests.yml/badge.svg)](https://github.com/pablovegan/Python-tips-tools-Benasque/actions/workflows/tests.yml)
 
@@ -66,7 +67,6 @@ Here are some of the extensions I use in VSCode:
 - IntelliCode
 - Jupyter
 - Ruff
-- Black Formatter
 - Gitlens
 - GitHub Pull requests and issues
 - autoDocstring
@@ -186,20 +186,27 @@ FILL IN WITH `PYTEST` STUFF
 
 ### Linters
 
-CAMBIAR FLAKE8 POR RUFF
 
-Linters like `Ruff`, `Pylint` or `Flake8` (which is the one I use, although I might change to Ruff) help us find mismatches between our code and the conventions stablished by the python community in the [PEP8 guidelines](https://peps.python.org/pep-0008/). In summary, an indispensable tool for a programmer.
+Linters like `Flake8`, `Pylint` or `Ruff` (Ruff is very very fast and implements a lot of checks) help us find mismatches between our code and the conventions stablished by the python community in the [PEP8 guidelines](https://peps.python.org/pep-0008/). In summary, an indispensable tool for a programmer.
 
-`Flake8` can be easily run from the command line to highlight all the errors of our library
 ```console
-flake8 mylibrary
+ruff check .
+```
+
+`Ruff` can be easily run from the command line to highlight all the errors of our library
+```console
+ruff check .
 ```
 We can also lint one specific file 
 ```console
-flake8 mylibrary/vector/vector.py
+ruff check mylibrary/vector/vector.py
 ```
 
-Or, even simpler, we can use the Flake8 extension for VSCode (or whatever tool your IDE provides).
+`Ruff`, unlike other linters, also has the option to fix some of the problems encountered in the code
+```console
+ruff check --fix mylibrary/vector/vector.py
+```
+Unless we are one of those old school programmers that read their email on the terminal, we can avoid using the command line by installing the Ruff extension for VSCode (or whatever tool your IDE provides).
 
 ### Formatters
 

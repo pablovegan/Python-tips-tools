@@ -129,7 +129,7 @@ max-complexity = 10
 ignore-overlong-task-comments = true
 
 [tool.ruff.pydocstyle]
-convention = "numpy"
+convention = "google"
 
 [tool.ruff.flake8-annotations]
 allow-star-arg-any = false

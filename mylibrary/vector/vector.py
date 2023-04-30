@@ -14,8 +14,9 @@ Note:
 """
 
 from __future__ import annotations  # We import this module to use the Vector type annotation
-import warnings
+
 import math
+import warnings
 
 import numpy as np
 
@@ -58,8 +59,8 @@ class Vector:
     """
 
     def __init__(self, x: float, y: float) -> None:
-        self.x = x
-        self.y = y
+        self.x: float = x
+        self.y: float = y
 
         if self.norm > MAX_NORM:
             raise NormError(self.norm)
@@ -127,10 +128,11 @@ class Vector:
             The multiplication of self and the other vector/number.
         """
         if isinstance(other, Vector):
-            result: float = self.x * other.x + self.y * other.y
-            return result
+            return self.x * other.x + self.y * other.y
+
         if not isinstance(other, int | float):
             raise TypeError("You must pass in an int/float!")
+
         return Vector(self.x * other, self.y * other)
 
     def __eq__(self, other_vector: object) -> bool:
