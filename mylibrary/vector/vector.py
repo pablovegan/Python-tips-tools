@@ -15,7 +15,6 @@ Note:
 
 from __future__ import annotations  # We import this module to use the Vector type annotation
 import warnings
-from typing import Optional
 import math
 
 import numpy as np
@@ -162,7 +161,7 @@ class Vector:
         """
         return np.sqrt(self.x**2 + self.y**2)
 
-    def projection(self, subspace: Optional[Vector] = None) -> Vector:
+    def projection(self, subspace: Vector | None = None) -> Vector:
         """By default projects the vector onto its first component. If a vector spanning a subspace
         is given, then the vector is projected along this subspace.
 
@@ -174,7 +173,7 @@ class Vector:
             Vector: The projected vector.
         """
         if subspace is None:
-            warnings.warn("If no subspace is given, the vector is projected onto the first component!")
+            warnings.warn("If no subspace is given, the vector is projected onto the first component!", stacklevel=2)
             return Vector(self.x, 0)
         else:
             # Note that self is the instance of the Vector class

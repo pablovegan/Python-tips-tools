@@ -26,7 +26,7 @@ conda activate env_name
 
 ### Pip and PyPI
 
-Once Python is installed, we can use either `pip` or `conda` to install new libraries in our environment. `pip` downloads packages from the [PyPI repository](https://pypi.org/), which usually has more libraries than the Conda repository.
+Once Python is installed, we can use either `pip` or `conda` to install new libraries in our environment. `pip` downloads packages from the [PyPI repository](https://pypi.org/)(Python Package Index), which usually has more libraries than the Conda repository.
 
 
 To simplify our life, we will install the third-party libraries we need from a .txt file named `requirements-dev.txt`, which also installs the dependencies in the `requirements.txt` file (intended just for users of the library, not developers).
@@ -65,7 +65,7 @@ Here are some of the extensions I use in VSCode:
 - Python
 - IntelliCode
 - Jupyter
-- Flake8
+- Ruff
 - Black Formatter
 - Gitlens
 - GitHub Pull requests and issues
@@ -81,11 +81,10 @@ One last tip: you can hide cache folders from the file explorer in `Settings -> 
 Once we have a folder for our project, we equip it with the following structure:
 
 ``` text
-├── setup.py
-├── setup.cfg
+├── README.md
 ├── pyproject.toml
 ├── requirements.txt
-├── ... other config files ...
+├── ... other files ...
 ├── mylibrary
 │   ├── __init__.py
 │   ├── vector
@@ -130,8 +129,12 @@ Everything in Python is an **object**, _i.e._ everything can be assigned to a va
 
 When we create a new object of a certain class, the `__new__` method is called in the background, which creates a new empty object that is then initialized through the `__init__` method.
 
+For an in-depth introduction to classes in Python have a look at [realpython.com](https://realpython.com/python-classes/).
+
 FILL IN WITH METHODS AND ATTRIBUTES (also class attributes)
 
+Abstract classes: a basic example of an abstract class can be found in the `linear_map.py` module of our library. Basically, abstract classes allow us to define abstract methods in a super class that we can later code explicitly in all its subclasses.
+https://www.programiz.com/python-programming/list-comprehension
 
 An important thing to be aware of when using Python is that objects fall into two categories: mutable or immutable. An immutable object is the one that cannot be changed after it is created; even when you think you are changing the object, you are really making new objects from old ones. Immutable objects include numbers, strings, and tuples. Almost everything else is mutable, including lists, dicts, and user-defined objects. Mutable means that the value has methods that can change the value in-place. To learn more about this check out the example notebook [`3-mutable-objects.ipynb`](examples/3-mutable-objects.ipynb).
 
@@ -161,7 +164,7 @@ def shouting(text: str) -> str:
 
 They can be helpful to understand the code, create documentation or even catch errors using tools like `mypy`.
 
-Elaborate type hints such as `Callable`, `Union` or `Optional` can be found in the [`typing` library](https://docs.python.org/es/3/library/typing.html).Note that after Python 3.10 the operator `|` can be used as an "or" between different types (same use as `Union`). For example, this function accepts either a float or an integer and outputs an integer.
+Elaborate type hints such as `Callable` or `Sequence` can be found in the [`typing` library](https://docs.python.org/es/3/library/typing.html). Note that after Python 3.10 the operator `|` can be used as an "or" between different types (same use as `Union`). For example, this function accepts either a float or an integer and outputs an integer.
 
 ```Python
 def float_to_int(variable: float | int) -> int:
@@ -183,7 +186,9 @@ FILL IN WITH `PYTEST` STUFF
 
 ### Linters
 
-Linters like `Ruff`, `Pylint` or `Flake8` (which is the one I use) help us find mismatches between our code and the conventions stablished by the python community in the [PEP8 guidelines](https://peps.python.org/pep-0008/). In summary, an indispensable tool for a programmer.
+CAMBIAR FLAKE8 POR RUFF
+
+Linters like `Ruff`, `Pylint` or `Flake8` (which is the one I use, although I might change to Ruff) help us find mismatches between our code and the conventions stablished by the python community in the [PEP8 guidelines](https://peps.python.org/pep-0008/). In summary, an indispensable tool for a programmer.
 
 `Flake8` can be easily run from the command line to highlight all the errors of our library
 ```console
@@ -227,9 +232,17 @@ If you want to create nice looking documentation and then upload it to a website
 
 ## Bit more advanced stuff
 
+## Installing the library
+
+Before we install our local library, we need to specify some metadata and configuration settings; this is done in the `pyproject.toml` file (check out the [setuptools documentation](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html)). Then we can use the command `pip install` with the editable option, `-e`, over the current folder, `.`, to install our library:
+```console
+pip install -e .
+```
+The advantage of installing the local package in editable mode is that when we make any change, the installed library is updated without reinstalling it.
+
 ### Uploading to PyPI
 
-When we install packages using `pip` we are actually downloading them from the [PyPI repository](https://pypi.org/). Anyone can upload packages to PyPI... but be careful, since the package will stay forever in the repository. If you want to play with the uploading process you should always upload the package to https://test.pypi.org/.
+When we install packages using `pip` we are actually downloading them from the [PyPI repository](https://pypi.org/) (Python Package Index). Anyone can upload packages to PyPI... but be careful, since the package will stay forever in the repository. If you want to play with the uploading process you should always upload the package to https://test.pypi.org/.
 
 To upload our library we use a Pythono package named `twine`. Here is a [short guide](https://twine.readthedocs.io/en/stable/) on how to build and upload our library.
 
@@ -261,8 +274,17 @@ The green tick near the commits show that the tests were successful.
 Note: we can add a badge at the beginning of our readme to show that the tests either passed or failed (this is updated automatically each time the tests are run).
 
 ## Other things to look into
-- Abstract classes: a basic example of an abstract class can be found in the `linear_map.py` module of our library. Basically, abstract classes allow us to define abstract methods in a super class that we can later code explicitly in all its subclasses.
+- List comprehensions.
 - Exception handling: basically `try-except` statements. They work very well with custom error classes. An example can be found in the `3-exceptions.ipynb` notebook inside the `examples` folder.
 - Iterators and generators: look up the functions `iter()` and `next()`, and the keyword `yield`.
 - Function and class decorators: decorators are a simple sintax to transform certain functions or classes.
 - Pre-commits: pre-commits allow us to do certain actions between commiting changes with git. For example, we can check that our code follows the PEP8 guidelines and fix it with black if it doesn't.
+
+
+## Online resources
+
+Most of the material in this repo is covered in the excelent [Python: Coding Guidelines, Tools, Tests and Packages](https://www.udemy.com/course/python-coding-guidelines-tooling-testing-and-packaging/?couponCode=FRANNECK_APR_2023) course at Udemy.
+
+Free online resources are abundant; to name a few I use frequently:
+- [Programiz](https://www.programiz.com/python-programming)
+- [Real Python](https://realpython.com/)
