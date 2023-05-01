@@ -160,6 +160,11 @@ class Vector:
 
         Returns:
             float: the euclidean norm of the vector.
+
+        Examples:
+            >>> vector = Vector(1,0)
+            >>> vector.norm
+            1
         """
         return np.sqrt(self.x**2 + self.y**2)
 

@@ -133,6 +133,8 @@ For an in-depth introduction to classes in Python have a look at [realpython.com
 
 FILL IN WITH METHODS AND ATTRIBUTES (also class attributes)
 
+Magic methods in Python are the special methods that start and end with the double underscores. They are also called dunder methods. Magic methods are not meant to be invoked directly by you, but the invocation happens internally from the class on a certain action. For example, when you add two numbers using the + operator, internally, the `__add__()` method will be called.
+
 Abstract classes: a basic example of an abstract class can be found in the `linear_map.py` module of our library. Basically, abstract classes allow us to define abstract methods in a super class that we can later code explicitly in all its subclasses.
 https://www.programiz.com/python-programming/list-comprehension
 
