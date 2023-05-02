@@ -76,7 +76,7 @@ class Vector:
 
             >>> vector = Vector(1,2)
             >>> vector
-            vector.Vector(1,2)
+            vector.Vector(1, 2)
 
         """
         return f"vector.Vector({self.x}, {self.y})"
@@ -92,7 +92,7 @@ class Vector:
 
             >>> vector = Vector(1,2)
             >>> print(vector)
-            (1,2)
+            (1, 2)
 
         """
         return f"({self.x}, {self.y})"
@@ -164,7 +164,7 @@ class Vector:
         Examples:
             >>> vector = Vector(1,0)
             >>> vector.norm
-            1
+            1.0
         """
         return np.sqrt(self.x**2 + self.y**2)
 

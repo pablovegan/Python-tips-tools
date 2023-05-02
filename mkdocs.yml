@@ -1,0 +1,69 @@
+site_name: Python tips tools SQT Benasque 2023
+site_description: "Short Python tips and tools notes for the Superconducting Qubit Technology school at Benasque 2023."
+
+repo_url: https://github.com/pablovegan/Python-tips-tools-Benasque
+repo_name: pablovegan/Python-tips-tools-Benasque
+watch: [README.md, mylibrary]
+
+
+nav:
+  - Introduction: index.md
+  # defer documentation to the gen-files and literate-nav plugins
+  - API documentation: reference/
+
+theme:
+  features:
+    - navigation.tracking
+    - toc.follow
+    - navigation.top
+  icon:
+    repo: fontawesome/brands/github
+  name: "material"
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      primary: "red"
+      accent: "indigo"
+      scheme: default
+      toggle:
+        icon: material/lightbulb
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      primary: "indigo"
+      accent: "white"
+      scheme: slate
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to light mode
+
+plugins:
+  - search
+  - markdown-exec
+  - same-dir
+  - autorefs
+  - gen-files:
+      scripts:
+      - docs/scripts/gen_ref_nav.py
+  - literate-nav:
+      nav_file: SUMMARY.txt
+  - section-index
+  - mkdocstrings:
+      handlers:
+        python:
+          import:
+          - https://docs.python.org/3/objects.inv
+          - https://installer.readthedocs.io/en/stable/objects.inv  # demonstration purpose in the docs
+          - https://mkdocstrings.github.io/autorefs/objects.inv
+          options:
+            docstring_style: google
+            docstring_options:
+              ignore_init_summary: yes
+            merge_init_into_class: yes
+            show_submodules: no
+
+markdown_extensions:
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.magiclink
+  - mdx_math

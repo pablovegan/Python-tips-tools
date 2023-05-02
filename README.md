@@ -1,5 +1,5 @@
 # Python tips and tools
-
+[![documentation](https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=flat)](https://pablovegan.github.io/Python-tips-tools-Benasque/)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v1.json)](https://github.com/charliermarsh/ruff)
 [![black](https://img.shields.io/badge/code%20style-black-black)](https://github.com/psf/black)
@@ -63,13 +63,14 @@ git clone https://github.com/pablovegan/Python-tips-tools-Benasque.git
 I'm a [Visual Studio Code](https://code.visualstudio.com/) (VSCode) enjoyer because it is free, lightweight and has lots of useful extensions, but you may also try other IDEs and editors like [PyCharm](), [Sublime](https://www.sublimetext.com/) or [Vim](https://www.vim.org/) (for the nostalgic).
 
 Here are some of the extensions I use in VSCode:
-- Python
-- IntelliCode
-- Jupyter
-- Ruff
-- Gitlens
-- GitHub Pull requests and issues
-- autoDocstring
+
+* Python
+* IntelliCode
+* Jupyter
+* Ruff
+* Gitlens
+* GitHub Pull requests and issues
+* autoDocstring
 
 One tip for VSCode: you can hide cache folders from the file explorer in `Settings -> Files: Exclude`.
 
@@ -106,6 +107,8 @@ Folders inside our library/package, also called subpackages, should have `lowerc
 Usually you can copy configuration files from other projects (like this one) and tweak them to fit your needs. Both `pyproject.toml` and `setup.cfg` contain configuration options for the tools that we use, like `flake8` or `black`. `setup.cfg` also contains the metadata of our library, information like the author or version of the library; this is required when building our library to create an installable package (that we can upload to PyPI). When building the library, the script `setup.py` is used, but we don't need to bother with it at this moment.
 
 Third party dependencies for our library are specified in the `requirements.txt` file, ideally with the version of each library to avoid conflicts with updates or older versions. The resting developer tools that we would like to use, like linters, are added in the `requirements-dev.txt` file.
+
+For the moment, we will not care about the `docs` folder (files to create documentation) or the `.github` folder (contains predefined workflows).
 
 Finally, note that sometimes the library can be found inside a source folder, `src`, in a similar way to other programming languajes (like Java), but in Python is not really necessary so we can skip it.
 
@@ -179,6 +182,23 @@ Docstrings should always be added to your modules and functions. The idea when c
 
 One of the most popular styles for docstrings is the [Google style](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html). I personally like it because it is very clear and compact (Numpy style for example occupies more code lines).
 
+Good docstrings should always have examples, which are given in the format
+```python
+"""
+Examples:
+    Use case of our library:
+
+    >>> some executable code block
+    the result
+"""
+```
+An easy way to check if the code gives the expected result without jumping into a jupyter notebook to test it is the tool `doctest`, which is part of the standard library. Simply, from the command line, execute
+
+````bash
+python -m doctest mylibrary/linearmap/linear_map.py
+````
+to see if the mismatches, if any.
+
 
 ## Tools
 
@@ -232,11 +252,22 @@ mypy mylibrary
 ```
 Note that sometimes it complaints too much so you may just turn it off...
 
-### Documentation
+### Creating documentation
 
-We use the autoDocstrings extension for VSCode to create Google style docstrings in a fast and easy way. Once our function is type annotated, we type """ or ''' and click in Generate Docstrings. It will automatically create the template using the annotated inputs and outputs of the function, as well as exceptions raised in the function.
+We use the autoDocstrings extension for VSCode to create Google style docstrings in a fast and easy way. Once our function is type annotated, we type `"""` and click in `Generate Docstrings`. It will automatically create the template using the annotated inputs and outputs of the function, as well as exceptions raised in the function.
 
-If you want to create nice looking documentation and then upload it to a website (for free in Github Pages) you can follow [this tutorial](https://realpython.com/python-project-documentation-with-mkdocs/) using `mkdocs`.
+If you want to create nice looking documentation and then upload it to a website (for free in Github Pages) you can follow [this tutorial](https://realpython.com/python-project-documentation-with-mkdocs/) using `mkdocs`. As a quick no-brainer guide:
+
+1. Create a config file `mkdocs.yml`. You can simply copy the file in this repo and change the basic info like the site's name or URL.
+
+2. Add a `docs` folder. Usually it contains an `index.md` markdown file that copies whatever you have in the `README.md` and displays it as the main page of the documentation website. To create the remaining documentation pages, we use the script `gen_ref_nav.py`. Inside the script, you need to change the name of the folder containing your library in the `PATH_LIBRARY` variable. An `index.md` markdown file that copies whatever you have in the `README.md` and displays it as the main page of the documentation website. Again, you can simply copy the docs folder in this repo and modify the script.
+
+3. Add a Github workflow to build and deploy the website. You can just copy the workflow in `.github/workflows/documentation.yml` (more on workflows later on). Whenever you push changes to Github, the documentation will be updated.
+
+This repository's documentation can be found in https://pablovegan.github.io/Python-tips-tools-Benasque/.
+
+
+
 
 
 ## Bit more advanced stuff
@@ -261,6 +292,7 @@ To upload our library we use a Pythono package named `twine`. Here is a [short g
 Python is an interpreted language, which means the source code is executed directly without compiling the program into machine code. Thus, Python relies on an interpreter, the most common being CPython (which is programmed in C and not to be confused with Cython).
 
 One disadvantage of interpreted languages over compiled ones is that they are generally slower. In the recent years many tools have emerged to accelerate python code; to name some of them:
+
 - Just in time compilers: Numba, JAX and PyPy.
 - Parallelization with `pathos.multiprocessing` and `mpi4py` (Message Passing Interface for Python).
 - Extend Python with C code: Cython (the `cythonbuilder` library makes our life easier).
@@ -278,13 +310,13 @@ In this repo, I added a Github workflow to test our Python library in a linux ma
 
 The green tick near the commits show that the tests were successful.
 
-![Github workflows](docs/github_tests_workflow.png)
+![Github workflows](docs/images/github_tests_workflow.png)
 
-Note: we can add a badge at the beginning of our readme to show that the tests either passed or failed (this is updated automatically each time the tests are run).
+*Note*: we can add a badge at the beginning of our readme to show that the tests either passed or failed (this is updated automatically each time the tests are run).
 
 ## Other things to look into
 - List comprehensions.
-- Exception handling: `try-except` statements. They work very well with custom error classes. An example can be found in the [`4-exceptions.ipynb`](examples/4-exceptions.ipynb). notebook inside the `examples` folder.
+- Exception handling: `try-except` statements. They work very well with custom error classes. An example can be found in the [`4-exceptions.ipynb`](examples/4-exceptions.ipynb) notebook inside the `examples` folder.
 - Iterators and generators: look up the functions `iter()` and `next()`, and the keyword `yield`.
 - Function and class decorators: decorators are a simple sintax to transform certain functions or classes.
 - Pre-commits: pre-commit hooks allow us to do certain actions before commiting changes with git. For example, we can check that our code follows the PEP8 guidelines and fix it with black if it doesn't.
@@ -292,8 +324,9 @@ Note: we can add a badge at the beginning of our readme to show that the tests e
 
 ## Online resources
 
-Most of the material in this repo is covered in the excelent [Python: Coding Guidelines, Tools, Tests and Packages](https://www.udemy.com/course/python-coding-guidelines-tooling-testing-and-packaging/?couponCode=FRANNECK_APR_2023) course at Udemy.
+Most of the material in this repo is covered in the excelent course [Python: Coding Guidelines, Tools, Tests and Packages](https://www.udemy.com/course/python-coding-guidelines-tooling-testing-and-packaging/?couponCode=FRANNECK_APR_2023).
 
-Free online resources are abundant; to name a few I use frequently:
+Of course, free online resources are abundant; to name a few I use frequently:
 - [Programiz](https://www.programiz.com/python-programming)
 - [Real Python](https://realpython.com/)
+- Libraries' documentation

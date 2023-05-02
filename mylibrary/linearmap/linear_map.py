@@ -1,5 +1,22 @@
 """This module contains the LinearMap abstract class and two subclasses:
 Rotation and Shear.
+
+Examples:
+    We can define a rotation linear map and then apply the transformation to a vector
+    as if it were a function:
+
+    >>> angle = 0.5
+    >>> map = Rotation(angle)
+    >>> map(Vector(1, 0))
+    vector.Vector(0.8775825618903728, 0.479425538604203)
+
+    And with the inverse method, we can apply the inverse transformation
+
+    >>> shear_angle = 0.5
+    >>> map = Shear(shear_angle)
+    >>> map.inverse(Vector(1, 1))
+    vector.Vector(-0.830487721712452, 1)
+
 """
 
 from abc import ABC, abstractmethod
@@ -35,14 +52,6 @@ class LinearMap(ABC):
 
         Returns:
             Vector: Transformed vector.
-
-        Examples:
-            We can define a linear map and then apply the tranform to a vector
-            as if it were a function:
-
-            >>> map = LinearMap(some_matrix)
-            >>> map(some_vector)
-
         """
         x = self.matrix[0][0] * vector.x + self.matrix[0][1] * vector.y
         y = self.matrix[1][0] * vector.x + self.matrix[1][1] * vector.y
@@ -72,13 +81,6 @@ class LinearMap(ABC):
 
         Returns:
             Vector: Transformed vector.
-
-        Examples:
-            If we create a LinearMap object, we can call the inverse method:
-
-            >>> map = LinearMap(some_matrix)
-            >>> map.inverse(some_vector)
-
         """
         x = self.inv_matrix[0][0] * vector.x + self.inv_matrix[0][1] * vector.y
         y = self.inv_matrix[1][0] * vector.x + self.inv_matrix[1][1] * vector.y
