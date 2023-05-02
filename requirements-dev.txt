@@ -6,8 +6,10 @@ pytest
 
 # Linting/Tooling
 ruff
-mypy
 black
+mypy
+
+# Packaging
 twine
 
 # Documentation
