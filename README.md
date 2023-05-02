@@ -9,25 +9,25 @@
 
 Howdy! I present you some notes meant as a companion to the Python tips and tools talk for the Superconducting Qubit Technology school at Benasque 2023.
 
-Since there are abundant online resources to learn Python, this document is quite succint and schematic. I tried to keep the files simple enough so that the essence of a Python project can be understood, but rich enough so that you, hopefully, learn new things! (No, we are not going to print "hello world" or explain for loops).
+Since there are abundant online resources to learn Python, this document is quite succint and schematic. I tried to keep the files simple enough so that the essence of a Python project can be understood, but rich enough so that you, hopefully, learn new things! (No, we are not going to print "hello world" or explain `for` loops).
 
 ## Getting started
 
 ### Conda
 
-The first thing we should do when working on a new project is to create a conda environment that suits our third party library needs (with their corresponding versions), unless we already have one. I suggest you use the light version of conda, `miniconda`, which only installs the standard Python libraries. Then you can always install whatever you need in a new environment to keep it all clean and tidy.
+The first thing we should do when working on a new project is to create a conda environment that suits our third-party library needs (with their corresponding versions), unless we already have one. I suggest you use the light version of conda, `miniconda`, which only installs the standard Python libraries. Then you can always install whatever you need in a new environment to keep it all clean and tidy.
 
-So, we start creating and _activating_ a new environment
+So, we start by creating and **activating** a new environment
 
 ```console
 conda create -n env_name python==3.10
 conda activate env_name
 ```
-*Note*: always remember to activate your conda environment before using python or installing new libraries. Do not install third party libraries in the base environment!
+*Note*: always remember to activate your conda environment before using Python or installing new libraries. Do not install third party libraries in the base environment!
 
 ### Pip and PyPI
 
-Once Python is installed, we can use either `pip` or `conda` to install new libraries in our environment. `pip` downloads packages from the [PyPI repository](https://pypi.org/)(Python Package Index), which usually has more libraries than the Conda repository.
+Once Python is installed, we can use either `pip` or `conda` to install new libraries in our environment. `pip` downloads packages from the [PyPI repository](https://pypi.org/) (Python Package Index), which usually has more libraries than the Conda repository.
 
 
 To simplify our life, we will install the third-party libraries we need from a .txt file named `requirements-dev.txt`, which also installs the dependencies in the `requirements.txt` file (intended just for users of the library, not developers).
@@ -37,26 +37,26 @@ pip install -r requirements-dev.txt
 
 ### Jupyter notebooks
 
-If we also want to run jupyter notebooks, we must install ipykernel: 
+If we also want to run jupyter notebooks, we must install the package `ipykernel`: 
 ```console
 pip install ipykernel
 ```
 
 ### Create a project and initialize git
 
-Finally we create our project folder and initialize git inside it
+Finally, we create our project folder and initialize git inside it
 ```console
 mkdir my_project
 cd my_project
 git init
 ```
 
-or we can clone this repository
+or, instead, we can clone this repository
 ```console
 git clone https://github.com/pablovegan/Python-tips-tools-Benasque.git
 ```
 
-*Note*: be sure to push and pull your changes to the cloud when switching between different devices (for example your desktop computer and your laptop), if not you can have merge conflicts and, trust me, you don't want that...
+*Note*: be sure to push and pull your changes to and from the cloud (*i.e.* Github) when switching between different devices (for example, your desktop computer and your laptop). Otherwise, you can have merge conflicts and, trust me, you don't want that...
 
 ### Text editor or IDE
 
@@ -71,7 +71,7 @@ Here are some of the extensions I use in VSCode:
 - GitHub Pull requests and issues
 - autoDocstring
 
-One last tip: you can hide cache folders from the file explorer in `Settings -> Files: Exclude`.
+One tip for VSCode: you can hide cache folders from the file explorer in `Settings -> Files: Exclude`.
 
 
 ## Python basics
@@ -101,7 +101,7 @@ Once we have a folder for our project, we equip it with the following structure:
     └── example.ipynb
 ```
 
-Folders in our library should have `lowercasenames` names, without underscores.
+Folders inside our library/package, also called subpackages, should have `lowercasenames` names, without underscores.
 
 Usually you can copy configuration files from other projects (like this one) and tweak them to fit your needs. Both `pyproject.toml` and `setup.cfg` contain configuration options for the tools that we use, like `flake8` or `black`. `setup.cfg` also contains the metadata of our library, information like the author or version of the library; this is required when building our library to create an installable package (that we can upload to PyPI). When building the library, the script `setup.py` is used, but we don't need to bother with it at this moment.
 
@@ -284,10 +284,10 @@ Note: we can add a badge at the beginning of our readme to show that the tests e
 
 ## Other things to look into
 - List comprehensions.
-- Exception handling: basically `try-except` statements. They work very well with custom error classes. An example can be found in the `3-exceptions.ipynb` notebook inside the `examples` folder.
+- Exception handling: `try-except` statements. They work very well with custom error classes. An example can be found in the [`4-exceptions.ipynb`](examples/4-exceptions.ipynb). notebook inside the `examples` folder.
 - Iterators and generators: look up the functions `iter()` and `next()`, and the keyword `yield`.
 - Function and class decorators: decorators are a simple sintax to transform certain functions or classes.
-- Pre-commits: pre-commits allow us to do certain actions between commiting changes with git. For example, we can check that our code follows the PEP8 guidelines and fix it with black if it doesn't.
+- Pre-commits: pre-commit hooks allow us to do certain actions before commiting changes with git. For example, we can check that our code follows the PEP8 guidelines and fix it with black if it doesn't.
 
 
 ## Online resources
