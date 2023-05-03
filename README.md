@@ -310,7 +310,7 @@ In this repo, I added a Github workflow to test our Python library in a linux ma
 
 The green tick near the commits show that the tests were successful.
 
-![Github workflows](docs/images/github_tests_workflow.png)
+![Github workflows](https://raw.githubusercontent.com/pablovegan/Python-tips-tools-Benasque/master/docs/images/github_tests_workflow.png)
 
 *Note*: we can add a badge at the beginning of our readme to show that the tests either passed or failed (this is updated automatically each time the tests are run).
 
