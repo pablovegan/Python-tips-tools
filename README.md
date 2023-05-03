@@ -119,12 +119,15 @@ As you may have noticed in the project structure, every folder inside our librar
 ### Modules
 
 Simply, a module is a `.py` file consisting of Python code. A module can define functions, classes and variables... Python modules should more or less follow this structure:
+
 1. Module docstrings should appear at the very beginning, just before the imports. 
 2. Imports should follow this order: standard Python library, third party and local libraries, each group separated by one empty line. Also, one should not import from more than one library per line.
 3. Module constants, separated from the imports by two empty lines. Constants should follow the `UPPER_CASE_WITH_UNDERSCORES` naming convention.
 4. Functions, separated again by two empty lines. Function names should follow the `lower_case_with_underscores` convention.
 5. Exception classes.
 6. Normal classes. Classes names should stick to the `CapitalizedWords` convention.
+
+There is no exact rule on how much code should be in each module, but, ideally, each module should have one purpose (as with functions). For example, the purpose of our modules are defining the `Vector` class and creating some linear transforms for those vectors with the `LinearMap` class and its subclasses.
 
 ### Objects and classes
 
@@ -204,7 +207,30 @@ to see if the mismatches, if any.
 
 ### Tests
 
-FILL IN WITH `PYTEST` STUFF
+How do we know if the functions in our library work as they are supposed to? Sure, we can always have a bunch of jupyter notebooks lying around, but there is a better way: [unit testing](https://realpython.com/python-testing/). Unit testing is a method for testing software that looks at the smallest testable pieces of code, called units, which are tested for correct operation. Usually in Python, units are functions and class methods.
+
+Testing is a world on its own, especially in the so-called _Test Driven Development_ (TDD), and we will barely touch the surface in this demo... but it is enough for the needs of most physicists. Just as a sneak peak: we can test how different units fit together (integration testing), test a whole application, test in different operating systems (system testing), etc.
+
+The tool we will use for unit testing is `pytest`. To keep our code organized, outside our library we create another folder called `tests`. Inside it, we place different modules `test_*.py`; in our case, we have one for each subpackage: `test_vector.py` and `test_linear_map.py`. Inside each of these, we test all the functions and methods in the module (don't forget to test the exceptions as well!). The syntax is really easy, you just need to use the `@pytest.mark.parametrize` decorator to tell the pytest which inputs and expected results you want to test. For example:
+
+````python
+@pytest.mark.parametrize(
+    ("arg_1", "arg_2", "result"),
+    (
+        (1, 2, 3),
+        (3.0, -1, 2.0),
+    ),
+)
+def test_sum(arg_1, arg_2, result):
+    assert arg_1 + arg_2 == result
+````
+
+To run the tests inside the `tests` folder simply run from the command line
+```bash
+pytest tests
+```
+
+*Note*: In the workflows section we will see how to automate this.
 
 ### Linters
 
@@ -329,4 +355,5 @@ Most of the material in this repo is covered in the excelent course [Python: Cod
 Of course, free online resources are abundant; to name a few I use frequently:
 - [Programiz](https://www.programiz.com/python-programming)
 - [Real Python](https://realpython.com/)
+- [Machine learning mastery](https://machinelearningmastery.com)
 - Libraries' documentation
