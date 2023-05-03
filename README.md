@@ -316,9 +316,9 @@ If you want to create nice looking documentation and then upload it to a website
 
 1. Create a config file `mkdocs.yml`. You can simply copy the file in this repo and change the basic info like the site's name or URL.
 
-2. Add a `docs` folder. Usually it contains an `index.md` markdown file that copies whatever you have in the `README.md` and displays it as the main page of the documentation website. To create the remaining documentation pages, we use the script `gen_ref_nav.py`. Inside the script, you need to change the name of the folder containing your library in the `PATH_LIBRARY` variable. An `index.md` markdown file that copies whatever you have in the `README.md` and displays it as the main page of the documentation website. Again, you can simply copy the docs folder in this repo and modify the script.
+2. Add a `docs` folder. Usually, it contains an `index.md` markdown file that copies whatever you have in the `README.md` and displays it as the main page of the documentation website. It also contains additional markdown files that we want to display as pages in our site. To create the documentation for our package using the docstrings, we use the script `gen_ref_nav.py`. Inside the script, you only need to change the name of the folder containing your library in the `PATH_LIBRARY` variable. Again, you can simply copy the docs folder in this repo and modify the script.
 
-3. Add a Github workflow to build and deploy the website. You can just copy the workflow in `.github/workflows/documentation.yml` (more on workflows later on). Whenever you push changes to Github, the documentation will be updated.
+3. Add a Github workflow to build and deploy the website in Github Pages. You can just copy the workflow in `.github/workflows/documentation.yml` (more on workflows later on). Whenever you push changes to Github, the documentation will be updated.
 
 This repository's documentation can be found in https://pablovegan.github.io/Python-tips-tools-Benasque/.
 
