@@ -49,14 +49,14 @@ dev = [
     "pre-commit",
     "ruff",
 ]
-all = ["mylibrary[test,doc,dev]"]
+all = ["mypackage[test,doc,dev]"]
 
 [tool.setuptools]
 platforms = ["unix", "linux", "osx", "cygwin", "win32"]
-packages = ["mylibrary"]  # optional
+packages = ["mypackage"]  # optional
 
 [tool.setuptools.dynamic]
-version = {attr = "mylibrary.__version__"}
+version = {attr = "mypackage.__version__"}
 
 [tool.pytest.ini_options]
 minversion = "7.3"

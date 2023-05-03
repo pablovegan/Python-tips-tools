@@ -12,7 +12,7 @@ import math
 
 import pytest
 
-from mylibrary import Vector, NormError
+from mypackage import Vector, NormError
 
 
 V1 = Vector(0, 0)

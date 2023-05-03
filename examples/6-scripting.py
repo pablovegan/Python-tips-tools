@@ -19,22 +19,21 @@ import sys
 from os.path import abspath
 
 # Tell python to search for the files and modules starting from the working directory
-module_path = abspath('..')
+module_path = abspath("..")
 if module_path not in sys.path:
     sys.path.append(module_path)
 
-from mylibrary import Vector  # noqa: E402 (ignore error for imports order)
+from mypackage import Vector  # noqa: E402 (ignore error for imports order)
 
 
-if __name__ == '__main__':
-
+if __name__ == "__main__":
     try:
         # Remember that sys.argv[0] is '6-scripting.py'
         x = float(sys.argv[1])  # arguments in terminal are given as a strings
         y = float(sys.argv[2])
         vector = Vector(x, y)
-        print(f'The vector {vector} was created!')
+        print(f"The vector {vector} was created!")
 
     except IndexError:
-        print('Error: At least two arguments required to create a vector.')
+        print("Error: At least two arguments required to create a vector.")
         sys.exit(1)

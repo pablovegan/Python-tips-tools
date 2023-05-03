@@ -22,7 +22,7 @@ Examples:
 from abc import ABC, abstractmethod
 from math import sin, cos, tan
 
-from mylibrary.vector import Vector
+from mypackage.vector import Vector
 
 
 class LinearMap(ABC):

@@ -56,7 +56,7 @@ or, instead, we can clone this repository
 git clone https://github.com/pablovegan/Python-tips-tools-Benasque.git
 ```
 
-*Note*: be sure to push and pull your changes to and from the cloud (*i.e.* Github) when switching between different devices (for example, your desktop computer and your laptop). Otherwise, you can have merge conflicts and, trust me, you don't want that...
+*Note*: be sure to push and pull your changes to and from the cloud (i.e. Github) when switching between different devices (for example, your desktop computer and your laptop). Otherwise, you can have merge conflicts and, trust me, you don't want that...
 
 ### Text editor or IDE
 
@@ -86,7 +86,7 @@ Once we have a folder for our project, we equip it with the following structure:
 ├── pyproject.toml
 ├── requirements.txt
 ├── ... other files ...
-├── mylibrary
+├── mypackage
 │   ├── __init__.py
 │   ├── vector
 │   │   ├── __init__.py
@@ -102,19 +102,26 @@ Once we have a folder for our project, we equip it with the following structure:
     └── example.ipynb
 ```
 
-Folders inside our library/package, also called subpackages, should have `lowercasenames` names, without underscores.
+First, we find the README, which contains whatever useful information the author of the repository wants to transmit us. Usually it begins with a short description of the package, and follows with sections on how to install it, a quick usage guide, references, how to contribute and the license.
 
-Usually you can copy configuration files from other projects (like this one) and tweak them to fit your needs. Both `pyproject.toml` and `setup.cfg` contain configuration options for the tools that we use, like `flake8` or `black`. `setup.cfg` also contains the metadata of our library, information like the author or version of the library; this is required when building our library to create an installable package (that we can upload to PyPI). When building the library, the script `setup.py` is used, but we don't need to bother with it at this moment.
+Next we find `pyproject.toml`, a configuration file with metadata about our project and configuration options for the tools that we use during development (e.g. linters and formatters). Usually you can copy configuration files from other projects (like this one) and tweak them to fit your needs.
 
-Third party dependencies for our library are specified in the `requirements.txt` file, ideally with the version of each library to avoid conflicts with updates or older versions. The resting developer tools that we would like to use, like linters, are added in the `requirements-dev.txt` file.
+Third party dependencies for our package are specified in the `requirements.txt` file, ideally with the version of each library to avoid conflicts with updates or older versions. The resting developer tools that we'd like to use are added in the `requirements-dev.txt` file.
 
-For the moment, we will not care about the `docs` folder (files to create documentation) or the `.github` folder (contains predefined workflows).
+After a bunch of other files, we find our main package, with all our Python code organized in folders. Sometimes the package can be found inside a source folder, `src`, in a similar way to other programming languajes (like Java), but in Python is not really necessary so we can skip it.
 
-Finally, note that sometimes the library can be found inside a source folder, `src`, in a similar way to other programming languajes (like Java), but in Python is not really necessary so we can skip it.
+In the `tests` folder we store the code needed to assert that our library is working as intented to. This shouldn't be mixed with the `examples` folder; sometimes we tend to test our code in jupyter notebooks, but it is better to define a set of tests that we expect our library to pass every single time, and then just use it for whatever examples we want.
 
-### Libraries or packages
+For the moment, we will not worry about the `docs` folder (files to create documentation) or the `.github` folder (contains workflows) found in this repository; we will get to it in the [advanced stuff](#bit-more-advanced-stuff) section.
 
-As you may have noticed in the project structure, every folder inside our library needs an `__init__.py` file, which will be called whenever we import our library. Usually this file will just import functions or classes from other files (modules) in our library.
+### Packages or libraries
+
+A [**package**](https://docs.python.org/3/reference/import.html#packages) or **library** is a collection of Python `.py` modules organized in directories. The main directory is the package and the subdirectories are its subpackages. Their names should follow the convention `lowercasenames`, without underscores.
+
+As you may have noticed in the project structure, every folder inside our package has an `__init__.py` file. The code inside it will be called whenever we import the library. It usually justs contains imports of functions or classes from other `.py` files in our library.
+
+The `tests` folder can also contain a `__init__.py` file, but we can leave it empty since we are not going to import the tests package.
+
 
 ### Modules
 
@@ -131,7 +138,7 @@ There is no exact rule on how much code should be in each module, but, ideally, 
 
 ### Objects and classes
 
-Everything in Python is an **object**, _i.e._ everything can be assigned to a variable or be passed as an argument to a function (the definition of object in Python varies with respect to other languages; in Python not all objects have attributes or methods, neither all admit subclasses).
+Everything in Python is an **object** (even packages!), i.e. everything can be assigned to a variable or be passed as an argument to a function (the definition of object in Python varies with respect to other languages; in Python not all objects have attributes or methods, neither all admit subclasses).
 
 When we create a new object of a certain class, the `__new__` method is called in the background, which creates a new empty object that is then initialized through the `__init__` method.
 
@@ -200,7 +207,7 @@ Examples:
 An easy way to check if the code gives the expected result without jumping into a jupyter notebook to test it is the tool `doctest`, which is part of the standard library. Simply, from the command line, execute
 
 ````bash
-python -m doctest mylibrary/linearmap/linear_map.py
+python -m doctest mypackage/linearmap/linear_map.py
 ````
 to see the mismatches, if any.
 
@@ -249,12 +256,12 @@ ruff check .
 ```
 We can also lint one specific file 
 ```console
-ruff check mylibrary/vector/vector.py
+ruff check mypackage/vector/vector.py
 ```
 
 `Ruff`, unlike other linters, also has the option to fix some of the problems encountered in the code
 ```console
-ruff check --fix mylibrary/vector/vector.py
+ruff check --fix mypackage/vector/vector.py
 ```
 Unless we are one of those old school programmers that read their email on the terminal, we can avoid using the command line by installing the Ruff extension for VSCode (or whatever tool your IDE provides).
 
@@ -262,13 +269,13 @@ Unless we are one of those old school programmers that read their email on the t
 
 Keeping track of all the errors and fixing them can be painful... This is where automatic tools to format the code enter. The two most popular are `autopep8` and `black`. I prefer `black` because it requires less configuration. To format our library simply type in the command line
 ```console
-black mylibrary
+black mypackage
 ```
 or use the corresponding VSCode extension.
 
 Black by default allows a maximum line length of 80. We can tweak this by adding an option:
 ```console
-black --line-length 120 mylibrary
+black --line-length 120 mypackage
 ```
 
 ### Type checker
@@ -276,7 +283,7 @@ black --line-length 120 mylibrary
 The most popular type checker is `mypy`. Provided that we type hinted our functions and variables, this tool checks any mismatches between the expected inputs and outputs and the real ones. It can also highlight deeper errors in your code structure, like violations of Liskov substitution principle.
 
 ```console
-mypy mylibrary
+mypy mypackage
 ```
 Note that sometimes it complaints too much so you may just turn it off...
 
@@ -294,7 +301,7 @@ One disadvantage of interpreted languages over compiled ones is that they are ge
 - Extend Python with C code: Cython (the `cythonbuilder` library makes our life easier).
 
 
-## Installing the library
+### Installing the library
 
 Before we install our local library, we need to specify some metadata and configuration settings; this is done in the `pyproject.toml` file (check out the [setuptools documentation](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html)). Then we can use the command `pip install` with the editable option, `-e`, over the current folder, `.`, to install our library:
 ```console
@@ -316,12 +323,32 @@ If you want to create nice looking documentation and then upload it to a website
 This repository's documentation can be found in https://pablovegan.github.io/Python-tips-tools-Benasque/.
 
 
-### Uploading to PyPI
+### Building and uploading to PyPI
 
 When we install packages using `pip` we are actually downloading them from the [PyPI repository](https://pypi.org/) (Python Package Index). Anyone can upload packages to PyPI... but be careful, since the package will stay forever in the repository. If you want to play with the uploading process you should always upload the package to https://test.pypi.org/.
 
-To upload our library we use a Pythono package named `twine`. Here is a [short guide](https://twine.readthedocs.io/en/stable/) on how to build and upload our library.
+To upload our library we use the Python package `twine`. Here is a [short guide](https://twine.readthedocs.io/en/stable/) on how to build and upload our library:
 
+1. Build our library using `setuptools` and the `pyproject.toml` configuration file:
+```bash
+python -m build
+```
+2. Upload the built library to [TestPyPI](https://test.pypi.org/). You will need to enter the user and password of your TestPyPI account (different from your PyPI account)
+```bash
+twine upload -r testpypi dist/*
+```
+3. Once you are confident that you want to upload your package to PyPI, use the command
+```bash
+twine upload dist/*
+```
+
+Once the package is in PyIP, you can install it in your environment:
+```bash
+pip install python-tips-tools-benasque
+```
+(I only [uploaded my package](https://test.pypi.org/project/python-tips-tools-benasque/) to TestPyPI, since it is not very usefull as a standalone library).
+
+*Note*: the process of uploading the package to PyPI can be automated with a [workflow](https://github.com/marketplace/actions/pypi-publish).
 
 ### Automating boring tasks with Github workflows
 
