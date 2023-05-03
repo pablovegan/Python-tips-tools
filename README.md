@@ -183,9 +183,11 @@ def float_to_int(variable: float | int) -> int:
 
 Docstrings should always be added to your modules and functions. The idea when coding is to make simple functions with just one purpose and document them clearly. Ideally, functions should be readable and should require little to no inline comments explaining what the function does.
 
-One of the most popular styles for docstrings is the [Google style](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html). I personally like it because it is very clear and compact (Numpy style for example occupies more code lines).
+To create these docstrings in a fast and easy way, I use the autoDocstrings extension for VSCode. Once our function is type annotated, we type `"""` and click in `Generate Docstrings`; it will automatically create the template using the annotated inputs and outputs of the function, as well as the exceptions raised.
 
-Good docstrings should always have examples, which are given in the format
+These docstrings can follow different conventions; one of the most popular ones is the [Google style](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html). I personally like it because it is very clear and compact (Numpy style, in contrast, occupies more lines).
+
+Lastly, remember that we learn better from the concrete, so adding examples to your documentation is always a good idea:
 ```python
 """
 Examples:
@@ -200,7 +202,7 @@ An easy way to check if the code gives the expected result without jumping into 
 ````bash
 python -m doctest mylibrary/linearmap/linear_map.py
 ````
-to see if the mismatches, if any.
+to see the mismatches, if any.
 
 
 ## Tools
@@ -278,9 +280,30 @@ mypy mylibrary
 ```
 Note that sometimes it complaints too much so you may just turn it off...
 
-### Creating documentation
 
-We use the autoDocstrings extension for VSCode to create Google style docstrings in a fast and easy way. Once our function is type annotated, we type `"""` and click in `Generate Docstrings`. It will automatically create the template using the annotated inputs and outputs of the function, as well as exceptions raised in the function.
+## Bit more advanced stuff
+
+### Code acceleration
+
+Python is an interpreted language, which means the source code is executed directly without compiling the program into machine code. Thus, Python relies on an interpreter, the most common being CPython (which is programmed in C and not to be confused with Cython).
+
+One disadvantage of interpreted languages over compiled ones is that they are generally slower. In the recent years many tools have emerged to accelerate python code; to name some of them:
+
+- Just in time compilers: Numba, JAX and PyPy.
+- Parallelization with `pathos.multiprocessing` and `mpi4py` (Message Passing Interface for Python).
+- Extend Python with C code: Cython (the `cythonbuilder` library makes our life easier).
+
+
+## Installing the library
+
+Before we install our local library, we need to specify some metadata and configuration settings; this is done in the `pyproject.toml` file (check out the [setuptools documentation](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html)). Then we can use the command `pip install` with the editable option, `-e`, over the current folder, `.`, to install our library:
+```console
+pip install -e .
+```
+The advantage of installing the local package in editable mode is that when we make any change, the installed library is updated without reinstalling it.
+
+
+### Creating documentation
 
 If you want to create nice looking documentation and then upload it to a website (for free in Github Pages) you can follow [this tutorial](https://realpython.com/python-project-documentation-with-mkdocs/) using `mkdocs`. As a quick no-brainer guide:
 
@@ -293,19 +316,6 @@ If you want to create nice looking documentation and then upload it to a website
 This repository's documentation can be found in https://pablovegan.github.io/Python-tips-tools-Benasque/.
 
 
-
-
-
-## Bit more advanced stuff
-
-## Installing the library
-
-Before we install our local library, we need to specify some metadata and configuration settings; this is done in the `pyproject.toml` file (check out the [setuptools documentation](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html)). Then we can use the command `pip install` with the editable option, `-e`, over the current folder, `.`, to install our library:
-```console
-pip install -e .
-```
-The advantage of installing the local package in editable mode is that when we make any change, the installed library is updated without reinstalling it.
-
 ### Uploading to PyPI
 
 When we install packages using `pip` we are actually downloading them from the [PyPI repository](https://pypi.org/) (Python Package Index). Anyone can upload packages to PyPI... but be careful, since the package will stay forever in the repository. If you want to play with the uploading process you should always upload the package to https://test.pypi.org/.
@@ -313,32 +323,23 @@ When we install packages using `pip` we are actually downloading them from the [
 To upload our library we use a Pythono package named `twine`. Here is a [short guide](https://twine.readthedocs.io/en/stable/) on how to build and upload our library.
 
 
-### Code acceleration
-
-Python is an interpreted language, which means the source code is executed directly without compiling the program into machine code. Thus, Python relies on an interpreter, the most common being CPython (which is programmed in C and not to be confused with Cython).
-
-One disadvantage of interpreted languages over compiled ones is that they are generally slower. In the recent years many tools have emerged to accelerate python code; to name some of them:
-
-- Just in time compilers: Numba, JAX and PyPy.
-- Parallelization with `pathos.multiprocessing` and `mpi4py` (Message Passing Interface for Python).
-- Extend Python with C code: Cython (the `cythonbuilder` library makes our life easier).
-
 ### Automating boring tasks with Github workflows
 
 Ordinary tasks in a developers day such as testing (in multiple operating systems and Python versions), releasing packages and uploading them to PyPI, updating the documentation in a website, etc., can all be automated using workflows. Most cloud repositories like Github or Gitlab have them available and are really easy to use (at least the basic ones).
 
-In this repo, I added a Github workflow to test our Python library in a linux machine (provided by Github) with Python version 3.10. The workflow can be found under the `.github/workflows` folder in a `test.yml` file. The basic structure of this file is:
-1. Apply the action when we git push to or pull from the repository.
-2. Create an ubuntu linux machine with python 3.10 installed.
-3. Install `flake8` and `pytest`, as well as the dependencies under the `requirements.txt` file.
-4. Lint with flake8 and stop if there are any errors.
-5. Run the tests inside the `tests` folder using `pytest`.
+In this repo, I added two Github workflows: one to test our library in a linux machine (provided by Github) with Python version 3.10, and another to upload the documentation to Github Pages. The workflows can be found under the folder `.github/workflows` in `*.yml` files. As an example, the structure of the `test.yml` file is:
 
-The green tick near the commits show that the tests were successful.
+1. Apply the action when we git push to or pull from the repository.
+2. Create an Ubuntu Linux machine with python 3.10 installed.
+3. Install `pytest` as well as the dependencies under the `requirements.txt` file.
+4. Run the tests inside the `tests` folder using `pytest`.
+
+The green tick near the commits shows that the workflows were successful.
 
 ![Github workflows](https://raw.githubusercontent.com/pablovegan/Python-tips-tools-Benasque/master/docs/images/github_tests_workflow.png)
 
-*Note*: we can add a badge at the beginning of our readme to show that the tests either passed or failed (this is updated automatically each time the tests are run).
+*Cool tip*: we can add a badge at the beginning of our readme to show that the tests either passed or failed (this is updated automatically each time the tests are run).
+
 
 ## Other things to look into
 - List comprehensions.
