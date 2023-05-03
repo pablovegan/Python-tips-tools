@@ -37,7 +37,6 @@ theme:
 
 plugins:
   - search
-  - markdown-exec
   - same-dir
   - autorefs
   - gen-files:
