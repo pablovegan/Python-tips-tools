@@ -30,7 +30,7 @@ conda activate env_name
 Once Python is installed, we can use either `pip` or `conda` to install new libraries in our environment. `pip` downloads packages from the [PyPI repository](https://pypi.org/) (Python Package Index), which usually has more libraries than the Conda repository.
 
 
-To simplify our life, we will install the third-party libraries we need from a .txt file named `requirements-dev.txt`, which also installs the dependencies in the `requirements.txt` file (intended just for users of the library, not developers).
+To simplify our life, we will install the third-party libraries we need from a .txt file named [`requirements-dev.txt`](requirements-dev.txt), which also installs the dependencies in the [`requirements.txt`](requirements.txt) file (intended just for users of the library, not developers).
 ```console
 pip install -r requirements-dev.txt
 ```
@@ -104,9 +104,9 @@ Once we have a folder for our project, we equip it with the following structure:
 
 First, we find the README, which contains whatever useful information the author of the repository wants to transmit us. Usually it begins with a short description of the package, and follows with sections on how to install it, a quick usage guide, references, how to contribute and the license.
 
-Next we find `pyproject.toml`, a configuration file with metadata about our project and configuration options for the tools that we use during development (e.g. linters and formatters). Usually you can copy configuration files from other projects (like this one) and tweak them to fit your needs.
+Next we find [`pyproject.toml`](pyproject.toml), a configuration file with metadata about our project and configuration options for the tools that we use during development (e.g. linters and formatters). Usually you can copy configuration files from other projects (like this one) and tweak them to fit your needs.
 
-Third party dependencies for our package are specified in the `requirements.txt` file, ideally with the version of each library to avoid conflicts with updates or older versions. The resting developer tools that we'd like to use are added in the `requirements-dev.txt` file.
+Third party dependencies for our package are specified in the [`requirements.txt`](requirements.txt) file, ideally with the version of each library to avoid conflicts with updates or older versions. The resting developer tools that we'd like to use are added in the [`requirements-dev.txt`](requirements-dev.txt) file.
 
 After a bunch of other files, we find our main package, with all our Python code organized in folders. Sometimes the package can be found inside a source folder, `src`, in a similar way to other programming languajes (like Java), but in Python is not really necessary so we can skip it.
 
@@ -220,7 +220,7 @@ How do we know if the functions in our library work as they are supposed to? Sur
 
 Testing is a world on its own, especially in the so-called _Test Driven Development_ (TDD), and we will barely touch the surface in this demo... but it is enough for the needs of most physicists. Just as a sneak peak: we can test how different units fit together (integration testing), test a whole application, test in different operating systems (system testing), etc.
 
-The tool we will use for unit testing is `pytest`. To keep our code organized, outside our library we create another folder called `tests`. Inside it, we place different modules `test_*.py`; in our case, we have one for each subpackage: `test_vector.py` and `test_linear_map.py`. Inside each of these, we test all the functions and methods in the module (don't forget to test the exceptions as well!). The syntax is really easy, you just need to use the `@pytest.mark.parametrize` decorator to tell the pytest which inputs and expected results you want to test. For example:
+The tool we will use for unit testing is `pytest`. To keep our code organized, outside our library we create another folder called [`tests`](tests). Inside it, we place different modules `test_*.py`; in our case, we have one for each subpackage: [`test_vector.py`](tests/test_vector.py) and [`test_linear_map.py`](tests/test_linear_map.py). Inside each of these, we test all the functions and methods in the module (don't forget to test the exceptions as well!). The syntax is really easy, you just need to use the `@pytest.mark.parametrize` decorator to tell the pytest which inputs and expected results you want to test. For example:
 
 ````python
 @pytest.mark.parametrize(
@@ -248,7 +248,7 @@ How many times have you found yourself adding dozens of `print()` statements to 
 A good idea is to debug your tests, since they, ideally, are the best tool to see if your code is really working.
 
 
-## Timing
+### Timing
 
 Even if our code runs without errors, it might not be very useful if it takes too long to do the task. To benchmark our code and find possible bottlenecks, we can use the library `timeit`, which executes a piece of code a number of times and returns the CPU time taken to run it. As an example, we can run the script [`7-timing.py`](examples/7-timing.py) to benchmark how long it takes to sum vectors two vectors:
 ```bash
@@ -342,7 +342,7 @@ One disadvantage of interpreted languages over compiled ones is that they are ge
 
 ### Installing the library
 
-Before we install our local library, we need to specify some metadata and configuration settings; this is done in the `pyproject.toml` file (check out the [setuptools documentation](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html)). Then we can use the command `pip install` with the editable option, `-e`, over the current folder, `.`, to install our library:
+Before we install our local library, we need to specify some metadata and configuration settings; this is done in the [`pyproject.toml`](pyproject.toml) file (check out the [setuptools documentation](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html)). Then we can use the command `pip install` with the editable option, `-e`, over the current folder, `.`, to install our library:
 ```console
 pip install -e .
 ```
@@ -355,9 +355,9 @@ If you want to create nice looking documentation and then upload it to a website
 
 1. Create a config file `mkdocs.yml`. You can simply copy the file in this repo and change the basic info like the site's name or URL.
 
-2. Add a `docs` folder. Usually, it contains an `index.md` markdown file that copies whatever you have in the `README.md` and displays it as the main page of the documentation website. It also contains additional markdown files that we want to display as pages in our site. To create the documentation for our package using the docstrings, we use the script `gen_ref_nav.py`. Inside the script, you only need to change the name of the folder containing your library in the `PATH_LIBRARY` variable. Again, you can simply copy the docs folder in this repo and modify the script.
+2. Add a [`docs`](docs) folder. Usually, it contains an [`index.md`](docs/index.md) markdown file that copies whatever you have in the `README.md` and displays it as the main page of the documentation website. It also contains additional markdown files that we want to display as pages in our site. To create the documentation for our package using the docstrings, we use the script [`gen_ref_nav.py`](docs/scripts/gen_ref_nav.py). Inside the script, you only need to change the name of the folder containing your library in the `PATH_LIBRARY` variable. Again, you can simply copy the docs folder in this repo and modify the script.
 
-3. Add a Github workflow to build and deploy the website in Github Pages. You can just copy the workflow in `.github/workflows/documentation.yml` (more on workflows later on). Whenever you push changes to Github, the documentation will be updated.
+3. Add a Github workflow to build and deploy the website in Github Pages. You can just copy the workflow in [`.github/workflows/documentation.yml`](.github/workflows/documentation.yml) (more on workflows later on). Whenever you push changes to Github, the documentation will be updated.
 
 This repository's documentation can be found in https://pablovegan.github.io/Python-tips-tools-Benasque/.
 
@@ -368,7 +368,7 @@ When we install packages using `pip` we are actually downloading them from the [
 
 To upload our library we use the Python package `twine`. Here is a [short guide](https://twine.readthedocs.io/en/stable/) on how to build and upload our library:
 
-1. Build our library using `setuptools` and the `pyproject.toml` configuration file:
+1. Build our library using `setuptools` and the [`pyproject.toml`](pyproject.toml) configuration file:
 ```bash
 python -m build
 ```
@@ -393,11 +393,11 @@ pip install python-tips-tools-benasque
 
 Ordinary tasks in a developers day such as testing (in multiple operating systems and Python versions), releasing packages and uploading them to PyPI, updating the documentation in a website, etc., can all be automated using workflows. Most cloud repositories like Github or Gitlab have them available and are really easy to use (at least the basic ones).
 
-In this repo, I added two Github workflows: one to test our library in a linux machine (provided by Github) with Python version 3.10, and another to upload the documentation to Github Pages. The workflows can be found under the folder `.github/workflows` in `*.yml` files. As an example, the structure of the `test.yml` file is:
+In this repo, I added two Github workflows: one to test our library in a linux machine (provided by Github) with Python version 3.10, and another to upload the documentation to Github Pages. The workflows can be found under the folder `.github/workflows` in `*.yml` files. As an example, the structure of the [`test.yml`](.github/workflows/tests.yml) file is:
 
 1. Apply the action when we git push to or pull from the repository.
 2. Create an Ubuntu Linux machine with python 3.10 installed.
-3. Install `pytest` as well as the dependencies under the `requirements.txt` file.
+3. Install `pytest` as well as the dependencies under the [`requirements.txt`](requirements.txt) file.
 4. Run the tests inside the `tests` folder using `pytest`.
 
 The green tick near the commits shows that the workflows were successful.
