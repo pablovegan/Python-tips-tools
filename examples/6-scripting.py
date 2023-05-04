@@ -1,9 +1,11 @@
 """Simple python script that creates and prints a vector from two
 arguments (given through the terminal when running the script).
 
-Examples:
+Example:
     In the terminal, starting from the main project folder, we need
-    to change directory to `examples` and from there run the script:
+    to change directory to `examples` and from there run the script
+    (if we have installed our library then there is no need to change
+    folders or to append the path to our library):
 
     >>> conda activate env_name
     >>> cd examples

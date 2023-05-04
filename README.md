@@ -214,7 +214,7 @@ to see the mismatches, if any.
 
 ## Tools
 
-### Tests
+### Testing
 
 How do we know if the functions in our library work as they are supposed to? Sure, we can always have a bunch of jupyter notebooks lying around, but there is a better way: [unit testing](https://realpython.com/python-testing/). Unit testing is a method for testing software that looks at the smallest testable pieces of code, called units, which are tested for correct operation. Usually in Python, units are functions and class methods.
 
@@ -241,14 +241,37 @@ pytest tests
 
 *Note*: In the workflows section we will see how to automate this.
 
+### Debugging
+
+How many times have you found yourself adding dozens of `print()` statements to your code to catch an error? You are not the only one... But turns out there is a much better way: use the debugger in your IDE. You can add breakpoints, execute single lines, see what value each variable has, step into the functions inside your library, see the call stack... 
+
+A good idea is to debug your tests, since they, ideally, are the best tool to see if your code is really working.
+
+
+## Timing
+
+Even if our code runs without errors, it might not be very useful if it takes too long to do the task. To benchmark our code and find possible bottlenecks, we can use the library `timeit`, which executes a piece of code a number of times and returns the CPU time taken to run it. As an example, we can run the script [`7-timing.py`](examples/7-timing.py) to benchmark how long it takes to sum vectors two vectors:
+```bash
+cd examples
+python 7-timing.py
+```
+
+Alternatively, we can use the magic function `%timeit` inside a jupyter notebook to benchmark our function. You can find an example in the [`5-jjit-compiler.ipynb`](examples/5-jit-compiler.ipynb) example, where we compare the speed of a determinant and its just-in-time compiled version.
+
+### Profiling
+
+Profiling allows you to disaggregate the time taken to run a function into its different components. For example, when adding two vectors, does it take longer to check the summand is a vector instance or to actually sum the two vectors? 
+
+To profile our code we can write a simple script using the `Profiler` class from the `pyinstrument` library. To get a sense of how profiling works, you can run the script [`8-profiling.py`](examples/8-profiling.py):
+```bash
+cd examples
+python 8-profiling.py
+```
+
 ### Linters
 
 
 Linters like `Flake8`, `Pylint` or `Ruff` (Ruff is very very fast and implements a lot of checks) help us find mismatches between our code and the conventions stablished by the python community in the [PEP8 guidelines](https://peps.python.org/pep-0008/). In summary, an indispensable tool for a programmer.
-
-```console
-ruff check .
-```
 
 `Ruff` can be easily run from the command line to highlight all the errors of our library
 ```console
@@ -271,11 +294,27 @@ Keeping track of all the errors and fixing them can be painful... This is where 
 ```console
 black mypackage
 ```
-or use the corresponding VSCode extension.
-
 Black by default allows a maximum line length of 80. We can tweak this by adding an option:
 ```console
 black --line-length 120 mypackage
+```
+
+Formatting can be done very simply in VSCode, just add this code to a `settings.json` file inside a `.vscode` folder in the main directory
+```json
+{
+    "editor.formatOnSave": true,
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [
+        "--line-length",
+        "120"
+    ],
+    "[python]": {
+        "editor.defaultFormatter": null,
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4,
+        "editor.formatOnSave": true
+    },
+}
 ```
 
 ### Type checker
@@ -369,7 +408,7 @@ The green tick near the commits shows that the workflows were successful.
 
 
 ## Other things to look into
-- List comprehensions.
+- List comprehensions, lambda functions and the functions `map()` and `filter()`.
 - Exception handling: `try-except` statements. They work very well with custom error classes. An example can be found in the [`4-exceptions.ipynb`](examples/4-exceptions.ipynb) notebook inside the `examples` folder.
 - Iterators and generators: look up the functions `iter()` and `next()`, and the keyword `yield`.
 - Function and class decorators: decorators are a simple sintax to transform certain functions or classes.

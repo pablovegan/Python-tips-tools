@@ -4,6 +4,9 @@
 # Testing
 pytest
 
+# Profiling
+pyinstrument
+
 # Linting/Tooling
 ruff
 black
