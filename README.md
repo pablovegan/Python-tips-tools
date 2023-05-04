@@ -234,9 +234,9 @@ To create them in a fast and easy way, I use the autoDocstrings extension for VS
 
 How do we know if the functions in our library work as they are supposed to? Sure, we can always have a bunch of jupyter notebooks lying around, but there is a better way: [unit testing](https://realpython.com/python-testing/). Unit testing is a method for testing software that looks at the smallest testable pieces of code, called units, which are tested for correct operation. Usually in Python, units are functions and class methods.
 
-Testing is a world on its own, especially in the so-called _Test Driven Development_ (TDD), and we will barely touch the surface in this demo... but it is enough for the needs of most physicists. Just as a sneak peak: we can test how different units fit together (integration testing), test a whole application, test in different operating systems (system testing), etc.
+Testing is a world on its own, especially in the so-called _Test Driven Development_ (TDD), and we will barely touch the surface in this demo... but it is enough for the needs of most physicists. Just as a sneak peak: we can test how different units fit together (integration testing), test a whole application (system testing), test in different operating systems, etc.
 
-The tool we will use for unit testing is `pytest`. To keep our code organized, outside our library we create another folder called [`tests`](tests). Inside it, we place different modules `test_*.py`; in our case, we have one for each subpackage: [`test_vector.py`](tests/test_vector.py) and [`test_linear_map.py`](tests/test_linear_map.py). Inside each of these, we test all the functions and methods in the module (don't forget to test the exceptions as well!). The syntax is really easy, you just need to use the `@pytest.mark.parametrize` decorator to tell the pytest which inputs and expected results you want to test. For example:
+The tool we will use for unit testing is `pytest`. To keep our code organized, outside our library we create another folder called [`tests`](tests). Inside it, we place different modules `test_*.py`; in our case, we have one for each subpackage: [`test_vector.py`](tests/test_vector.py) and [`test_linear_map.py`](tests/test_linear_map.py). Inside each of these, we test all the functions and methods in the module (don't forget to test the exceptions as well!). The syntax is really easy, you just need to use the `@pytest.mark.parametrize` decorator to tell pytest which inputs and expected results you want to test. For example:
 
 ````python
 @pytest.mark.parametrize(
@@ -259,9 +259,7 @@ pytest tests
 
 ### Debugging
 
-How many times have you found yourself adding dozens of `print()` statements to your code to catch an error? You are not the only one... But turns out there is a much better way: use the debugger in your IDE. You can add breakpoints, execute single lines, see what value each variable has, step into the functions inside your library, see the call stack... 
-
-A good idea is to debug your tests, since they, ideally, are the best tool to see if your code is really working.
+How many times have you found yourself adding dozens of `print()` statements to your code to catch an error? You are not the only one... But turns out there is a much better way: use the debugger in your IDE. You can add breakpoints, execute single lines, see what value each variable has, step into the functions inside your library, see the call stack... A good idea is to debug your tests, since they, ideally, are the best tool to see if your code is really working.
 
 
 ### Timing
