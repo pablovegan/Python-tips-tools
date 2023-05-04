@@ -19,7 +19,7 @@ The first thing we should do when working on a new project is to create a conda 
 
 So, we start by creating and **activating** a new environment
 
-```console
+```bash
 conda create -n env_name python==3.10
 conda activate env_name
 ```
@@ -211,7 +211,7 @@ Examples:
 ```
 An easy way to check if the code gives the expected result without jumping into a jupyter notebook to test it is the tool `doctest`, which is part of the standard library. Simply, from the command line, execute
 
-````bash
+````console
 python -m doctest mypackage/linearmap/linear_map.py
 ````
 to see the mismatches, if any.
@@ -240,7 +240,7 @@ def test_sum(arg_1, arg_2, result):
 ````
 
 To run the tests inside the `tests` folder simply run from the command line
-```bash
+```console
 pytest tests
 ```
 
