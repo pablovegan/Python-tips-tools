@@ -186,7 +186,7 @@ def shouting(text: str) -> str:
 
 They can be helpful to understand the code, create documentation or even catch errors using tools like `mypy`.
 
-More elaborate type hints such as `Callable` or `Sequence` can be found in the [`typing` library](https://docs.python.org/es/3/library/typing.html). Note that after Python 3.10 the operator `|` can be used as an "or" between different types (same use as `Union`). For example, this function accepts either a float or an integer and outputs an integer.
+More elaborate type hints such as `Callable` or `Sequence` can be found in the [`typing`](https://docs.python.org/es/3/library/typing.html) library. Note that after Python 3.10 the operator `|` can be used as an "or" between different types (same use as `Union`). For example, this function accepts either a float or an integer and outputs an integer.
 
 ```Python
 def float_to_int(variable: float | int) -> int:
@@ -198,11 +198,13 @@ def float_to_int(variable: float | int) -> int:
 Quoting [Documenting Python Code: A Complete Guide](https://realpython.com/documenting-python-code/):
 > When you write code, you write it for two primary audiences: your users and your developers (including yourself). Both audiences are equally important. If you’re like me, you’ve probably opened up old codebases and wondered to yourself, “What in the world was I thinking?” If you’re having a problem reading your own code, imagine what your users or other developers are experiencing when they’re trying to use or contribute to your code.
 
-There are two ways to explain your code: comments and documenting. Comments can be found inside the raw code files and their target audience are developers of the Python code. They can explain a tricky step in an algorithm or a bug fix.
+Probably, at some point in your life, you had to go through —or even worse, work on— some awful code, so you are hopefully convinced of the necessity of writing clean and well explained code.
+
+There are two ways to explain your code: comments and documenting. Comments can be found inside the raw code files and their target audience are developers of the Python code. They can explain a tricky step in an algorithm or a bug fix. Ideally, functions should be readable and require few to no inline comments explaining what the function does.
 
 Documenting code is describing its use and functionality to your users. While it may be helpful in the development process, the main intended audience is the users. Documentation can be found in a website or inside the code as strings, also known as **docstrings**.
 
-Docstrings should always be added to your modules, classes and functions. The idea when coding is to make simple functions with just one purpose and document them clearly: summarize the function; indicate its arguments, return values and exceptions raised; add notes, examples and references. Ideally, functions should be readable and require few to no inline comments explaining what the function does. Remember that we learn better from the concrete, so adding examples to your documentation is always a good idea:
+Docstrings should always be added to your modules, classes and functions. The idea when coding is to make simple functions with just one purpose and document them clearly: summarize the function; indicate its arguments, return values and exceptions raised; add notes, examples and references. Remember that we learn better from the concrete, so adding examples to your documentation is always a good idea:
 
 ```python
 """
@@ -224,7 +226,6 @@ _to see the mismatches, if any._
 These docstrings can follow different conventions; one of the most popular one is the [Google style](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html). I personally like it because it is very clear and compact (Numpy style, in contrast, occupies more lines).
 
 To create them in a fast and easy way, I use the autoDocstrings extension for VSCode. Once our function is type annotated, we type `"""` and click in `Generate Docstrings`; it will automatically create the template using the annotated inputs and outputs of the function, as well as the exceptions raised.
-
 
 
 ## Tools
@@ -271,7 +272,7 @@ cd examples
 python 7-timing.py
 ```
 
-Alternatively, we can use the magic function `%timeit` inside a jupyter notebook to benchmark our function. You can find an example in the [`5-jjit-compiler.ipynb`](examples/5-jit-compiler.ipynb) example, where we compare the speed of a determinant and its just-in-time compiled version.
+Alternatively, we can use the magic function `%timeit` inside a jupyter notebook to benchmark our function. You can find an example in the [`5-jit-compiler.ipynb`](examples/5-jit-compiler.ipynb) example, where we compare the speed of a determinant and its just-in-time compiled version.
 
 ### Profiling
 
