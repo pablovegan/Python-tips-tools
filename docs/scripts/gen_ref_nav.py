@@ -5,7 +5,7 @@ from pathlib import Path
 import mkdocs_gen_files
 
 
-PATH_LIBRARY = "mylibrary"  # change this with your library's name
+PATH_LIBRARY = "mypackage"  # change this with your library's name
 
 
 nav = mkdocs_gen_files.Nav()
