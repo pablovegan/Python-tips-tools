@@ -15,7 +15,7 @@ Since there are abundant online resources to learn Python, this document is quit
 
 ### Conda
 
-The first thing we should do when working on a new project is to create a conda environment that suits our third-party library needs (with their corresponding versions), unless we already have one. I suggest you use the light version of conda, `miniconda`, which only installs the standard Python libraries. Then you can always install whatever you need in a new environment to keep it all clean and tidy.
+The first thing we should do when working on a new project is to create a conda environment that suits our third-party library needs (with their corresponding versions), unless we already have one. I suggest you use the light version of conda, [`miniconda`](https://docs.conda.io/en/latest/miniconda.html), which only installs the standard Python libraries. Then you can always install whatever you need in a new environment to keep it all clean and tidy.
 
 So, we start by creating and **activating** a new environment
 
@@ -44,7 +44,7 @@ pip install ipykernel
 
 ### Create a project and initialize git
 
-Finally, we create our project folder and initialize git inside it
+Finally, we create our project folder and initialize [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) inside it
 ```console
 mkdir my_project
 cd my_project
@@ -56,7 +56,7 @@ or, instead, we can clone this repository
 git clone https://github.com/pablovegan/Python-tips-tools-Benasque.git
 ```
 
-*Note*: be sure to push and pull your changes to and from the cloud (i.e. Github) when switching between different devices (for example, your desktop computer and your laptop). Otherwise, you can have merge conflicts and, trust me, you don't want that...
+*Note*: be sure to push and pull your changes to and from the cloud (i.e. [Github](https://github.com/) or [Gitlab](https://about.gitlab.com/)) when switching between different devices (for example, your desktop computer and your laptop). Otherwise, you can have merge conflicts and, trust me, you don't want that...
 
 ### Text editor or IDE
 
@@ -138,7 +138,11 @@ There is no exact rule on how much code should be in each module, but, ideally, 
 
 ### Objects and classes
 
-Everything in Python is an **object** (even packages!), i.e. everything can be assigned to a variable or be passed as an argument to a function (the definition of object in Python varies with respect to other languages; in Python not all objects have attributes or methods, neither all admit subclasses).
+Python is an object oriented language; everything in Python is an **object** (even packages!), i.e. everything can be assigned to a variable or be passed as an argument to a function (the definition of object in Python varies with respect to other languages; in Python not all objects have attributes or methods, neither all admit subclasses).
+
+[Classes](https://docs.python.org/3/tutorial/classes.html) provide a means of bundling data and functionality together.
+
+[class]()
 
 When we create a new object of a certain class, the `__new__` method is called in the background, which creates a new empty object that is then initialized through the `__init__` method.
 
@@ -148,18 +152,19 @@ FILL IN WITH METHODS AND ATTRIBUTES (also class attributes)
 
 Magic methods in Python are the special methods that start and end with the double underscores. They are also called dunder methods. Magic methods are not meant to be invoked directly by you, but the invocation happens internally from the class on a certain action. For example, when you add two numbers using the + operator, internally, the `__add__()` method will be called.
 
-Abstract classes: a basic example of an abstract class can be found in the `linear_map.py` module of our library. Basically, abstract classes allow us to define abstract methods in a super class that we can later code explicitly in all its subclasses.
-https://www.programiz.com/python-programming/list-comprehension
+Abstract classes: a basic example of an abstract class can be found in the [`linear_map.py`](mypackage/linearmap/linear_map.py) module of our library. Basically, abstract classes allow us to define abstract methods in a super class that we can later code explicitly in all its subclasses.
 
 An important thing to be aware of when using Python is that objects fall into two categories: mutable or immutable. An immutable object is the one that cannot be changed after it is created; even when you think you are changing the object, you are really making new objects from old ones. Immutable objects include numbers, strings, and tuples. Almost everything else is mutable, including lists, dicts, and user-defined objects. Mutable means that the value has methods that can change the value in-place. To learn more about this check out the example notebook [`3-mutable-objects.ipynb`](examples/3-mutable-objects.ipynb).
 
+Two important properties of python classes are inheritance and polymorphism. [Inheritance](https://www.programiz.com/python-programming/inheritance) allows us to create a subclass that can access the methods of the parent class or classes (in the case of [multiple inheritance](https://www.programiz.com/python-programming/multiple-inheritance)). [Polymorphism](https://www.programiz.com/python-programming/polymorphism) allows different classes to use a single type entity (method, operator or object) to represent different types in different scenarios; for example, the sum operator `+` implements the method `__add__()`, whose functionality changes if the summed objects are integers, strings, lists...
+
 ### Variables
 
-A Python **variable** is a symbolic name that is a reference or pointer to an object. In Python, unlike other programming languages like C, different variables can point to the same object/memory address. 
-
-When an object runs out of references, it is no longer accessible and Python will reclaim the allocated memory so it can be used for something else.
+A Python **variable** is a symbolic name that is a reference or pointer to an object. In Python, unlike other programming languages like C, different variables can point to the same object/memory address. Each object has a [counter](https://docs.python.org/3/extending/extending.html#reference-counts) that keeps track of how many variables (names) have been bound to this object. When an object runs out of references, it is no longer accessible and Python will reclaim the allocated memory so it can be used for something else.
 
 In general, variable names and attributes should follow the `lower_case_with_underscores` naming convention (as with functions). Only constants defined on a module level should be written in `UPPER_CASE_WITH_UNDERSCORES`. Variable names should be readable and meaningful, avoiding undescriptive names like single letters or cryptic abbreviations.
+
+And how are variables passed to functions? If you have heard about the _pass by reference_ and _pass by value_ paradigms, you may be wondering which one Python follows. Well, the truth is... neither! Python passes variables by [**assignment**](https://realpython.com/python-pass-by-reference/#passing-arguments-in-python); that is, when you call a Python function, each function argument becomes a variable to which the passed value is assigned.
 
 
 ### Type hints
@@ -402,17 +407,17 @@ In this repo, I added two Github workflows: one to test our library in a linux m
 
 The green tick near the commits shows that the workflows were successful.
 
-![Github workflows](https://raw.githubusercontent.com/pablovegan/Python-tips-tools-Benasque/master/docs/images/github_tests_workflow.png)
+![Github workflows](https://raw.githubusercontent.com/pablovegan/Python-tips-tools-Benasque/master/docs/images/github_workflows.png)
 
 *Cool tip*: we can add a badge at the beginning of our readme to show that the tests either passed or failed (this is updated automatically each time the tests are run).
 
 
 ## Other things to look into
-- List comprehensions, lambda functions and the functions `map()` and `filter()`.
-- Exception handling: `try-except` statements. They work very well with custom error classes. An example can be found in the [`4-exceptions.ipynb`](examples/4-exceptions.ipynb) notebook inside the `examples` folder.
-- Iterators and generators: look up the functions `iter()` and `next()`, and the keyword `yield`.
-- Function and class decorators: decorators are a simple sintax to transform certain functions or classes.
-- Pre-commits: pre-commit hooks allow us to do certain actions before commiting changes with git. For example, we can check that our code follows the PEP8 guidelines and fix it with black if it doesn't.
+- [List comprehensions](https://www.programiz.com/python-programming/list-comprehension), lambda functions and the functions `map()` and `filter()`.
+- [Exception handling](https://www.programiz.com/python-programming/exception-handling): `try-except` statements. They work very well with custom error classes. An example can be found in the [`4-exceptions.ipynb`](examples/4-exceptions.ipynb) notebook inside the `examples` folder.
+- [Iterators and generators](https://www.datacamp.com/tutorial/python-iterators-generators-tutorial): look up the functions `iter()` and `next()`, and the keyword `yield`.
+- [Function and class decorators](https://www.programiz.com/python-programming/decorator): decorators are a simple sintax to transform certain functions or classes.
+- [Pre-commits](https://pre-commit.com/): pre-commit hooks allow us to do certain actions before commiting changes with git. For example, we can lint our code with Ruff and fix it with Black if it doesn't whenever we make a commit.
 
 
 ## Online resources
