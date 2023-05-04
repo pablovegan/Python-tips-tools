@@ -336,18 +336,19 @@ Note that sometimes it complaints too much so you may just turn it off...
 
 ### Code acceleration
 
-Python is an interpreted language, which means the source code is executed directly without compiling the program into machine code. Thus, Python relies on an interpreter, the most common being CPython (which is programmed in C and not to be confused with Cython).
+Python is an interpreted language, which means the source code is executed directly without compiling the program into machine code. Thus, Python relies on an interpreter, the most common being [CPython](https://realpython.com/cpython-source-code-guide/) (which is programmed in C and not to be confused with Cython).
 
-One disadvantage of interpreted languages over compiled ones is that they are generally slower. In the recent years many tools have emerged to accelerate python code; to name some of them:
+One disadvantage of interpreted languages over compiled ones is that they are slower. In the recent years many tools have emerged to accelerate python code; to name some of them:
 
-- Just in time compilers: Numba, JAX and PyPy.
-- Parallelization with `pathos.multiprocessing` and `mpi4py` (Message Passing Interface for Python).
-- Extend Python with C code: Cython (the `cythonbuilder` library makes our life easier).
+- Just-in-time compilers: [Numba](https://numba.pydata.org/numba-doc/latest/user/5minguide.html), [JAX](https://jax.readthedocs.io/en/latest/notebooks/quickstart.html) and [PyPy](https://realpython.com/pypy-faster-python/).
+- Parallelization with [`pathos.multiprocessing`](https://pathos.readthedocs.io/en/latest/pathos.html#module-pathos.multiprocessing) and [`mpi4py`](https://mpi4py.readthedocs.io/en/stable/tutorial.html) (Message Passing Interface for Python).
+- Extend Python with C code: [Cython](https://github.com/juanjosegarciaripoll/cython_example) (the [`cythonbuilder`](https://pypi.org/project/cythonbuilder/) library makes our life easier).
 
 
 ### Installing the library
 
 Before we install our local library, we need to specify some metadata and configuration settings; this is done in the [`pyproject.toml`](pyproject.toml) file (check out the [setuptools documentation](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html)). Then we can use the command `pip install` with the editable option, `-e`, over the current folder, `.`, to install our library:
+
 ```console
 pip install -e .
 ```
