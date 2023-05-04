@@ -102,14 +102,12 @@ implicit_reexport = true
 strict_equality = true
 
 [tool.ruff]
+line-length = 100
 select = ["F", "E"]
 extend-select = ["W", "I002", "B", "UP", "PLE", "PLW", "NPY", "RUF", "PD", "SIM", "PT"]
 unfixable = ["NPY002"]
 ignore = []
 fixable = ["E", "F", "W", "I", "B", "UP", "PLE", "PLW", "NPY", "RUF", "PD", "SIM", "PT"]
-target-version = "py39"
-
-line-length = 100
 extend-exclude = ["tests", "test"]
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 

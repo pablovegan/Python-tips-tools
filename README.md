@@ -19,11 +19,11 @@ The first thing we should do when working on a new project is to create a conda 
 
 So, we start by creating and **activating** a new environment
 
-```bash
+```console
 conda create -n env_name python==3.10
 conda activate env_name
 ```
-*Note*: always remember to activate your conda environment before using Python or installing new libraries. Do not install third party libraries in the base environment!
+*Note: always remember to activate your conda environment before using Python or installing new libraries. Do not install third party libraries in the base environment!*
 
 ### Pip and PyPI
 
@@ -56,7 +56,7 @@ or, instead, we can clone this repository
 git clone https://github.com/pablovegan/Python-tips-tools-Benasque.git
 ```
 
-*Note*: be sure to push and pull your changes to and from the cloud (i.e. [Github](https://github.com/) or [Gitlab](https://about.gitlab.com/)) when switching between different devices (for example, your desktop computer and your laptop). Otherwise, you can have merge conflicts and, trust me, you don't want that...
+*Note: be sure to push and pull your changes to and from the cloud (i.e. [Github](https://github.com/) or [Gitlab](https://about.gitlab.com/)) when switching between different devices (for example, your desktop computer and your laptop). Otherwise, you can have merge conflicts and, trust me, you don't want that...*
 
 ### Text editor or IDE
 
@@ -116,25 +116,27 @@ For the moment, we will not worry about the `docs` folder (files to create docum
 
 ### Packages or libraries
 
-A [**package**](https://docs.python.org/3/reference/import.html#packages) or **library** is a collection of Python `.py` modules organized in directories. The main directory is the package and the subdirectories are its subpackages. Their names should follow the convention `lowercasenames`, without underscores.
+A [**package**](https://docs.python.org/3/reference/import.html#packages) or **library** is a collection of Python `.py` modules organized in directories. The main directory is the package and the subdirectories are its subpackages, with heir names following the `lowercasenames` convention, without underscores.
 
-As you may have noticed in the project structure, every folder inside our package has an `__init__.py` file. The code inside it will be called whenever we import the library. It usually justs contains imports of functions or classes from other `.py` files in our library.
+As you may have noticed in the project structure, every folder inside our package has an `__init__.py` file (read "dunder init"). The code inside it will be called whenever we import the library. It usually justs contains imports of functions or classes from other `.py` files or directories at the same level.
 
 The `tests` folder can also contain a `__init__.py` file, but we can leave it empty since we are not going to import the tests package.
 
 
 ### Modules
 
-Simply, a module is a `.py` file consisting of Python code. A module can define functions, classes and variables... Python modules should more or less follow this structure:
+Simply, a module is a `.py` file consisting of Python code. A module can define functions, classes and variables...
+
+Python modules should more or less follow this structure:
 
 1. Module docstrings should appear at the very beginning, just before the imports. 
 2. Imports should follow this order: standard Python library, third party and local libraries, each group separated by one empty line. Also, one should not import from more than one library per line.
-3. Module constants, separated from the imports by two empty lines. Constants should follow the `UPPER_CASE_WITH_UNDERSCORES` naming convention.
+3. Module constants, separated from the imports by two empty lines. Constants should follow the `UPPER_CASE_WITH_UNDERSCORES` [naming convention](https://peps.python.org/pep-0008/#naming-conventions).
 4. Functions, separated again by two empty lines. Function names should follow the `lower_case_with_underscores` convention.
 5. Exception classes.
 6. Normal classes. Classes names should stick to the `CapitalizedWords` convention.
 
-There is no exact rule on how much code should be in each module, but, ideally, each module should have one purpose (as with functions). For example, the purpose of our modules are defining the `Vector` class and creating some linear transforms for those vectors with the `LinearMap` class and its subclasses.
+There is no exact rule on how much code should be in each module, but, ideally, each module should have one purpose (as with functions). For example, the purpose of our modules [`vector.py`](mypackage/vector/vector.py) and [`linear_map.py`](mypackage/linearmap/linear_map.py) are defining the `Vector` class and creating some linear transforms for those vectors with the `LinearMap` class and its subclasses, respectively.
 
 ### Objects and classes
 
@@ -160,19 +162,19 @@ Two important properties of python classes are inheritance and polymorphism. [In
 
 ### Variables
 
-A Python **variable** is a symbolic name that is a reference or pointer to an object. In Python, unlike other programming languages like C, different variables can point to the same object/memory address. Each object has a [counter](https://docs.python.org/3/extending/extending.html#reference-counts) that keeps track of how many variables (names) have been bound to this object. When an object runs out of references, it is no longer accessible and Python will reclaim the allocated memory so it can be used for something else.
+A Python [**variable**](https://realpython.com/python-variables/) is a symbolic name that is a reference or pointer to an object. In Python, unlike other programming languages like C, different variables can point to the same object/memory address. Each object has a [counter](https://docs.python.org/3/extending/extending.html#reference-counts) that keeps track of how many variables (names) have been bound to this object. When an object runs out of references, it is no longer accessible and Python will reclaim the allocated memory so it can be used for something else.
 
 In general, variable names and attributes should follow the `lower_case_with_underscores` naming convention (as with functions). Only constants defined on a module level should be written in `UPPER_CASE_WITH_UNDERSCORES`. Variable names should be readable and meaningful, avoiding undescriptive names like single letters or cryptic abbreviations.
 
-And how are variables passed to functions? If you have heard about the _pass by reference_ and _pass by value_ paradigms, you may be wondering which one Python follows. Well, the truth is... neither! Python passes variables by [**assignment**](https://realpython.com/python-pass-by-reference/#passing-arguments-in-python); that is, when you call a Python function, each function argument becomes a variable to which the passed value is assigned.
+And how are variables passed to functions? If you have heard about the _pass by reference_ and _pass by value_ paradigms, you may be wondering which one Python follows. Well, the truth is... neither! Python passes variables by [**assignment**](https://realpython.com/python-pass-by-reference/#passing-arguments-in-python); that is, when you call a Python function, each function argument becomes a (local)variable to which the passed object is assigned. Thus, a local and a global variable can point to the same object in memory, with [important consequences](examples/3-mutable-objects.ipynb) if the object is mutable.
 
 
 ### Type hints
-Python is both a **strongly typed** and a **dynamically typed** language. Strong typing means that variables do have a type and that the type matters when performing operations on a variable. Dynamic typing means that the type of the variable is determined only during runtime.
+Python is both a **strongly typed** and a **dynamically typed** language. [Strongly typed](https://dev.to/icncsx/python-is-strongly-dynamically-typed-what-does-that-mean-5810) means that the type of an object doesn't change in unexpected ways.
 
-Due to dynamic typing, in Python the same variable can have a different type at different times during the execution. Dynamic typing allows for flexibility in programming, but with a price in performance.
+In a [dynamically typed language](), the interpreter does not assign a type to the variable per se because the type can change at runtime. If you ask a variable its type, it will give you the type of the object it is currently assigned to at that moment. Therefore, Python [manages memory dynamically](https://docs.python.org/3/c-api/memory.html), which allows for flexibility in programming, but with a price in performance.
 
-Nonetheless, recent versions of Python allow one to add indicative type hints to our variables. For example
+Nonetheless, recent versions of Python allow one to add indicative [type hints](https://realpython.com/python-type-checking/) to our variables. For example
 
 ```Python
 a: int = 3
@@ -184,7 +186,7 @@ def shouting(text: str) -> str:
 
 They can be helpful to understand the code, create documentation or even catch errors using tools like `mypy`.
 
-Elaborate type hints such as `Callable` or `Sequence` can be found in the [`typing` library](https://docs.python.org/es/3/library/typing.html). Note that after Python 3.10 the operator `|` can be used as an "or" between different types (same use as `Union`). For example, this function accepts either a float or an integer and outputs an integer.
+More elaborate type hints such as `Callable` or `Sequence` can be found in the [`typing` library](https://docs.python.org/es/3/library/typing.html). Note that after Python 3.10 the operator `|` can be used as an "or" between different types (same use as `Union`). For example, this function accepts either a float or an integer and outputs an integer.
 
 ```Python
 def float_to_int(variable: float | int) -> int:
@@ -193,13 +195,15 @@ def float_to_int(variable: float | int) -> int:
 
 ### Docstrings
 
-Docstrings should always be added to your modules and functions. The idea when coding is to make simple functions with just one purpose and document them clearly. Ideally, functions should be readable and should require little to no inline comments explaining what the function does.
+Quoting [Documenting Python Code: A Complete Guide](https://realpython.com/documenting-python-code/):
+> When you write code, you write it for two primary audiences: your users and your developers (including yourself). Both audiences are equally important. If you’re like me, you’ve probably opened up old codebases and wondered to yourself, “What in the world was I thinking?” If you’re having a problem reading your own code, imagine what your users or other developers are experiencing when they’re trying to use or contribute to your code.
 
-To create these docstrings in a fast and easy way, I use the autoDocstrings extension for VSCode. Once our function is type annotated, we type `"""` and click in `Generate Docstrings`; it will automatically create the template using the annotated inputs and outputs of the function, as well as the exceptions raised.
+There are two ways to explain your code: comments and documenting. Comments can be found inside the raw code files and their target audience are developers of the Python code. They can explain a tricky step in an algorithm or a bug fix.
 
-These docstrings can follow different conventions; one of the most popular ones is the [Google style](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html). I personally like it because it is very clear and compact (Numpy style, in contrast, occupies more lines).
+Documenting code is describing its use and functionality to your users. While it may be helpful in the development process, the main intended audience is the users. Documentation can be found in a website or inside the code as strings, also known as **docstrings**.
 
-Lastly, remember that we learn better from the concrete, so adding examples to your documentation is always a good idea:
+Docstrings should always be added to your modules, classes and functions. The idea when coding is to make simple functions with just one purpose and document them clearly: summarize the function; indicate its arguments, return values and exceptions raised; add notes, examples and references. Ideally, functions should be readable and require few to no inline comments explaining what the function does. Remember that we learn better from the concrete, so adding examples to your documentation is always a good idea:
+
 ```python
 """
 Examples:
@@ -209,12 +213,18 @@ Examples:
     the result
 """
 ```
-An easy way to check if the code gives the expected result without jumping into a jupyter notebook to test it is the tool `doctest`, which is part of the standard library. Simply, from the command line, execute
+
+_Note: An easy way to check if the example code gives the expected result without jumping into a jupyter notebook to test it is using the tool `doctest`, which is part of the standard library. Simply, from the command line, execute_
 
 ````console
 python -m doctest mypackage/linearmap/linear_map.py
 ````
-to see the mismatches, if any.
+_to see the mismatches, if any._
+
+These docstrings can follow different conventions; one of the most popular one is the [Google style](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html). I personally like it because it is very clear and compact (Numpy style, in contrast, occupies more lines).
+
+To create them in a fast and easy way, I use the autoDocstrings extension for VSCode. Once our function is type annotated, we type `"""` and click in `Generate Docstrings`; it will automatically create the template using the annotated inputs and outputs of the function, as well as the exceptions raised.
+
 
 
 ## Tools
@@ -244,7 +254,7 @@ To run the tests inside the `tests` folder simply run from the command line
 pytest tests
 ```
 
-*Note*: In the workflows section we will see how to automate this.
+*Note: In the workflows section we will see how to automate this.*
 
 ### Debugging
 
@@ -256,7 +266,7 @@ A good idea is to debug your tests, since they, ideally, are the best tool to se
 ### Timing
 
 Even if our code runs without errors, it might not be very useful if it takes too long to do the task. To benchmark our code and find possible bottlenecks, we can use the library `timeit`, which executes a piece of code a number of times and returns the CPU time taken to run it. As an example, we can run the script [`7-timing.py`](examples/7-timing.py) to benchmark how long it takes to sum vectors two vectors:
-```bash
+```console
 cd examples
 python 7-timing.py
 ```
@@ -268,7 +278,7 @@ Alternatively, we can use the magic function `%timeit` inside a jupyter notebook
 Profiling allows you to disaggregate the time taken to run a function into its different components. For example, when adding two vectors, does it take longer to check the summand is a vector instance or to actually sum the two vectors? 
 
 To profile our code we can write a simple script using the `Profiler` class from the `pyinstrument` library. To get a sense of how profiling works, you can run the script [`8-profiling.py`](examples/8-profiling.py):
-```bash
+```console
 cd examples
 python 8-profiling.py
 ```
@@ -293,6 +303,14 @@ ruff check --fix mypackage/vector/vector.py
 ```
 Unless we are one of those old school programmers that read their email on the terminal, we can avoid using the command line by installing the Ruff extension for VSCode (or whatever tool your IDE provides).
 
+You can [configure](https://beta.ruff.rs/docs/configuration/) the line lenght, what rules to ignore and other options in [`pyproject.toml`](pyproject.toml). For example,
+
+```toml
+[tool.ruff]
+line-length = 100
+select = ["F", "E"]
+```
+
 ### Formatters
 
 Keeping track of all the errors and fixing them can be painful... This is where automatic tools to format the code enter. The two most popular are `autopep8` and `black`. I prefer `black` because it requires less configuration. To format our library simply type in the command line
@@ -311,7 +329,7 @@ Formatting can be done very simply in VSCode, just add this code to a `settings.
     "python.formatting.provider": "black",
     "python.formatting.blackArgs": [
         "--line-length",
-        "120"
+        "100"
     ],
     "[python]": {
         "editor.defaultFormatter": null,
@@ -322,15 +340,30 @@ Formatting can be done very simply in VSCode, just add this code to a `settings.
 }
 ```
 
+As with `Ruff`, `Black` configuration is written in the [`pyproject.toml`](pyproject.toml) file:
+
+```toml
+[tool.black]
+line-length = 88
+```
+
+
 ### Type checker
 
-The most popular type checker is `mypy`. Provided that we type hinted our functions and variables, this tool checks any mismatches between the expected inputs and outputs and the real ones. It can also highlight deeper errors in your code structure, like violations of Liskov substitution principle.
+The most popular type checker is [`mypy`](https://mypy.readthedocs.io/en/stable/getting_started.html). Provided that we type hinted our functions and variables, this tool checks any mismatches between the expected inputs and outputs and the real ones. It can also highlight deeper errors in your code structure, like violations of Liskov substitution principle.
 
 ```console
 mypy mypackage
 ```
 Note that sometimes it complaints too much so you may just turn it off...
 
+As with all the tools we are using, we can add options for `mypy` in [`pyproject.toml`](pyproject.toml):
+
+```toml
+[tool.mypy]
+warn_return_any = true
+warn_unused_configs = true
+```
 
 ## Bit more advanced stuff
 
@@ -375,25 +408,25 @@ When we install packages using `pip` we are actually downloading them from the [
 To upload our library we use the Python package `twine`. Here is a [short guide](https://twine.readthedocs.io/en/stable/) on how to build and upload our library:
 
 1. Build our library using `setuptools` and the [`pyproject.toml`](pyproject.toml) configuration file:
-```bash
+```console
 python -m build
 ```
 2. Upload the built library to [TestPyPI](https://test.pypi.org/). You will need to enter the user and password of your TestPyPI account (different from your PyPI account)
-```bash
+```console
 twine upload -r testpypi dist/*
 ```
 3. Once you are confident that you want to upload your package to PyPI, use the command
-```bash
+```console
 twine upload dist/*
 ```
 
 Once the package is in PyIP, you can install it in your environment:
-```bash
+```console
 pip install python-tips-tools-benasque
 ```
 (I only [uploaded my package](https://test.pypi.org/project/python-tips-tools-benasque/) to TestPyPI, since it is not very usefull as a standalone library).
 
-*Note*: the process of uploading the package to PyPI can be automated with a [workflow](https://github.com/marketplace/actions/pypi-publish).
+*Note: the process of uploading the package to PyPI can be automated with a [workflow](https://github.com/marketplace/actions/pypi-publish).*
 
 ### Automating boring tasks with Github workflows
 
