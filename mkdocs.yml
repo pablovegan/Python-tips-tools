@@ -3,7 +3,7 @@ site_description: "Short Python tips and tools notes for the Superconducting Qub
 
 repo_url: https://github.com/pablovegan/Python-tips-tools-Benasque
 repo_name: pablovegan/Python-tips-tools-Benasque
-watch: [README.md, mylibrary]
+watch: [README.md, mypackage]
 
 
 nav:
