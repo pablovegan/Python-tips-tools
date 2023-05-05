@@ -1,4 +1,8 @@
-"""Script to generate the reference pages and navigation for our library."""
+"""Script to generate the documentation pages and navigation for our library.
+
+Important: remember to change PATH_LIBRARY to whatever name your package
+folder has!!
+"""
 
 import sys
 import os

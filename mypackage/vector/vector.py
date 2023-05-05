@@ -1,8 +1,7 @@
 """This module contains the Vector class and the NormError exception.
 
 Attributes:
-    MAX_NORM (float): The maximum value of the vector norm allowed in
-        the vector class.
+    MAX_NORM (float): Maximum norm allowed for a Vector instance.
 
 Note:
     Imports should follow always the same order:
@@ -21,13 +20,16 @@ import warnings
 import numpy as np
 
 
-# Module constants should be on top and use UPPER_CASE_WITH_UNDERSCORES names
+# Module level variables should be on top
+# If a constant, its name shoud be UPPER_CASE_WITH_UNDERSCORES
 MAX_NORM: float = 100
 
 
 class NormError(ValueError):
-    """Custom exception class. Raised when the norm is greater than MAX_NORM.
-    Custom Exception classes are very useful for exception handling.
+    """Exception raised when a vector's norm is greater than MAX_NORM.
+
+    Note:
+        Custom exception classes are very useful for exception handling.
 
     Args:
         norm (float): The norm of the vector.
@@ -43,8 +45,10 @@ class NormError(ValueError):
 
 class Vector:
     """Two dimensional vector.
-    Remember that class docstrings in Google format should contain the arguments of the __init__ method
-    and the attributes of the class, but not the methods.
+
+    Note:
+        Remember that class docstrings in Google format should contain the arguments
+        of the __init__ method and the attributes of the class, but not the methods.
 
     Args:
         x (float): first component of the vector.
@@ -55,7 +59,7 @@ class Vector:
         y (float): second component of the vector.
 
     Raises:
-        NormError: the norm of the vector is greater than the maximum norm.
+        NormError: the norm of the vector is greater than MAX_NORM.
     """
 
     def __init__(self, x: float, y: float) -> None:
@@ -74,7 +78,7 @@ class Vector:
         Examples:
             We type the following to output the vector representation:
 
-            >>> vector = Vector(1,2)
+            >>> vector = Vector(1, 2)
             >>> vector
             vector.Vector(1, 2)
 
@@ -85,12 +89,12 @@ class Vector:
         """This method is called when we want to print our vector as a string.
 
         Returns:
-            The vector as a string.
+            The vector instance as a string.
 
         Examples:
             To call __str__ simply type
 
-            >>> vector = Vector(1,2)
+            >>> vector = Vector(1, 2)
             >>> print(vector)
             (1, 2)
 
@@ -119,7 +123,7 @@ class Vector:
         """Return the multiplication of self and the other vector/number.
 
         Args:
-            other: Other vector or scalar value (rhs).
+            other: Other vector or scalar value (right hand side).
 
         Raises:
             TypeError: Not int/float passed in.
@@ -139,7 +143,7 @@ class Vector:
         """Check if the vectors have the same values up to some tolerance.
 
         Args:
-            other_vector: Other vector (rhs).
+            other_vector: Other vector (right hand side).
 
         Returns:
             True, if both vectors have the same values.
@@ -154,9 +158,11 @@ class Vector:
 
     @property
     def norm(self) -> float:
-        """Returns the Euclidean norm of the vector. Since the method doesn't accept any input,
-        we can treat it as an attribute. To do that we just have to add the @property decorator
-        on top of the method.
+        """Returns the Euclidean norm of the vector.
+
+        Note:
+            Since the method doesn't accept any input, we can treat it as an attribute.
+            To do that we just have to add the @property decorator on top of the method.
 
         Returns:
             float: the euclidean norm of the vector.
@@ -169,18 +175,20 @@ class Vector:
         return np.sqrt(self.x**2 + self.y**2)
 
     def projection(self, subspace: Vector | None = None) -> Vector:
-        """By default projects the vector onto its first component. If a vector spanning a subspace
-        is given, then the vector is projected along this subspace.
+        """By default projects the vector onto its first component. If a vector spanning
+        a subspace is given, then the vector is projected along this subspace.
 
         Args:
-            subspace (Vector, optional): vector that spans the subspace onto which to project the vector.
-                Defaults to None.
+            subspace (Vector, optional): vector that spans the subspace onto which to project
+            the vector. Defaults to None.
 
         Returns:
             Vector: The projected vector.
         """
         if subspace is None:
-            warnings.warn("If no subspace is given, the vector is projected onto the first component!", stacklevel=2)
+            warnings.warn(
+                "No subspace given: the vector is projected onto the first component!", stacklevel=2
+            )
             return Vector(self.x, 0)
         else:
             # Note that self is the instance of the Vector class

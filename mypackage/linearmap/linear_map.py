@@ -44,8 +44,10 @@ class LinearMap(ABC):
 
     def __call__(self, vector: Vector) -> Vector:
         """Apply the linear map to a vector (which translates into ordinary matrix
-        times vector multiplication). The call method allows an instance of this
-        class to behave as a function.
+        times vector multiplication).
+
+        Note:
+            The call method allows an instance of this class to behave as a function.
 
         Args:
             vector (Vector): Vector to map.
@@ -59,12 +61,15 @@ class LinearMap(ABC):
 
     @abstractmethod
     def _get_inverse(self) -> list[list[float]]:
-        """The code for the abstract method will be specified inside each subclass. Because
-        this method is not defined in the LinearMap class, we won't be able to create an
-        instance of this class.
+        """Return the inverse of the linear map.
 
-        Also, because the method is not intended to be part of the user API, the convention
-        is to begin the method's name with an underscore.
+        Note:
+            The code for the abstract method will be specified inside each subclass. Because
+            this method is not defined in the LinearMap class, we won't be able to create an
+            instance of this class.
+
+            Also, because the method is not intended to be part of the user API, the convention
+            is to begin the method's name with an underscore.
 
         Returns:
             list[list[float]]: Matrix of the inverse transformation.
@@ -73,8 +78,12 @@ class LinearMap(ABC):
 
     def inverse(self, vector: Vector) -> Vector:
         """Apply the inverse of our map to a vector.
-        When giving a name to a method, you should take into account how would
-        you name an instance of this class (see the example below).
+
+        Note:
+            When giving a name to a method, you should take into account how would
+            you name an instance of this class. For example, if we create an instance
+            called 'rotation', it is very clear to read `rotation.inverse(some_vector)`
+            and guess that it applies the inverse rotation to the vector.
 
         Args:
             vector (Vector): Vector to transform.

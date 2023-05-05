@@ -4,7 +4,7 @@ complicated functions.
 
 We will use the library pytest, which allows to test multiple inputs for
 each test function (using the @pytest.mark.parametrize decorator). This inputs
-should include the inputs for the function we want to test (for example the
+should include the inputs for the function we want to test (for example, the
 __add__ method) as well as the expected result.
 """
 
@@ -32,7 +32,12 @@ def test_norm_error(x: float, y: float) -> None:
 
 @pytest.mark.parametrize(
     ("vector_1", "vector_2", "result"),
-    ((V1, V2, Vector(-1, 1)), (V1, V3, Vector(2.5, -2.5)), (V3, V2, Vector(1.5, -1.5)), (V3, V1, Vector(2.5, -2.5))),
+    (
+        (V1, V2, Vector(-1, 1)),
+        (V1, V3, Vector(2.5, -2.5)),
+        (V3, V2, Vector(1.5, -1.5)),
+        (V3, V1, Vector(2.5, -2.5)),
+    ),
 )
 def test_add(vector_1: Vector, vector_2: Vector, result: Vector) -> None:
     assert vector_1 + vector_2 == result
@@ -62,7 +67,9 @@ def test_mul_float(vector: Vector, number: float, result: float) -> None:
     assert vector * number == result
 
 
-@pytest.mark.parametrize(("vector", "result"), ((V1, 0), (V2, math.sqrt(2)), (Vector(1, 2), math.sqrt(5))))
+@pytest.mark.parametrize(
+    ("vector", "result"), ((V1, 0), (V2, math.sqrt(2)), (Vector(1, 2), math.sqrt(5)))
+)
 def test_norm(vector: Vector, result: float) -> None:
     assert vector.norm == result
 

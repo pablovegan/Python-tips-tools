@@ -3,7 +3,7 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v1.json)](https://github.com/charliermarsh/ruff)
 [![black](https://img.shields.io/badge/code%20style-black-black)](https://github.com/psf/black)
-[![Test](https://github.com/pablovegan/Python-tips-tools-Benasque/actions/workflows/tests.yml/badge.svg)](https://github.com/pablovegan/Python-tips-tools-Benasque/actions/workflows/tests.yml)
+[![Test](https://github.com/pablovegan/Python-tips-tools/actions/workflows/tests.yml/badge.svg)](https://github.com/pablovegan/Python-tips-tools/actions/workflows/tests.yml)
 
 
 
@@ -88,7 +88,7 @@ git init
 
 or, instead, we can clone this repository
 ```console
-git clone https://github.com/pablovegan/Python-tips-tools-Benasque.git
+git clone https://github.com/pablovegan/Python-tips-tools.git
 ```
 
 *Note: be sure to push and pull your changes to and from the cloud (e.g. [Github](https://github.com/) or [Gitlab](https://about.gitlab.com/)) when switching between different devices (for example, your desktop computer and your laptop). Otherwise, you can have merge conflicts and, trust me, you don't want that...*
@@ -151,9 +151,9 @@ For the moment, we will not worry about the `docs` folder (files to create docum
 
 ### Packages or libraries
 
-A [**package**](https://docs.python.org/3/reference/import.html#packages) or **library** is a collection of Python `.py` modules organized in directories. The main directory is the package and the subdirectories are its subpackages, with heir names following the `lowercasenames` convention, without underscores.
+A [**package**](https://docs.python.org/3/reference/import.html#packages) or **library** is a collection of Python `.py` modules organized in directories. The main directory is the package and the subdirectories are its subpackages, with their names following the `lowercasenames` convention, without underscores.
 
-As you may have noticed in the project structure, every folder inside our package has an `__init__.py` file (read "dunder init"). The code inside it will be called whenever we import the library. It usually justs contains imports of functions or classes from other `.py` files or directories at the same level.
+As you may have noticed in the project structure, every folder inside our package has a `__init__.py` file (read "dunder init"). The code inside it will be called whenever we import the library. Usually, it only contains imports of functions or classes from other `.py` files or directories at the same level, but it can include any piece of code.
 
 The `tests` folder can also contain a `__init__.py` file, but we can leave it empty since we are not going to import the tests package.
 
@@ -177,7 +177,7 @@ There is no exact rule on how much code should be in each module, but, ideally, 
 
 Python is an object oriented language; everything in Python is an [**object**](https://www.programiz.com/python-programming/class) (even packages!), i.e. any data with a state (attributes) and defined behavior (methods). Attributes are values associated with an object; they are usually referenced by name using dotted expressions.
 
-A [class](https://docs.python.org/3/glossary.html#term-class) is a template for creating user-defined objects and normally contains methods which operate on instances of the class. [Methods](https://docs.python.org/3/glossary.html#term-method) are functions defined inside a class body. (For an in-depth introduction to classes in Python have a look at [realpython.com](https://realpython.com/python-classes/)).
+A [class](https://docs.python.org/3/glossary.html#term-class) is a template for creating user-defined objects and normally contains methods which operate on instances of the class. [Methods](https://docs.python.org/3/glossary.html#term-method) are functions defined inside a class body. (For an in-depth introduction to classes in Python [see](https://realpython.com/python-classes/)).
 
 When we instantiate a new object of a certain class, the `__new__` method is called in the background, which creates a new empty object that is then initialized through the `__init__` method.
 
@@ -196,7 +196,7 @@ print(iris.fav_movie)  # access the fav_movie attribute of iris
 
 In Python, methods that start and end with the double underscores are called [**special methods**](https://docs.python.org/3/reference/datamodel.html#specialnames) (also called magic methods or _dunder_ methods). Special methods are called internally by Python, so they are not meant to be invoked directly by you. For example, when you add two integers using the + operator, Python is implicitly calling the `__add__()` method inside the `int` class.
 
-Another common naming convention is related to the fact that Python doesn’t distinguish between private, protected and public attributes like Java and other languages do. In Python, all [attributes and methods are accessible](](https://realpython.com/python-classes/#public-vs-non-public-members)), so to distinguish the ones for internal use only from the ones intended for users (public API), we begin this "private" attributes with an underscore. An example is the `_get_inverse()` function in our [`linear_map.py`](mypackage/linearmap/linear_map.py) module. In the user interface (API), the inverse is accessed via a "public" attribute `inverse` rather than the "private" method.
+Another common naming convention is related to the fact that Python doesn’t distinguish between private, protected and public attributes like Java and other languages do. In Python, all [attributes and methods are accessible](](https://realpython.com/python-classes/#public-vs-non-public-members)), so to distinguish the ones for internal use only from the ones intended for users (public API), we begin this "private" attributes with an underscore. An example is the `_get_inverse()` function in our [`linear_map.py`](mypackage/linearmap/linear_map.py) module. In the user interface (API), the inverse is accessed via a "public" attribute `inv_matrix` rather than the "private" method.
 
 Two important properties of python classes are inheritance and polymorphism. [Inheritance](https://www.programiz.com/python-programming/inheritance) allows us to create a subclass that can access the methods of the parent class (or parent classes in the case of [multiple inheritance](https://www.programiz.com/python-programming/multiple-inheritance)). [Polymorphism](https://www.programiz.com/python-programming/polymorphism) allows different classes to use a single method, operator or object, to represent different types in different scenarios; for example, `__add__()` changes its functionality depending on whether the summed objects are integers, strings or lists.
 
@@ -230,24 +230,23 @@ class Square(Shape):
 ```
 As another example, the [`linear_map.py`](mypackage/linearmap/linear_map.py) module of our library implements the `Rotation` and `Shear` transforms as subclasses of the abstract class `LinearMap`.
 
-Last but not least, we need to be aware of that Python objects fall into two categories: [mutable or immutable](https://realpython.com/python-mutable-vs-immutable-types/). An immutable object is the one that cannot be changed after it is created; even when you think you are changing the object, you are really making new objects from old ones. Immutable objects include numbers, strings, and tuples. Almost everything else is mutable, including lists, dicts, and user-defined objects. Mutable means that the value has methods that can change the value in-place. To learn more about this check out the example notebook [`3-mutable-objects.ipynb`](examples/3-mutable-objects.ipynb).
+Last but not least, we need to be aware of that Python objects fall into two categories: [mutable or immutable](https://realpython.com/python-mutable-vs-immutable-types/). An immutable object is the one that cannot be changed after it is created; even when you think you are changing the object, you are really making new objects from old ones. Immutable objects include numbers, strings, and tuples. Almost everything else is mutable, including lists, dicts, and user-defined objects. Mutable means that the value has methods that can change the value in-place. To learn more about this, check out the example notebook [`3-mutable-objects.ipynb`](examples/3-mutable-objects.ipynb).
 
 
 ### Variables
 
 A Python [**variable**](https://realpython.com/python-variables/) is a symbolic name that is a reference or pointer to an object. In Python, unlike other programming languages like C, different variables can point to the same object/memory address. Each object has a [counter](https://docs.python.org/3/extending/extending.html#reference-counts) that keeps track of how many variables (names) have been bound to this object. When an object runs out of references, it is no longer accessible and Python will reclaim the allocated memory so it can be used for something else.
 
-In general, variable names and attributes should follow the `lower_case_with_underscores` naming convention (as with functions). Only constants defined on a module level should be written in `UPPER_CASE_WITH_UNDERSCORES`. Variable names should be readable and meaningful, avoiding undescriptive names like single letters or cryptic abbreviations.
-
 And how are variables passed to functions? If you have heard about the _pass by reference_ and _pass by value_ paradigms, you may be wondering which one Python follows. Well, the truth is... neither! Python passes variables by [**assignment**](https://realpython.com/python-pass-by-reference/#passing-arguments-in-python); that is, when you call a Python function, each function argument becomes a (local)variable to which the passed object is assigned. Thus, a local and a global variable can point to the same object in memory, with [important consequences](examples/3-mutable-objects.ipynb) if the object is mutable.
 
+In general, variable names and attributes should follow the `lower_case_with_underscores` naming convention (as with functions). Only constants defined on a module level should be written in `UPPER_CASE_WITH_UNDERSCORES`. Variable names should be readable and meaningful, avoiding undescriptive names like single letters or cryptic abbreviations.
 
 ### Type hints
 Python is both a **strongly typed** and a **dynamically typed** language. [Strongly typed](https://dev.to/icncsx/python-is-strongly-dynamically-typed-what-does-that-mean-5810) means that the type of an object doesn't change in unexpected ways.
 
 In a [dynamically typed language](), the interpreter does not assign a type to the variable per se because the type can change at runtime. If you ask a variable its type, it will give you the type of the object it is currently assigned to at that moment. Therefore, Python [manages memory dynamically](https://docs.python.org/3/c-api/memory.html), which allows for flexibility in programming, but with a price in performance.
 
-Nonetheless, recent versions of Python allow one to add indicative [type hints](https://realpython.com/python-type-checking/) to our variables. For example
+Nonetheless, recent versions of Python allow one to add indicative "static" [type hints](https://realpython.com/python-type-checking/) to our variables. For example
 
 ```Python
 a: int = 3
@@ -257,9 +256,9 @@ def shouting(text: str) -> str:
     return text.upper() + "!!"
 ```
 
-They can be helpful to understand the code, create documentation or even catch errors using tools like `mypy`.
+They can be helpful to make the code clear, create documentation or even catch errors using tools like `mypy`.
 
-More elaborate type hints such as `Callable` or `Sequence` can be found in the [`typing`](https://docs.python.org/es/3/library/typing.html) library. Note that after Python 3.10 the operator `|` can be used as an "or" between different types (same use as `Union`). For example, this function accepts either a float or an integer and outputs an integer.
+More elaborate type hints such as `Callable` or `Sequence` can be found in the [`typing`](https://docs.python.org/es/3/library/typing.html) library. Note that, after Python 3.10, the operator `|` can be used as an "or" between different types (same use as `Union`). For example, this function accepts either a float or an integer and outputs an integer.
 
 ```Python
 def float_to_int(variable: float | int) -> int:
@@ -273,9 +272,9 @@ Quoting [Documenting Python Code: A Complete Guide](https://realpython.com/docum
 
 Probably, at some point in your life, you had to go through —or even worse, work on— some awful code, so you are hopefully convinced of the necessity of writing clean and well explained code.
 
-There are two ways to explain your code: comments and documenting. Comments can be found inside the raw code files and their target audience are developers of the Python code. They can explain a tricky step in an algorithm or a bug fix. Ideally, functions should be readable and require few to no inline comments explaining what the function does.
+There are two ways to explain your code: comments and documenting. Comments can be found inside the raw code files and their target audience are developers of the Python code. They can explain a tricky step in an algorithm or a bug fix. That said, ideally, functions should be readable and require few to no inline comments explaining what the code does.
 
-Documenting code is describing its use and functionality to your users. While it may be helpful in the development process, the main intended audience is the users. Documentation can be found in a website or inside the code as strings, also known as **docstrings**.
+Documenting code is describing its use and functionality to your users. While it may be helpful in the development process, the main intended audience is the users. Documentation is often found in a [website](https://pablovegan.github.io/Python-tips-tools/reference/vector/vector/) and [inside the code](mypackage/vector/vector.py) as strings, also known as **docstrings**.
 
 Docstrings should always be added to your modules, classes and functions. The idea when coding is to make simple functions with just one purpose and document them clearly: summarize the function; indicate its arguments, return values and exceptions raised; add notes, examples and references. Remember that we learn better from the concrete, so adding examples to your documentation is always a good idea:
 
@@ -296,7 +295,7 @@ python -m doctest mypackage/linearmap/linear_map.py
 ````
 _to see the mismatches, if any._
 
-These docstrings can follow different conventions; one of the most popular one is the [Google style](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html). I personally like it because it is very clear and compact (Numpy style, in contrast, occupies more lines).
+These docstrings can follow different conventions; one of the most popular ones is the [Google style](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html). I personally like it because it is very clear and compact ([Numpy style](https://numpydoc.readthedocs.io/en/latest/example.html), in contrast, occupies more lines).
 
 To create them in a fast and easy way, I use the [autoDocstring](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring) extension for VSCode. Once our function is type annotated, we type `"""` and click in `Generate Docstrings`; it will automatically create the template using the annotated inputs and outputs of the function, as well as the exceptions raised.
 
@@ -333,26 +332,26 @@ pytest tests/test_vector.py
 ```
 If you don't enjoy the command line, the [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) for VSCode allows us to run the tests easily from a graphic interface.
 
-*Note: In the workflows section we will see how to automate this.*
+*Note: In the workflows section we will see how to automate testing.*
 
 ### Debugging
 
-How many times have you found yourself adding dozens of `print()` statements to your code to catch an error? You are not the only one... But turns out there is a much better way: use the debugger in your IDE. You can add breakpoints, execute single lines, see what value each variable has, step into the functions inside your library, see the call stack... A good idea is to debug your tests, since they, ideally, are the best tool to see if your code is really working.
+How many times have you found yourself adding dozens of `print()` statements to your code to catch an error? You are not the only one... But turns out there is a much better way: use the [debugger](https://python.land/creating-python-programs/python-in-vscode) in your IDE. You can add breakpoints, execute single lines, see what value each variable has, step into the functions inside your library, see the call stack... A good idea is to debug your tests, since they, ideally, are the best tool to see if your code is really working.
 
 
 ### Timing
 
-Even if our code runs without errors, it might not be very useful if it takes too long to do the task. To benchmark our code and find possible bottlenecks, we can use the library `timeit`, which executes a piece of code a number of times and returns the CPU time taken to run it. As an example, we can run the script [`7-timing.py`](examples/7-timing.py) to benchmark how long it takes to sum vectors two vectors:
+Even if our code runs without errors, it might not be very useful if it takes too long to do the task. To benchmark our code and find possible bottlenecks, we can use the library `timeit`, which executes a piece of code a number of times and returns the CPU time taken to run it. As an example, we can run the script [`7-timing.py`](examples/7-timing.py) to benchmark how long it takes to sum two vectors:
 ```console
 cd examples
 python 7-timing.py
 ```
 
-Alternatively, we can use the magic function `%timeit` inside a jupyter notebook to benchmark our function. You can find an example in the [`5-jit-compiler.ipynb`](examples/5-jit-compiler.ipynb) example, where we compare the speed of a determinant and its just-in-time compiled version.
+Alternatively, we can use the magic function `%timeit` inside a jupyter notebook to benchmark a function. You can find an example in [`5-jit-compiler.ipynb`](examples/5-jit-compiler.ipynb), where we compare the speed of a determinant and its [just-in-time compiled](https://numba.pydata.org/numba-doc/latest/user/5minguide.html) version.
 
 ### Profiling
 
-Profiling allows you to disaggregate the time taken to run a function into its different components. For example, when adding two vectors, does it take longer to check the summand is a vector instance or to actually sum the two vectors? 
+Profiling allows us to disaggregate the time taken to run a function into its different components. For example, when adding two vectors, does it take longer to check that the summand is a vector instance or to actually sum the two vectors? 
 
 To profile our code we can write a simple script using the `Profiler` class from the `pyinstrument` library. To get a sense of how profiling works, you can run the script [`8-profiling.py`](examples/8-profiling.py):
 ```console
@@ -360,12 +359,12 @@ cd examples
 python 8-profiling.py
 ```
 
-### Linters
+### Linting
 
 
-Linters like `Flake8`, `Pylint` or `Ruff` (Ruff is very very fast and implements a lot of checks) help us find mismatches between our code and the conventions stablished by the python community in the [PEP8 guidelines](https://peps.python.org/pep-0008/). In summary, an indispensable tool for a programmer.
+Linters like [`Flake8`](https://flake8.pycqa.org/en/latest/) or [`Ruff`](https://github.com/charliermarsh/ruff) (Ruff is very very fast and implements a lot of checks) help us find mismatches between our code and the conventions stablished by the python community in the [PEP8 guidelines](https://peps.python.org/pep-0008/). In summary, an indispensable tool for a programmer.
 
-`Ruff` can be easily run from the command line to highlight all the errors of our library
+`Ruff` can be easily run from the command line to highlight all the errors in our library
 ```console
 ruff check .
 ```
@@ -380,7 +379,7 @@ ruff check --fix mypackage/vector/vector.py
 ```
 Unless we are one of those old school programmers that read their email on the terminal, we can avoid using the command line by installing the [Ruff extension](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff) for VSCode (or whatever tool your IDE provides).
 
-You can [configure](https://beta.ruff.rs/docs/configuration/) the line lenght, what rules to ignore and other options in [`pyproject.toml`](pyproject.toml). For example,
+You can [configure](https://beta.ruff.rs/docs/configuration/) the line lenght, what rules to ignore and other options in the [`pyproject.toml`](pyproject.toml) file. For example,
 
 ```toml
 [tool.ruff]
@@ -388,9 +387,9 @@ line-length = 100
 select = ["F", "E"]
 ```
 
-### Formatters
+### Formatting
 
-Keeping track of all the errors and fixing them can be painful... This is where automatic tools to format the code enter. The two most popular are `autopep8` and `black`. I prefer `black` because it requires less configuration. To format our library simply type in the command line
+Keeping track of all the errors and fixing them can be painful... This is where automatic tools to format the code enter. The two most popular are [`autopep8`](https://pypi.org/project/autopep8/) and [`black`](https://github.com/psf/black). I prefer `black` because it requires less configuration. To format our library simply type in the command line
 ```console
 black mypackage
 ```
@@ -399,7 +398,7 @@ Black by default allows a maximum line length of 80. We can tweak this by adding
 black --line-length 120 mypackage
 ```
 
-Formatting can be done very simply in VSCode, just add this code to a `settings.json` file inside a `.vscode` folder in the main directory
+Formatting can be done automatically in VSCode, just add this code to a `settings.json` file inside a `.vscode` folder in the main directory
 ```json
 {
     "editor.formatOnSave": true,
@@ -421,19 +420,19 @@ As with `Ruff`, `Black` configuration is written in the [`pyproject.toml`](pypro
 
 ```toml
 [tool.black]
-line-length = 88
+line-length = 100
 ```
+
+*Tip: install black[jupyter] to format code inside notebooks.*
 
 
 ### Type checker
 
-The most popular type checker is [`mypy`](https://mypy.readthedocs.io/en/stable/getting_started.html). Provided that we type hinted our functions and variables, this tool checks any mismatches between the expected inputs and outputs and the real ones. It can also highlight deeper errors in your code structure, like violations of Liskov substitution principle.
+The most popular type checker is [`mypy`](https://mypy.readthedocs.io/en/stable/getting_started.html). Provided that we type hinted our functions and variables, this tool checks any mismatches between the expected input and output types and the actual ones. It can also highlight deeper errors in your code structure, like violations of Liskov substitution principle.
 
 ```console
 mypy mypackage
 ```
-Note that sometimes it complaints too much so you may just turn it off...
-
 As with all the tools we are using, we can add options for `mypy` in [`pyproject.toml`](pyproject.toml):
 
 ```toml
@@ -441,6 +440,8 @@ As with all the tools we are using, we can add options for `mypy` in [`pyproject
 warn_return_any = true
 warn_unused_configs = true
 ```
+
+_Note: sometimes it complaints too much so you may just turn it off..._
 
 ## Bit more advanced stuff
 
@@ -521,7 +522,7 @@ In this repo, I added two Github workflows: one to test our library in a linux m
 
 The green tick near the commits shows that the workflows were successful.
 
-![Github workflows](https://raw.githubusercontent.com/pablovegan/Python-tips-tools-Benasque/master/docs/images/github_workflows.png)
+![Github workflows](https://raw.githubusercontent.com/pablovegan/Python-tips-tools/master/docs/images/github_workflows.png)
 
 *Cool tip: we can add a badge at the beginning of our readme to show that the tests either passed or failed (this is updated automatically each time the tests are run).*
 

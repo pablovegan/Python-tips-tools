@@ -10,6 +10,7 @@ pyinstrument
 # Linting/Tooling
 ruff
 black
+black[jupyter]
 mypy
 
 # Packaging
