@@ -140,25 +140,63 @@ There is no exact rule on how much code should be in each module, but, ideally, 
 
 ### Objects and classes
 
-Python is an object oriented language; everything in Python is an **object** (even packages!), i.e. everything can be assigned to a variable or be passed as an argument to a function (the definition of object in Python varies with respect to other languages; in Python not all objects have attributes or methods, neither all admit subclasses).
+Python is an object oriented language; everything in Python is an [**object**](https://www.programiz.com/python-programming/class) (even packages!), i.e. any data with a state (attributes) and defined behavior (methods). Attributes are values associated with an object; they are usually referenced by name using dotted expressions.
 
-[Classes](https://docs.python.org/3/tutorial/classes.html) provide a means of bundling data and functionality together.
+A [class](https://docs.python.org/3/glossary.html#term-class) is a template for creating user-defined objects and normally contains methods which operate on instances of the class. [Methods](https://docs.python.org/3/glossary.html#term-method) are functions defined inside a class body. (For an in-depth introduction to classes in Python have a look at [realpython.com](https://realpython.com/python-classes/)).
 
-[class]()
+When we instantiate a new object of a certain class, the `__new__` method is called in the background, which creates a new empty object that is then initialized through the `__init__` method.
 
-When we create a new object of a certain class, the `__new__` method is called in the background, which creates a new empty object that is then initialized through the `__init__` method.
+```python
+class Friend:
+    """The class represents a friend with their main interests."""
 
-For an in-depth introduction to classes in Python have a look at [realpython.com](https://realpython.com/python-classes/).
+    def __init__(fav_movie: str) -> None:
+        """Method to initialize our friend with a 'fav_movie' attribute."""
+        self.fav_movie = fav_movie
 
-FILL IN WITH METHODS AND ATTRIBUTES (also class attributes)
 
-Magic methods in Python are the special methods that start and end with the double underscores. They are also called dunder methods. Magic methods are not meant to be invoked directly by you, but the invocation happens internally from the class on a certain action. For example, when you add two numbers using the + operator, internally, the `__add__()` method will be called.
+iris = Friend(fav_movie="Shrek")
+print(iris.fav_movie)  # access the fav_movie attribute of iris
+```
 
-Abstract classes: a basic example of an abstract class can be found in the [`linear_map.py`](mypackage/linearmap/linear_map.py) module of our library. Basically, abstract classes allow us to define abstract methods in a super class that we can later code explicitly in all its subclasses.
+In Python, methods that start and end with the double underscores are called [**special methods**](https://docs.python.org/3/reference/datamodel.html#specialnames) (also called magic methods or _dunder_ methods). Special methods are called internally by Python, so they are not meant to be invoked directly by you. For example, when you add two integers using the + operator, Python is implicitly calling the `__add__()` method inside the `int` class.
 
-An important thing to be aware of when using Python is that objects fall into two categories: mutable or immutable. An immutable object is the one that cannot be changed after it is created; even when you think you are changing the object, you are really making new objects from old ones. Immutable objects include numbers, strings, and tuples. Almost everything else is mutable, including lists, dicts, and user-defined objects. Mutable means that the value has methods that can change the value in-place. To learn more about this check out the example notebook [`3-mutable-objects.ipynb`](examples/3-mutable-objects.ipynb).
+Another common naming convention is related to the fact that Python doesn’t distinguish between private, protected and public attributes like Java and other languages do. In Python, all [attributes and methods are accessible](](https://realpython.com/python-classes/#public-vs-non-public-members)), so to distinguish the ones for internal use only from the ones intended for users (public API), we begin this "private" attributes with an underscore. An example is the `_get_inverse()` function in our [`linear_map.py`](mypackage/linearmap/linear_map.py) module. In the user interface (API), the inverse is accessed via a "public" attribute `inverse` rather than the "private" method.
 
-Two important properties of python classes are inheritance and polymorphism. [Inheritance](https://www.programiz.com/python-programming/inheritance) allows us to create a subclass that can access the methods of the parent class or classes (in the case of [multiple inheritance](https://www.programiz.com/python-programming/multiple-inheritance)). [Polymorphism](https://www.programiz.com/python-programming/polymorphism) allows different classes to use a single type entity (method, operator or object) to represent different types in different scenarios; for example, the sum operator `+` implements the method `__add__()`, whose functionality changes if the summed objects are integers, strings, lists...
+Two important properties of python classes are inheritance and polymorphism. [Inheritance](https://www.programiz.com/python-programming/inheritance) allows us to create a subclass that can access the methods of the parent class (or parent classes in the case of [multiple inheritance](https://www.programiz.com/python-programming/multiple-inheritance)). [Polymorphism](https://www.programiz.com/python-programming/polymorphism) allows different classes to use a single method, operator or object, to represent different types in different scenarios; for example, `__add__()` changes its functionality depending on whether the summed objects are integers, strings or lists.
+
+Inheritance leads us to the interesting concept of [abstract classes](https://www.pythontutorial.net/python-oop/python-abstract-class/): classes that are meant to be inherited but never instantiated. These abstract classes allow us to define a template with abstract methods that we can later code explicitly in each of its subclasses. To create an abstract class, we subclass Python's [Abstract Base Class](https://realpython.com/python-classes/#creating-abstract-base-classes-abcs-and-interfaces) (ABC), which allows the use of the `@abstractmethod` decorator to indicate that we left a method undefined on purpose:
+
+```python
+from abc import ABC, abstractmethod
+
+
+class Shape(ABC):
+    """Shape abstract class."""
+
+    @abstractmethod
+    def area(self):
+        """Calculate the area of the shape."""
+        pass
+
+    def print_area(self):
+        """Print the area of the shape."""
+        print(self.area())
+
+
+class Square(Shape):
+    """A square shape."""
+
+    def __init__(self, side: float) -> None:
+        self.side = side
+
+    def area(self):
+        return self.side * self.side
+```
+As another example, the [`linear_map.py`](mypackage/linearmap/linear_map.py) module of our library implements the `Rotation` and `Shear` transforms as subclasses of the abstract class `LinearMap`.
+
+Last but not least, we need to be aware of that Python objects fall into two categories: [mutable or immutable](https://realpython.com/python-mutable-vs-immutable-types/). An immutable object is the one that cannot be changed after it is created; even when you think you are changing the object, you are really making new objects from old ones. Immutable objects include numbers, strings, and tuples. Almost everything else is mutable, including lists, dicts, and user-defined objects. Mutable means that the value has methods that can change the value in-place. To learn more about this check out the example notebook [`3-mutable-objects.ipynb`](examples/3-mutable-objects.ipynb).
+
 
 ### Variables
 
