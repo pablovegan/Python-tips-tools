@@ -60,6 +60,23 @@ conda activate env_name
 ```
 *Note: always remember to activate your conda environment before using Python or installing new libraries. Do not install third party libraries in the base environment!*
 
+### Create a project and initialize git
+
+Next, we create our project folder and initialize [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) inside it
+```console
+mkdir my_project
+cd my_project
+git init
+```
+
+or, instead, we can clone this repository
+```console
+git clone https://github.com/pablovegan/Python-tips-tools.git
+```
+
+*Note: be sure to push and pull your changes to and from the cloud (e.g. [Github](https://github.com/) or [Gitlab](https://about.gitlab.com/)) when switching between different devices (for example, your desktop computer and your laptop). Otherwise, you can have merge conflicts and, trust me, you don't want that...*
+
+
 ### Pip and PyPI
 
 Once Python is installed, we can use either `pip` or `conda` to install new libraries in our environment. `pip` downloads packages from the [PyPI repository](https://pypi.org/) (Python Package Index), which usually has more libraries than the Conda repository.
@@ -76,22 +93,6 @@ If we also want to run [jupyter](https://jupyter.org/try) notebooks, we must ins
 ```console
 pip install ipykernel
 ```
-
-### Create a project and initialize git
-
-Finally, we create our project folder and initialize [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) inside it
-```console
-mkdir my_project
-cd my_project
-git init
-```
-
-or, instead, we can clone this repository
-```console
-git clone https://github.com/pablovegan/Python-tips-tools.git
-```
-
-*Note: be sure to push and pull your changes to and from the cloud (e.g. [Github](https://github.com/) or [Gitlab](https://about.gitlab.com/)) when switching between different devices (for example, your desktop computer and your laptop). Otherwise, you can have merge conflicts and, trust me, you don't want that...*
 
 ### Text editor or IDE
 

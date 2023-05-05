@@ -75,7 +75,6 @@ exclude = '''
 [tool.mypy]
 warn_return_any = true
 warn_unused_configs = true
-ignore = []
 follow_imports = "silent"
 check_untyped_defs = true
 disallow_incomplete_defs = true
