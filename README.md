@@ -7,7 +7,7 @@
 
 
 
-Howdy! I present you some notes meant as a companion to the Python tips and tools talk for the Superconducting Qubit Technology school at Benasque 2023.
+Howdy! I present you some notes meant as a companion to the Python tips and tools talk for the [Superconducting Qubit Technology school](https://www.benasque.org/2023sqt/) at Benasque 2023.
 
 Since there are abundant online resources to learn Python, this document is quite succint and schematic. I tried to keep the files simple enough so that the essence of a Python project can be understood, but rich enough so that you, hopefully, learn new things! (No, we are not going to print "hello world" or explain `for` loops).
 
@@ -37,7 +37,7 @@ pip install -r requirements-dev.txt
 
 ### Jupyter notebooks
 
-If we also want to run jupyter notebooks, we must install the package `ipykernel`: 
+If we also want to run [jupyter](https://jupyter.org/try) notebooks, we must install the package `ipykernel`: 
 ```console
 pip install ipykernel
 ```
@@ -56,7 +56,7 @@ or, instead, we can clone this repository
 git clone https://github.com/pablovegan/Python-tips-tools-Benasque.git
 ```
 
-*Note: be sure to push and pull your changes to and from the cloud (i.e. [Github](https://github.com/) or [Gitlab](https://about.gitlab.com/)) when switching between different devices (for example, your desktop computer and your laptop). Otherwise, you can have merge conflicts and, trust me, you don't want that...*
+*Note: be sure to push and pull your changes to and from the cloud (e.g. [Github](https://github.com/) or [Gitlab](https://about.gitlab.com/)) when switching between different devices (for example, your desktop computer and your laptop). Otherwise, you can have merge conflicts and, trust me, you don't want that...*
 
 ### Text editor or IDE
 
@@ -406,34 +406,37 @@ warn_unused_configs = true
 
 ### Code acceleration
 
-Python is an interpreted language, which means the source code is executed directly without compiling the program into machine code. Thus, Python relies on an interpreter, the most common being [CPython](https://realpython.com/cpython-source-code-guide/) (which is programmed in C and not to be confused with Cython).
+Python is an [interpreted language](https://docs.python.org/3/glossary.html#term-interpreted), which means the source code is executed directly without compiling the program into machine code. Thus, Python relies on an interpreter, the most common being [CPython](https://realpython.com/cpython-source-code-guide/) (which is programmed in C and not to be confused with Cython).
 
-One disadvantage of interpreted languages over compiled ones is that they are slower. In the recent years many tools have emerged to accelerate python code; to name some of them:
+One disadvantage of interpreted languages over compiled ones is that they are slower. But no need to worry, since there is a wide range of tools for accelerating our code:
 
 - Just-in-time compilers: [Numba](https://numba.pydata.org/numba-doc/latest/user/5minguide.html), [JAX](https://jax.readthedocs.io/en/latest/notebooks/quickstart.html) and [PyPy](https://realpython.com/pypy-faster-python/).
 - Parallelization with [`pathos.multiprocessing`](https://pathos.readthedocs.io/en/latest/pathos.html#module-pathos.multiprocessing) and [`mpi4py`](https://mpi4py.readthedocs.io/en/stable/tutorial.html) (Message Passing Interface for Python).
 - Extend Python with C code: [Cython](https://github.com/juanjosegarciaripoll/cython_example) (the [`cythonbuilder`](https://pypi.org/project/cythonbuilder/) library makes our life easier).
 
+Just-in-time compilers are one the most popular tools in Python nowadays, specially with the increasing interest in the library [JAX](https://jax.readthedocs.io/en/latest/notebooks/quickstart.html). You can see a simple example of JIT with Numba in the [`5-jit-compiler.ipynb`](examples/5-jit-compiler.ipynb) notebook.
 
 ### Installing the library
 
-Before we install our local library, we need to specify some metadata and configuration settings; this is done in the [`pyproject.toml`](pyproject.toml) file (check out the [setuptools documentation](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html)). Then we can use the command `pip install` with the editable option, `-e`, over the current folder, `.`, to install our library:
+Before we install our local library, we need to specify some metadata and configuration settings; this is done in the [`pyproject.toml`](pyproject.toml) file (check out the [setuptools documentation](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html)). Then we can use `pip` with the editable option `-e` to install our library (where `.` points to the current —main— folder):
 
 ```console
 pip install -e .
 ```
-The advantage of installing the local package in editable mode is that when we make any change, the installed library is updated without reinstalling it.
+The advantage of installing the local package in editable mode is that, when we make any change, the installed library is updated without reinstalling it.
 
 
 ### Creating documentation
 
 If you want to create nice looking documentation and then upload it to a website (for free in Github Pages) you can follow [this tutorial](https://realpython.com/python-project-documentation-with-mkdocs/) using `mkdocs`. As a quick no-brainer guide:
 
-1. Create a config file `mkdocs.yml`. You can simply copy the file in this repo and change the basic info like the site's name or URL.
+1. Create a config file [`mkdocs.yml`](mkdocs.yml). You can simply copy the file in this repo and change the basic info like the site's name or URL.
 
-2. Add a [`docs`](docs) folder. Usually, it contains an [`index.md`](docs/index.md) markdown file that copies whatever you have in the `README.md` and displays it as the main page of the documentation website. It also contains additional markdown files that we want to display as pages in our site. To create the documentation for our package using the docstrings, we use the script [`gen_ref_nav.py`](docs/scripts/gen_ref_nav.py). Inside the script, you only need to change the name of the folder containing your library in the `PATH_LIBRARY` variable. Again, you can simply copy the docs folder in this repo and modify the script.
+2. Add a [`docs`](docs) folder. Usually, it contains an [`index.md`](docs/index.md) markdown file that copies whatever you have in the `README.md` and displays it as the main page of the documentation website. It may also contain additional markdown files that will make different sections of the website (each file is assigned a section in [`mkdocs.yml`](mkdocs.yml)).
 
-3. Add a Github workflow to build and deploy the website in Github Pages. You can just copy the workflow in [`.github/workflows/documentation.yml`](.github/workflows/documentation.yml) (more on workflows later on). Whenever you push changes to Github, the documentation will be updated.
+3. To create the documentation for our functions and methods using the docstrings, we use the script [`gen_ref_nav.py`](docs/scripts/gen_ref_nav.py). Inside the script, you only need to change the name of the folder containing your library in the `PATH_LIBRARY` variable. Again, you can simply copy the docs folder in this repo and modify the script.
+
+4. Add a Github workflow to build and deploy the website in Github Pages. You can just copy the workflow in [`.github/workflows/documentation.yml`](.github/workflows/documentation.yml) (more on workflows later on). Whenever you push changes to Github, the documentation will be updated.
 
 This repository's documentation can be found in https://pablovegan.github.io/Python-tips-tools-Benasque/.
 
@@ -480,7 +483,7 @@ The green tick near the commits shows that the workflows were successful.
 
 ![Github workflows](https://raw.githubusercontent.com/pablovegan/Python-tips-tools-Benasque/master/docs/images/github_workflows.png)
 
-*Cool tip*: we can add a badge at the beginning of our readme to show that the tests either passed or failed (this is updated automatically each time the tests are run).
+*Cool tip: we can add a badge at the beginning of our readme to show that the tests either passed or failed (this is updated automatically each time the tests are run).*
 
 
 ## Other things to look into
@@ -488,7 +491,7 @@ The green tick near the commits shows that the workflows were successful.
 - [Exception handling](https://www.programiz.com/python-programming/exception-handling): `try-except` statements. They work very well with custom error classes. An example can be found in the [`4-exceptions.ipynb`](examples/4-exceptions.ipynb) notebook inside the `examples` folder.
 - [Iterators and generators](https://www.datacamp.com/tutorial/python-iterators-generators-tutorial): look up the functions `iter()` and `next()`, and the keyword `yield`.
 - [Function and class decorators](https://www.programiz.com/python-programming/decorator): decorators are a simple sintax to transform certain functions or classes.
-- [Pre-commits](https://pre-commit.com/): pre-commit hooks allow us to do certain actions before commiting changes with git. For example, we can lint our code with Ruff and fix it with Black if it doesn't whenever we make a commit.
+- [Pre-commits](https://pre-commit.com/): pre-commit hooks allow us to do certain actions before commiting changes with git. For example, we can lint our code with Ruff and fix it with Black whenever we make a commit.
 
 
 ## Online resources
@@ -496,7 +499,7 @@ The green tick near the commits shows that the workflows were successful.
 Most of the material in this repo is covered in the excelent course [Python: Coding Guidelines, Tools, Tests and Packages](https://www.udemy.com/course/python-coding-guidelines-tooling-testing-and-packaging/?couponCode=FRANNECK_APR_2023).
 
 Of course, free online resources are abundant; to name a few I use frequently:
-- [Programiz](https://www.programiz.com/python-programming)
 - [Real Python](https://realpython.com/)
+- [Programiz](https://www.programiz.com/python-programming)
 - [Machine learning mastery](https://machinelearningmastery.com)
 - Libraries' documentation
