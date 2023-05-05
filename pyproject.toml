@@ -36,7 +36,7 @@ platforms = ["unix", "linux", "osx", "cygwin", "win32"]
 packages = ["mypackage"]  # optional
 
 [tool.setuptools.dynamic]
-version = {attr = "mypackage.__version__"}
+version = {attr = "mypackage._version.__version__"}
 dependencies = {file = ["requirements.txt"]}
 
 
