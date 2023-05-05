@@ -1,5 +1,5 @@
 # Python tips and tools
-[![documentation](https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=flat)](https://pablovegan.github.io/Python-tips-tools-Benasque/)
+[![documentation](https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=flat)](https://pablovegan.github.io/Python-tips-tools/)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v1.json)](https://github.com/charliermarsh/ruff)
 [![black](https://img.shields.io/badge/code%20style-black-black)](https://github.com/psf/black)
@@ -12,14 +12,14 @@ Howdy! I present you some notes meant as a companion to the Python tips and tool
 Since there are abundant online resources to learn Python, this document is quite succint and schematic. I tried to keep the files simple enough so that the essence of a Python project can be understood, but rich enough so that you, hopefully, learn new things! (No, we are not going to print "hello world" or explain `for` loops).
 
 
-## Table of Contents
+### Table of Contents
 
 1. [Getting started](#getting-started)
-   - [Conda](#conda)
-   - [Pip and PyPI](#pip-and-pypi)
-   - [Jupyter notebooks](#jupyter-notebooks)
-   - [Create a project and initialize git](#create-a-project-and-initialize-git)
-   - [Text editor or IDE](#text-editor-or-ide)
+   * [Conda](#conda)
+   * [Pip and PyPI](#pip-and-pypi)
+   * [Jupyter notebooks](#jupyter-notebooks)
+   * [Create a project and initialize git](#create-a-project-and-initialize-git)
+   * [Text editor or IDE](#text-editor-or-ide)
 2. [Python basics](#python-basics)
     - [Code structure](#code-structure)
     - [Packages or libraries](#packages-or-libraries)
@@ -473,7 +473,7 @@ If you want to create nice looking documentation and then upload it to a website
 
 4. Add a Github workflow to build and deploy the website in Github Pages. You can just copy the workflow in [`.github/workflows/documentation.yml`](.github/workflows/documentation.yml) (more on workflows later on). Whenever you push changes to Github, the documentation will be updated.
 
-This repository's documentation can be found in https://pablovegan.github.io/Python-tips-tools-Benasque/.
+This repository's documentation can be found in https://pablovegan.github.io/Python-tips-tools/.
 
 
 ### Building and uploading to PyPI
@@ -497,7 +497,7 @@ twine upload dist/*
 
 Once the package is in PyIP, you can install it in your environment:
 ```console
-pip install python-tips-tools-benasque
+pip install python-tips-tools
 ```
 (I only [uploaded my package](https://test.pypi.org/project/python-tips-tools-benasque/) to TestPyPI, since it is not very usefull as a standalone library).
 
@@ -505,14 +505,14 @@ pip install python-tips-tools-benasque
 
 ### Automating boring tasks with Github workflows
 
-Ordinary tasks in a developers day such as testing (in multiple operating systems and Python versions), releasing packages and uploading them to PyPI, updating the documentation in a website, etc., can all be automated using workflows. Most cloud repositories like Github or Gitlab have them available and are really easy to use (at least the basic ones).
+Ordinary tasks in a developer's day such as testing in multiple operating systems and Python versions, releasing packages and uploading them to PyPI, updating the documentation in a website, etc., can all be automated using [workflows](https://docs.github.com/en/actions/using-workflows/about-workflows). Most cloud repositories like Github or Gitlab have them available and are really easy to use (at least the basic ones).
 
-In this repo, I added two Github workflows: one to test our library in a linux machine (provided by Github) with Python version 3.10, and another to upload the documentation to Github Pages. The workflows can be found under the folder `.github/workflows` in `*.yml` files. As an example, the structure of the [`test.yml`](.github/workflows/tests.yml) file is:
+In this repo, I added two Github workflows: one to test our library in a linux machine (provided by Github) with Python version 3.10 and another to upload the documentation to Github Pages. The workflows can be found under the folder [`.github/workflows`](.github/workflows/) in `*.yml` files. As an example, the structure of the [`test.yml`](.github/workflows/tests.yml) file is:
 
-1. Apply the action when we git push to or pull from the repository.
+1. Apply the action when we git push to the repository.
 2. Create an Ubuntu Linux machine with python 3.10 installed.
-3. Install `pytest` as well as the dependencies under the [`requirements.txt`](requirements.txt) file.
-4. Run the tests inside the `tests` folder using `pytest`.
+3. Install `pytest` as well as the dependencies in the [`requirements.txt`](requirements.txt) file.
+4. Run the tests inside the [`tests`](tests) folder using `pytest`.
 
 The green tick near the commits shows that the workflows were successful.
 
