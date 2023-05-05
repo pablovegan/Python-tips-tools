@@ -1,3 +1,3 @@
-from .vector import Vector, NormError
-from .linearmap import LinearMap, Rotation, Shear
-from ._version import __version__
+from mypackage.vector import Vector, NormError
+from mypackage.linearmap import LinearMap, Rotation, Shear
+from mypackage._version import __version__

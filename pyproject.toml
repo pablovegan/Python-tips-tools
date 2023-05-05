@@ -1,3 +1,7 @@
+######## Building
+
+### Setuptools
+
 [build-system]
 requires = [
     "setuptools",
@@ -24,32 +28,8 @@ classifiers = [
     "Operating System :: Unix",
     "Operating System :: MacOS",
 ]
-dependencies = [
-    "numpy>=1.21.6; python_version<'3.11'",
-    "numpy>=1.23.2; python_version>='3.11'",
-]
-dynamic = ["version"]
 
-[project.optional-dependencies]
-test = [
-    "pytest",
-    "pre-commit",
-]
-doc = [
-    "mkdocs",
-    "mkdocstrings",
-    "mkdocstrings[python]",
-    "mkdocs-material",
-    "Pygments",
-]
-dev = [
-    "black",
-    "isort",
-    "mypy",
-    "pre-commit",
-    "ruff",
-]
-all = ["mypackage[test,doc,dev]"]
+dynamic = ["version", "dependencies"]
 
 [tool.setuptools]
 platforms = ["unix", "linux", "osx", "cygwin", "win32"]
@@ -57,13 +37,20 @@ packages = ["mypackage"]  # optional
 
 [tool.setuptools.dynamic]
 version = {attr = "mypackage.__version__"}
+dependencies = {file = ["requirements.txt"]}
+
+
+
+######## Tools
+
+### Pytest
 
 [tool.pytest.ini_options]
 minversion = "7.3"
 testpaths = "tests"
 
 
-######## Tools
+### Black
 
 [tool.black]
 line-length = 100
@@ -81,6 +68,9 @@ exclude = '''
   | setup.py
 )
 '''
+
+
+### MyPy
 
 [tool.mypy]
 warn_return_any = true
@@ -100,6 +90,9 @@ allow_redefinition = false
 local_partial_types = false
 implicit_reexport = true
 strict_equality = true
+
+
+### Ruff
 
 [tool.ruff]
 line-length = 100
