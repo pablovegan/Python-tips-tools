@@ -1,14 +1,21 @@
 """Script to generate the reference pages and navigation for our library."""
 
+import sys
+import os
 from pathlib import Path
 
 import mkdocs_gen_files
 
 
+nav = mkdocs_gen_files.Nav()
 PATH_LIBRARY = "mypackage"  # change this with your library's name
 
 
-nav = mkdocs_gen_files.Nav()
+if os.path.isdir(PATH_LIBRARY) is False:
+    sys.exit(
+        "Package folder was not found. Please change the PATH_LIBRARY"
+        " variable in the docs/scripts/gen_ref_nav.py script."
+    )
 
 
 for path in sorted(Path(PATH_LIBRARY).rglob("*.py")):
@@ -36,7 +43,6 @@ for path in sorted(Path(PATH_LIBRARY).rglob("*.py")):
         fd.write("\t\tshow_source: true\n")
 
     mkdocs_gen_files.set_edit_path(full_doc_path, path)
-    # mkdocs_gen_files.set_edit_path(full_doc_path, Path("../") / path)
 
 with mkdocs_gen_files.open("reference/SUMMARY.txt", "w") as nav_file:
     nav_file.writelines(nav.build_literate_nav())
