@@ -99,13 +99,13 @@ I'm a [Visual Studio Code](https://code.visualstudio.com/) (VSCode) enjoyer beca
 
 Here are some of the extensions I use in VSCode:
 
-* Python
-* IntelliCode
-* Jupyter
-* Ruff
-* Gitlens
-* GitHub Pull requests and issues
-* autoDocstring
+* [Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
+* [IntelliCode](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
+* [Jupyter](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter)
+* [Ruff](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff)
+* [GitHub Pull requests and issues](https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github)
+* [Gitlens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens)
+* [autoDocstring](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring)
 
 One tip for VSCode: you can hide cache folders from the file explorer in `Settings -> Files: Exclude`.
 
@@ -298,7 +298,7 @@ _to see the mismatches, if any._
 
 These docstrings can follow different conventions; one of the most popular one is the [Google style](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html). I personally like it because it is very clear and compact (Numpy style, in contrast, occupies more lines).
 
-To create them in a fast and easy way, I use the autoDocstrings extension for VSCode. Once our function is type annotated, we type `"""` and click in `Generate Docstrings`; it will automatically create the template using the annotated inputs and outputs of the function, as well as the exceptions raised.
+To create them in a fast and easy way, I use the [autoDocstring](https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring) extension for VSCode. Once our function is type annotated, we type `"""` and click in `Generate Docstrings`; it will automatically create the template using the annotated inputs and outputs of the function, as well as the exceptions raised.
 
 
 ## Tools
@@ -309,7 +309,7 @@ How do we know if the functions in our library work as they are supposed to? Sur
 
 Testing is a world on its own, especially in the so-called _Test Driven Development_ (TDD), and we will barely touch the surface in this demo... but it is enough for the needs of most physicists. Just as a sneak peak: we can test how different units fit together (integration testing), test a whole application (system testing), test in different operating systems, etc.
 
-The tool we will use for unit testing is `pytest`. To keep our code organized, outside our library we create another folder called [`tests`](tests). Inside it, we place different modules `test_*.py`; in our case, we have one for each subpackage: [`test_vector.py`](tests/test_vector.py) and [`test_linear_map.py`](tests/test_linear_map.py). Inside each of these, we test all the functions and methods in the module (don't forget to test the exceptions as well!). The syntax is really easy, you just need to use the `@pytest.mark.parametrize` decorator to tell pytest which inputs and expected results you want to test. For example:
+The tool we will use for unit testing is `pytest`. To keep our code organized, outside our library we create another folder called [`tests`](tests). Inside it, we place different modules `test_*.py`; in our case, we have one for each subpackage: [`test_vector.py`](tests/test_vector.py) and [`test_linear_map.py`](tests/test_linear_map.py). Inside each of these, we test all the functions and methods in the module (don't forget to test the exceptions as well!). The syntax is really easy, you just need to use the `@pytest.mark.parametrize` decorator to tell pytest which inputs and expected results you want to test. For example, to assert that 1+2=3 and 3.0-1=2.0:
 
 ````python
 @pytest.mark.parametrize(
@@ -323,10 +323,15 @@ def test_sum(arg_1, arg_2, result):
     assert arg_1 + arg_2 == result
 ````
 
-To run the tests inside the `tests` folder simply run from the command line
+To run all the tests inside the `tests` folder simply run, from the command line,
 ```console
 pytest tests
 ```
+Or to perform only one test:
+```console
+pytest tests/test_vector.py
+```
+If you don't enjoy the command line, the [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) for VSCode allows us to run the tests easily from a graphic interface.
 
 *Note: In the workflows section we will see how to automate this.*
 
@@ -373,7 +378,7 @@ ruff check mypackage/vector/vector.py
 ```console
 ruff check --fix mypackage/vector/vector.py
 ```
-Unless we are one of those old school programmers that read their email on the terminal, we can avoid using the command line by installing the Ruff extension for VSCode (or whatever tool your IDE provides).
+Unless we are one of those old school programmers that read their email on the terminal, we can avoid using the command line by installing the [Ruff extension](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff) for VSCode (or whatever tool your IDE provides).
 
 You can [configure](https://beta.ruff.rs/docs/configuration/) the line lenght, what rules to ignore and other options in [`pyproject.toml`](pyproject.toml). For example,
 
