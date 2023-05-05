@@ -11,6 +11,41 @@ Howdy! I present you some notes meant as a companion to the Python tips and tool
 
 Since there are abundant online resources to learn Python, this document is quite succint and schematic. I tried to keep the files simple enough so that the essence of a Python project can be understood, but rich enough so that you, hopefully, learn new things! (No, we are not going to print "hello world" or explain `for` loops).
 
+
+## Table of Contents
+
+1. [Getting started](#getting-started)
+   - [Conda](#conda)
+   - [Pip and PyPI](#pip-and-pypi)
+   - [Jupyter notebooks](#jupyter-notebooks)
+   - [Create a project and initialize git](#create-a-project-and-initialize-git)
+   - [Text editor or IDE](#text-editor-or-ide)
+2. [Python basics](#python-basics)
+    - [Code structure](#code-structure)
+    - [Packages or libraries](#packages-or-libraries)
+    - [Modules](#modules)
+    - [Objects and classes](#objects-and-classes)
+    - [Variables](#variables)
+    - [Type hints](#type-hints)
+    - [Docstrings](#docstrings)
+3. [Tools](#tools)
+    - [Testing](#testing)
+    - [Debugging](#debugging)
+    - [Timing](#timing)
+    - [Profiling](#profiling)
+    - [Linters](#linters)
+    - [Formatters](#formatters)
+    - [Type checker](#type-checker)
+4. [Bit more advanced stuff](#bit-more-advanced-stuff)
+    - [Code acceleration](#code-acceleration)
+    - [Installing the library](#installing-the-library)
+    - [Creating documentation](#creating-documentation)
+    - [Building and uploading to PyPI](#building-and-uploading-to-pypi)
+    - [Automating boring tasks with Github workflows](#automating-boring-tasks-with-github-workflows)
+5. [Other things to look into](#other-things-to-look-into)
+6. [Online resources](#online-resources)
+
+
 ## Getting started
 
 ### Conda
