@@ -16,9 +16,9 @@ Since there are abundant online resources to learn Python, this document is quit
 
 1. [Getting started](#getting-started)
    * [Conda](#conda)
+   * [Create a project and initialize git](#create-a-project-and-initialize-git)
    * [Pip and PyPI](#pip-and-pypi)
    * [Jupyter notebooks](#jupyter-notebooks)
-   * [Create a project and initialize git](#create-a-project-and-initialize-git)
    * [Text editor or IDE](#text-editor-or-ide)
 2. [Python basics](#python-basics)
     - [Code structure](#code-structure)
@@ -429,7 +429,7 @@ line-length = 100
 
 ### Type checker
 
-The most popular type checker is [`mypy`](https://mypy.readthedocs.io/en/stable/getting_started.html). Provided that we type hinted our functions and variables, this tool checks any mismatches between the expected input and output types and the actual ones. It can also highlight deeper errors in your code structure, like violations of Liskov substitution principle.
+The most popular type checker is [`mypy`](https://mypy.readthedocs.io/en/stable/getting_started.html). Provided that we type hinted our functions and variables, this tool checks any mismatches between the expected input and output types and the actual ones. It can also highlight deeper errors in your code structure, like violations of [Liskov substitution principle](https://realpython.com/solid-principles-python/#liskov-substitution-principle-lsp).
 
 ```console
 mypy mypackage
