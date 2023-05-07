@@ -28,6 +28,8 @@ classifiers = [
     "Operating System :: Unix",
     "Operating System :: MacOS",
 ]
+repository = "https://github.com/pablovegan/Python-tips-tools"
+documentation = "https://pablovegan.github.io/Python-tips-tools/"
 
 dynamic = ["version", "dependencies"]
 
