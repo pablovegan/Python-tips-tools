@@ -166,7 +166,7 @@ Simply, a module is a `.py` file consisting of Python code. A module can define 
 Python modules should more or less follow this structure:
 
 1. Module docstrings should appear at the very beginning, just before the imports. 
-2. Imports should follow this order: standard Python library, third party and local libraries, each group separated by one empty line. Also, one should not import from more than one library per line.
+2. Imports should follow this order: standard Python library, third party and local libraries, each group separated by one empty line. Also, one should not import from more than one library per line. (*Tip:* You can use [`isort`](https://github.com/PyCQA/isort) to sort automatically all your imports).
 3. Module constants, separated from the imports by two empty lines. Constants should follow the `UPPER_CASE_WITH_UNDERSCORES` [naming convention](https://peps.python.org/pep-0008/#naming-conventions).
 4. Functions, separated again by two empty lines. Function names should follow the `lower_case_with_underscores` convention.
 5. Exception classes.
