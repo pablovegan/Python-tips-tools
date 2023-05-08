@@ -480,6 +480,11 @@ If you want to create nice looking documentation and then upload it to a website
 
 4. Add a Github workflow to build and deploy the website in Github Pages. You can just copy the workflow in [`.github/workflows/documentation.yml`](.github/workflows/documentation.yml) (more on workflows later on). Whenever you push changes to Github, the documentation will be updated.
 
+5. (Optional). Before uploading our documentation to the website, we can build it and host it locally on our computer to see the final result. Simply run from the command line
+```console
+mkdocs serve
+```
+
 This repository's documentation can be found in https://pablovegan.github.io/Python-tips-tools/.
 
 
