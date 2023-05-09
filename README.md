@@ -495,7 +495,7 @@ If you want to create nice looking documentation and then upload it to a website
 
 5. (Optional). Before uploading our documentation to the website, we can build it and host it locally on our computer to see the final result. Simply run from the command line
 ```console
-mkdocs serve
+mkdocs serve --config-file docs/mkdocs.yml
 ```
 
 This repository's documentation can be found in https://pablovegan.github.io/Python-tips-tools/.
