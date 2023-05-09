@@ -50,7 +50,7 @@ Since there are abundant online resources to learn Python, this document is quit
 
 ### Conda
 
-The first thing we should do when working on a new project is to create a conda environment that suits our third-party library needs (with their corresponding versions), unless we already have one. I suggest you use the light version of conda, [`miniconda`](https://docs.conda.io/en/latest/miniconda.html), which only installs the standard Python libraries. Then you can always install whatever you need in a new environment to keep it all clean and tidy.
+The first thing we should do when working on a new project is to create a virtual environment that suits our third-party library needs (with their corresponding versions), unless we already have one. I personally use the light version of conda, [`miniconda`](https://docs.conda.io/en/latest/miniconda.html), which only installs the standard Python libraries. Then you can always install whatever you need in a new environment to keep it all clean and tidy. Very interesting alternatives to `conda` exist, although I still haven't tried them: [`Poetry`](https://python-poetry.org/docs/basic-usage/) and [`Pipenv`](https://github.com/pypa/pipenv).
 
 So, we start by creating and **activating** a new environment
 
@@ -58,7 +58,7 @@ So, we start by creating and **activating** a new environment
 conda create -n env_name python==3.10
 conda activate env_name
 ```
-*Note: always remember to activate your conda environment before using Python or installing new libraries. Do not install third party libraries in the base environment!*
+*Note: always remember to activate your environment before using Python or installing new libraries. Do not install third party libraries in the base environment!*
 
 ### Create a project and initialize git
 
@@ -348,7 +348,9 @@ If you don't enjoy the command line, the [Python extension](https://marketplace.
 
 ### Debugging
 
-How many times have you found yourself adding dozens of `print()` statements to your code to catch an error? You are not the only one... But turns out there is a much better way: use the [debugger](https://python.land/creating-python-programs/python-in-vscode) in your IDE. You can add breakpoints, execute single lines, see what value each variable has, step into the functions inside your library, see the call stack... A good idea is to debug your tests, since they, ideally, are the best tool to see if your code is really working.
+How many times have you found yourself adding dozens of `print()` statements to your code to catch an error? You are not the only one... But turns out there is a much better way: use the [debugger](https://python.land/creating-python-programs/python-in-vscode) in your IDE. You can add breakpoints, execute single lines, see what value each variable has, step into the functions inside your library, see the call stack... A good idea is to debug your tests, since they, ideally, are the final check to see if your code is really working.
+
+*Note: if you don't have an IDE at hand, you can run, through the command line, [The Python Debugger](https://realpython.com/python-debugging-pdb/), which is included in the standard library.*
 
 
 ### Timing
