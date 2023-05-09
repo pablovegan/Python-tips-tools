@@ -162,7 +162,7 @@ The `tests` folder can also contain a `__init__.py` file, but we can leave it em
 
 ### Modules
 
-Simply, a module is a `.py` file consisting of Python code. A module can define functions, classes and variables...
+Simply, a module is a `.py` file consisting of Python code. A module can define [functions](https://www.youtube.com/watch?v=vIkpCOY-yGs), classes and variables...
 
 Python modules should more or less follow this structure:
 
@@ -189,7 +189,7 @@ There is no exact rule on how much code should be in each module, but, ideally, 
 
 Python is an object oriented language; everything in Python is an [**object**](https://www.programiz.com/python-programming/class) (even packages!), i.e. any data with a state (attributes) and defined behavior (methods). Attributes are values associated with an object; they are usually referenced by name using dotted expressions.
 
-A [class](https://docs.python.org/3/glossary.html#term-class) is a template for creating user-defined objects and normally contains methods which operate on instances of the class. [Methods](https://docs.python.org/3/glossary.html#term-method) are functions defined inside a class body. (For an in-depth introduction to classes in Python [see](https://realpython.com/python-classes/)).
+A [class](https://docs.python.org/3/glossary.html#term-class) is a template for creating user-defined objects and normally contains methods which operate on instances of the class. [Methods](https://docs.python.org/3/glossary.html#term-method) are [functions](https://www.youtube.com/watch?v=vIkpCOY-yGs) defined inside a class body. (For an in-depth introduction to classes in Python [see](https://realpython.com/python-classes/)).
 
 When we instantiate a new object of a certain class, the `__new__` method is called in the background, which creates a new empty object that is then initialized through the `__init__` method.
 

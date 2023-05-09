@@ -192,6 +192,7 @@ class Vector:
             >>> vector = Vector(1,0)
             >>> vector.norm
             1.0
+
         """
         return np.sqrt(self.x**2 + self.y**2)
 
@@ -205,6 +206,11 @@ class Vector:
 
         Returns:
             Vector: The projected vector.
+
+        Examples:
+            >>> Vector(1,1).projection(Vector(0,1))
+            vector.Vector(0.0, 1.0)
+
         """
         if subspace is None:
             warnings.warn(
