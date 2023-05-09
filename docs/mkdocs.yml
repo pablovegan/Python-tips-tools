@@ -3,7 +3,8 @@ site_description: "Short Python tips and tools notes for the Superconducting Qub
 
 repo_url: https://github.com/pablovegan/Python-tips-tools-Benasque
 repo_name: pablovegan/Python-tips-tools-Benasque
-watch: [README.md, mypackage]
+docs_dir: ./
+watch: [../README.md, ../mypackage]
 
 
 nav:
@@ -41,7 +42,7 @@ plugins:
   - autorefs
   - gen-files:
       scripts:
-      - docs/scripts/gen_ref_nav.py
+      - scripts/gen_ref_nav.py
   - literate-nav:
       nav_file: SUMMARY.txt
   - section-index

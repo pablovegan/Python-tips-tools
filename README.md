@@ -122,6 +122,7 @@ Once we have a folder for our project, we equip it with the following structure:
 ├── pyproject.toml
 ├── requirements.txt
 ├── ... other files ...
+├── docs
 ├── mypackage
 │   ├── __init__.py
 │   ├── vector
@@ -482,9 +483,9 @@ The advantage of installing the local package in editable mode is that, when we 
 
 If you want to create nice looking documentation and then upload it to a website (for free in Github Pages) you can follow [this tutorial](https://realpython.com/python-project-documentation-with-mkdocs/) using `mkdocs`. As a quick no-brainer guide:
 
-1. Create a config file [`mkdocs.yml`](mkdocs.yml). You can simply copy the file in this repo and change the basic info like the site's name or URL.
+1. Add a [`docs`](docs) folder. Usually, it contains an [`index.md`](docs/index.md) markdown file that copies whatever you have in the `README.md` and displays it as the main page of the documentation website. It may also contain additional markdown files that will make different sections of the website (each file is assigned a section in [`mkdocs.yml`](mkdocs.yml)).
 
-2. Add a [`docs`](docs) folder. Usually, it contains an [`index.md`](docs/index.md) markdown file that copies whatever you have in the `README.md` and displays it as the main page of the documentation website. It may also contain additional markdown files that will make different sections of the website (each file is assigned a section in [`mkdocs.yml`](mkdocs.yml)).
+2. Create a config file [`mkdocs.yml`](docs/mkdocs.yml). You can simply copy the file in this repo and change the basic info like the site's name or URL.
 
 3. To create the documentation for our functions and methods using the docstrings, we use the script [`gen_ref_nav.py`](docs/scripts/gen_ref_nav.py). Inside the script, you only need to change the name of the folder containing your library in the `PATH_LIBRARY` variable. Again, you can simply copy the docs folder in this repo and modify the script.
 
