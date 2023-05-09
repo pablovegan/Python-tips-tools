@@ -112,6 +112,12 @@ class Vector:
 
         Returns:
             The addition vector of self and the other vector.
+
+        Examples:
+
+            >>> Vector(1, 0) + Vector(0, 1)
+            vector.Vector(1, 1)
+
         """
         if not isinstance(other_vector, Vector):
             raise TypeError("You must pass in a Vector instance!")
@@ -130,6 +136,15 @@ class Vector:
 
         Returns:
             The multiplication of self and the other vector/number.
+
+        Examples:
+
+            >>> Vector(1, 0) * 4
+            vector.Vector(4, 0)
+
+            >>> Vector(1, 0) * Vector(1, 1)
+            1
+
         """
         if isinstance(other, Vector):
             return self.x * other.x + self.y * other.y
@@ -148,6 +163,12 @@ class Vector:
         Returns:
             True, if both vectors have the same values.
             False, else.
+
+        Examples:
+
+            >>> Vector(1, 0) == Vector(2, 0)
+            False
+
         """
         if not isinstance(other_vector, Vector):
             return False
