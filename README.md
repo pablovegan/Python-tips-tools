@@ -54,10 +54,10 @@ The first thing we should do when working on a new project is to create a virtua
 
 So, we start by creating and **activating** a new environment
 
-```console
+````console
 conda create -n env_name python==3.10
 conda activate env_name
-```
+````
 *Note: always remember to activate your environment before using Python or installing new libraries. Do not install third party libraries in the base environment!*
 
 ### Create a project and initialize git
