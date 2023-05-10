@@ -11,9 +11,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "python-tips-tools-benasque"
-authors = [
-    {name = "Pablo V. Parellada"},
-]
+authors = ["Pablo V. Parellada <pablovegan98@gmail.com>"]
 description = "This is an example python project."
 readme = "README.md"
 license = {file = "LICENSE"}
