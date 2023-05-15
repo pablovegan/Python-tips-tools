@@ -155,7 +155,7 @@ For the moment, we will not worry about the `docs` folder (files to create docum
 
 A [**package**](https://docs.python.org/3/reference/import.html#packages) or **library** is a collection of Python `.py` modules organized in directories. The main directory is the package and the subdirectories are its subpackages, with their names following the `lowercasenames` convention, without underscores.
 
-As you may have noticed in the project structure, every folder inside our package has a `__init__.py` file (read "dunder init"). The code inside it will be called whenever we import the library. Usually, it only contains imports of functions or classes from other `.py` files or directories at the same level, but it can include any piece of code.
+As you may have noticed in the project structure, every folder inside our package has a `__init__.py` file (read "dunder init"). The code inside it will be called whenever we [import](https://realpython.com/python-import/) the library. Usually, it only contains imports of functions or classes from other `.py` files or directories at the same level, but it can include any piece of code.
 
 The `tests` folder can also contain a `__init__.py` file, but we can leave it empty since we are not going to import the tests package.
 
@@ -167,7 +167,7 @@ Simply, a module is a `.py` file consisting of Python code. A module can define 
 Python modules should more or less follow this structure:
 
 1. Module docstrings should appear at the very beginning, just before the imports. 
-2. Imports should follow this order:
+2. [Imports](https://realpython.com/python-import/) should follow this order:
    * `__future__`
    * `standard_libraries`
    * `third_party`
