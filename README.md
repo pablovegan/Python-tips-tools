@@ -191,7 +191,7 @@ Python is an object oriented language; everything in Python is an [**object**](h
 
 A [class](https://docs.python.org/3/glossary.html#term-class) is a template for creating user-defined objects and normally contains methods which operate on instances of the class. [Methods](https://docs.python.org/3/glossary.html#term-method) are [functions](https://www.youtube.com/watch?v=vIkpCOY-yGs) defined inside a class body. (For an in-depth introduction to classes in Python [see](https://realpython.com/python-classes/)).
 
-When we instantiate a new object of a certain class, the `__new__` method is called in the background, which creates a new empty object that is then initialized through the `__init__` method.
+Every class in Python has, ultimately, `type` as a base class (more on subclasses and inheritance later on). When we instantiate a new object of a certain class (for example, `obj = myclass()`), the `__call__` method of `type` is [invoked](https://realpython.com/python-metaclasses/#custom-metaclasses) in the background, which in turn calls the `__new__` and `__init__` methods: the former creates a new empty object of the class, while the latter initializes the object.
 
 ```python
 class Friend:
