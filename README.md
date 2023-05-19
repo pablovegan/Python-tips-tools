@@ -560,12 +560,11 @@ The green tick near the commits shows that the workflows were successful.
 
 ## Online resources
 
-Most of the material in this repo is covered in the excelent course [Python: Coding Guidelines, Tools, Tests and Packages](https://www.udemy.com/course/python-coding-guidelines-tooling-testing-and-packaging/?couponCode=FRANNECK_APR_2023).
+Most of the material in this repo is covered in the excelent course [Python: Coding Guidelines, Tools, Tests and Packages](https://www.udemy.com/course/python-coding-guidelines-tooling-testing-and-packaging/?couponCode=FRANNECK_APR_2023). I also encourage you to watch the sublime talk by James Powell _[So you want to be a Python expert?](https://www.youtube.com/watch?v=cKPlPJyQrt4)_
 
 Of course, free online resources are abundant; to name a few I use frequently:
 - [Real Python](https://realpython.com/)
 - [Programiz](https://www.programiz.com/python-programming)
 - [Dive into Python 3](https://diveintopython3.net/)
-- [So you want to be a Python expert?](https://www.youtube.com/watch?v=cKPlPJyQrt4) (2 hour talk)
 - [Machine learning mastery](https://machinelearningmastery.com)
 - Libraries' documentation
