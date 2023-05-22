@@ -552,6 +552,7 @@ The green tick near the commits shows that the workflows were successful.
 - [List comprehensions](https://www.programiz.com/python-programming/list-comprehension), lambda functions and the functions `map()` and `filter()`.
 - [Exception handling](https://www.programiz.com/python-programming/exception-handling): `try-except` statements. They work very well with custom error classes. An example can be found in the [`4-exceptions.ipynb`](examples/4-exceptions.ipynb) notebook inside the `examples` folder.
 - [Iterators and generators](https://www.datacamp.com/tutorial/python-iterators-generators-tutorial): look up the functions `iter()` and `next()`, and the keyword `yield`.
+- [Coroutines](https://www.geeksforgeeks.org/coroutine-in-python/): cooperative multitasking.
 - [Function and class decorators](https://www.programiz.com/python-programming/decorator): decorators are a simple sintax to transform certain functions or classes.
 - [Pre-commits](https://pre-commit.com/): pre-commit hooks allow us to do certain actions before commiting changes with git. For example, we can lint our code with Ruff and fix it with Black whenever we make a commit.
 - [Entry points](https://setuptools.pypa.io/en/latest/userguide/entry_point.html): invoke functions or scripts from command line without using `python -m`.
