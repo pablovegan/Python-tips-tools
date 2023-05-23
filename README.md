@@ -203,7 +203,7 @@ class Friend:
 
 
 iris = Friend(fav_movie="Shrek")
-print(iris.fav_movie)  # access the fav_movie attribute of iris
+print(f"{iris.fav_movie = }")  # access the fav_movie attribute of iris
 ```
 
 In Python, methods that start and end with the double underscores are called [**special methods**](https://docs.python.org/3/reference/datamodel.html#specialnames) (also called magic methods or _dunder_ methods). Special methods are called internally by Python, so they are not meant to be invoked directly by you. For example, when you add two integers using the + operator, Python is implicitly calling the `__add__()` method inside the `int` class.
