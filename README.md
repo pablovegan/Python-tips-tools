@@ -55,23 +55,23 @@ The first thing we should do when working on a new project is to create a virtua
 So, we start by creating and **activating** a new environment
 
 ````console
-conda create -n env_name python==3.10
-conda activate env_name
+$ conda create -n env_name python==3.10
+$ conda activate env_name
 ````
 *Note: always remember to activate your environment before using Python or installing new libraries. Do not install third party libraries in the base environment!*
 
 ### Create a project and initialize git
 
-Next, we create our project folder and initialize [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) inside it
+Next, we create our project folder and initialize [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) inside it, so we can use [version control](https://realpython.com/python-git-github-intro/).
 ```console
-mkdir my_project
-cd my_project
-git init
+$ mkdir my_project
+$ cd my_project
+$ git init
 ```
 
 or, instead, we can clone this repository
 ```console
-git clone https://github.com/pablovegan/Python-tips-tools.git
+$ git clone https://github.com/pablovegan/Python-tips-tools.git
 ```
 
 *Note: be sure to push and pull your changes to and from the cloud (e.g. [Github](https://github.com/) or [Gitlab](https://about.gitlab.com/)) when switching between different devices (for example, your desktop computer and your laptop). Otherwise, you can have merge conflicts and, trust me, you don't want that...*
@@ -84,14 +84,14 @@ Once Python is installed, we can use either `pip` or `conda` to install new libr
 
 To simplify our life, we will install the third-party libraries we need from a .txt file named [`requirements-dev.txt`](requirements-dev.txt), which also installs the dependencies in the [`requirements.txt`](requirements.txt) file (intended just for users of the library, not developers).
 ```console
-pip install -r requirements-dev.txt
+$ pip install -r requirements-dev.txt
 ```
 
 ### Jupyter notebooks
 
 If we also want to run [jupyter](https://jupyter.org/try) notebooks, we must install the package `ipykernel`: 
 ```console
-pip install ipykernel
+$ pip install ipykernel
 ```
 
 ### Text editor or IDE
@@ -155,7 +155,7 @@ For the moment, we will not worry about the `docs` folder (files to create docum
 
 A [**package**](https://docs.python.org/3/reference/import.html#packages) or **library** is a collection of Python `.py` modules organized in directories. The main directory is the package and the subdirectories are its subpackages, with their names following the `lowercasenames` convention, without underscores.
 
-As you may have noticed in the project structure, every folder inside our package has a `__init__.py` file (read "dunder init"). The code inside it will be called whenever we import the library. Usually, it only contains imports of functions or classes from other `.py` files or directories at the same level, but it can include any piece of code.
+As you may have noticed in the project structure, every folder inside our package has a `__init__.py` file (read "dunder init"). The code inside it will be called whenever we [import](https://realpython.com/python-import/) the library. Usually, it only contains imports of functions or classes from other `.py` files or directories at the same level, but it can include any piece of code.
 
 The `tests` folder can also contain a `__init__.py` file, but we can leave it empty since we are not going to import the tests package.
 
@@ -167,7 +167,7 @@ Simply, a module is a `.py` file consisting of Python code. A module can define 
 Python modules should more or less follow this structure:
 
 1. Module docstrings should appear at the very beginning, just before the imports. 
-2. Imports should follow this order:
+2. [Imports](https://realpython.com/python-import/) should follow this order:
    * `__future__`
    * `standard_libraries`
    * `third_party`
@@ -191,7 +191,7 @@ Python is an object oriented language; everything in Python is an [**object**](h
 
 A [class](https://docs.python.org/3/glossary.html#term-class) is a template for creating user-defined objects and normally contains methods which operate on instances of the class. [Methods](https://docs.python.org/3/glossary.html#term-method) are [functions](https://www.youtube.com/watch?v=vIkpCOY-yGs) defined inside a class body. (For an in-depth introduction to classes in Python [see](https://realpython.com/python-classes/)).
 
-When we instantiate a new object of a certain class, the `__new__` method is called in the background, which creates a new empty object that is then initialized through the `__init__` method.
+Every class in Python has, ultimately, `type` as a base class (more on subclasses and inheritance later on). When we instantiate a new object of a certain class (for example, `obj = myclass()`), the `__call__` method of `type` is [invoked](https://realpython.com/python-metaclasses/#custom-metaclasses) in the background, which in turn calls the `__new__` and `__init__` methods: the former creates a new empty object of the class, while the latter initializes the object.
 
 ```python
 class Friend:
@@ -241,6 +241,8 @@ class Square(Shape):
         return self.side * self.side
 ```
 As another example, the [`linear_map.py`](mypackage/linearmap/linear_map.py) module of our library implements the `Rotation` and `Shear` transforms as subclasses of the abstract class `LinearMap`.
+
+_Tip: improve object-oriented programming applying the [SOLID principles](https://realpython.com/solid-principles-python/)._
 
 Last but not least, we need to be aware of that Python objects fall into two categories: [mutable or immutable](https://realpython.com/python-mutable-vs-immutable-types/). An immutable object is the one that cannot be changed after it is created; even when you think you are changing the object, you are really making new objects from old ones. Immutable objects include numbers, strings, and tuples. Almost everything else is mutable, including lists, dicts, and user-defined objects. Mutable means that the value has methods that can change the value in-place. To learn more about this, check out the example notebook [`3-mutable-objects.ipynb`](examples/3-mutable-objects.ipynb).
 
@@ -303,7 +305,7 @@ Examples:
 _Note: An easy way to check if the example code gives the expected result without jumping into a jupyter notebook to test it is using the tool `doctest`, which is part of the standard library. Simply, from the command line, execute_
 
 ````console
-python -m doctest mypackage/linearmap/linear_map.py
+$ python -m doctest mypackage/linearmap/linear_map.py
 ````
 _to see the mismatches, if any._
 
@@ -336,11 +338,11 @@ def test_sum(arg_1, arg_2, result):
 
 To run all the tests inside the `tests` folder simply run, from the command line,
 ```console
-pytest tests
+$ pytest tests
 ```
 Or to perform only one test:
 ```console
-pytest tests/test_vector.py
+$ pytest tests/test_vector.py
 ```
 If you don't enjoy the command line, the [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) for VSCode allows us to run the tests easily from a graphic interface.
 
@@ -357,8 +359,8 @@ How many times have you found yourself adding dozens of `print()` statements to 
 
 Even if our code runs without errors, it might not be very useful if it takes too long to do the task. To benchmark our code and find possible bottlenecks, we can use the library `timeit`, which executes a piece of code a number of times and returns the CPU time taken to run it. As an example, we can run the script [`7-timing.py`](examples/7-timing.py) to benchmark how long it takes to sum two vectors:
 ```console
-cd examples
-python 7-timing.py
+$ cd examples
+$ python 7-timing.py
 ```
 
 Alternatively, we can use the magic function `%timeit` inside a jupyter notebook to benchmark a function. You can find an example in [`5-jit-compiler.ipynb`](examples/5-jit-compiler.ipynb), where we compare the speed of a determinant and its [just-in-time compiled](https://numba.pydata.org/numba-doc/latest/user/5minguide.html) version.
@@ -369,8 +371,8 @@ Profiling allows us to disaggregate the time taken to run a function into its di
 
 To profile our code we can write a simple script using the `Profiler` class from the `pyinstrument` library. To get a sense of how profiling works, you can run the script [`8-profiling.py`](examples/8-profiling.py):
 ```console
-cd examples
-python 8-profiling.py
+$ cd examples
+$ python 8-profiling.py
 ```
 
 ### Linting
@@ -380,16 +382,16 @@ Linters like [`Flake8`](https://flake8.pycqa.org/en/latest/) or [`Ruff`](https:/
 
 `Ruff` can be easily run from the command line to highlight all the errors in our library
 ```console
-ruff check .
+$ ruff check .
 ```
 We can also lint one specific file 
 ```console
-ruff check mypackage/vector/vector.py
+$ ruff check mypackage/vector/vector.py
 ```
 
 `Ruff`, unlike other linters, also has the option to fix some of the problems encountered in the code
 ```console
-ruff check --fix mypackage/vector/vector.py
+$ ruff check --fix mypackage/vector/vector.py
 ```
 Unless we are one of those old school programmers that read their email on the terminal, we can avoid using the command line by installing the [Ruff extension](https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff) for VSCode (or whatever tool your IDE provides).
 
@@ -405,11 +407,11 @@ select = ["F", "E"]
 
 Keeping track of all the errors and fixing them can be painful... This is where automatic tools to format the code enter. The two most popular are [`autopep8`](https://pypi.org/project/autopep8/) and [`black`](https://github.com/psf/black). I prefer `black` because it requires less configuration. To format our library simply type in the command line
 ```console
-black mypackage
+$ black mypackage
 ```
 Black by default allows a maximum line length of 80. We can tweak this by adding an option:
 ```console
-black --line-length 120 mypackage
+$ black --line-length 120 mypackage
 ```
 
 Formatting can be done automatically in VSCode, just add this code to a `settings.json` file inside a `.vscode` folder in the main directory
@@ -445,7 +447,7 @@ line-length = 100
 The most popular type checker is [`mypy`](https://mypy.readthedocs.io/en/stable/getting_started.html). Provided that we type hinted our functions and variables, this tool checks any mismatches between the expected input and output types and the actual ones. It can also highlight deeper errors in your code structure, like violations of [Liskov substitution principle](https://realpython.com/solid-principles-python/#liskov-substitution-principle-lsp).
 
 ```console
-mypy mypackage
+$ mypy mypackage
 ```
 As with all the tools we are using, we can add options for `mypy` in [`pyproject.toml`](pyproject.toml):
 
@@ -476,7 +478,7 @@ Just-in-time compilers are one the most popular tools in Python nowadays, specia
 Before we install our local library, we need to specify some metadata and configuration settings; this is done in the [`pyproject.toml`](pyproject.toml) file (check out the [setuptools documentation](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html)). Then we can use `pip` with the editable option `-e` to install our library (where `.` points to the current —main— folder):
 
 ```console
-pip install -e .
+$ pip install -e .
 ```
 The advantage of installing the local package in editable mode is that, when we make any change, the installed library is updated without reinstalling it.
 
@@ -495,7 +497,7 @@ If you want to create nice looking documentation and then upload it to a website
 
 5. (Optional). Before uploading our documentation to the website, we can build it and host it locally on our computer to see the final result. Simply run from the command line
 ```console
-mkdocs serve --config-file docs/mkdocs.yml
+$ mkdocs serve --config-file docs/mkdocs.yml
 ```
 
 This repository's documentation can be found in https://pablovegan.github.io/Python-tips-tools/.
@@ -509,20 +511,20 @@ To upload our library we use the Python package `twine`. Here is a [short guide]
 
 1. Build our library using `setuptools` and the [`pyproject.toml`](pyproject.toml) configuration file:
 ```console
-python -m build
+$ python -m build
 ```
 2. Upload the built library to [TestPyPI](https://test.pypi.org/). You will need to enter the user and password of your TestPyPI account (different from your PyPI account)
 ```console
-twine upload -r testpypi dist/*
+$ twine upload -r testpypi dist/*
 ```
 3. Once you are confident that you want to upload your package to PyPI, use the command
 ```console
-twine upload dist/*
+$ twine upload dist/*
 ```
 
 Once the package is in PyIP, you can install it in your environment:
 ```console
-pip install python-tips-tools
+$ pip install python-tips-tools
 ```
 (I only [uploaded my package](https://test.pypi.org/project/python-tips-tools-benasque/) to TestPyPI, since it is not very usefull as a standalone library).
 
@@ -549,17 +551,20 @@ The green tick near the commits shows that the workflows were successful.
 ## Other things to look into
 - [List comprehensions](https://www.programiz.com/python-programming/list-comprehension), lambda functions and the functions `map()` and `filter()`.
 - [Exception handling](https://www.programiz.com/python-programming/exception-handling): `try-except` statements. They work very well with custom error classes. An example can be found in the [`4-exceptions.ipynb`](examples/4-exceptions.ipynb) notebook inside the `examples` folder.
-- [Iterators and generators](https://www.datacamp.com/tutorial/python-iterators-generators-tutorial): look up the functions `iter()` and `next()`, and the keyword `yield`.
+- [Iterators and generators](https://www.datacamp.com/tutorial/python-iterators-generators-tutorial): look up the functions `iter()` and `next()`, and the keyword `yield`. Generators are a central feature of Python and they are used in [coroutines](https://www.geeksforgeeks.org/coroutine-in-python/) and [context managers](https://realpython.com/python-with-statement/).
 - [Function and class decorators](https://www.programiz.com/python-programming/decorator): decorators are a simple sintax to transform certain functions or classes.
 - [Pre-commits](https://pre-commit.com/): pre-commit hooks allow us to do certain actions before commiting changes with git. For example, we can lint our code with Ruff and fix it with Black whenever we make a commit.
+- [Entry points](https://setuptools.pypa.io/en/latest/userguide/entry_point.html): invoke functions or scripts from command line without using `python -m`.
+- [Logging](https://realpython.com/python-logging/): keep a record of what is happening in your program.
 
 
 ## Online resources
 
-Most of the material in this repo is covered in the excelent course [Python: Coding Guidelines, Tools, Tests and Packages](https://www.udemy.com/course/python-coding-guidelines-tooling-testing-and-packaging/?couponCode=FRANNECK_APR_2023).
+Most of the material in this repo is covered in the excelent course [Python: Coding Guidelines, Tools, Tests and Packages](https://www.udemy.com/course/python-coding-guidelines-tooling-testing-and-packaging/?couponCode=FRANNECK_APR_2023). I also encourage you to watch the sublime talk by James Powell _[So you want to be a Python expert?](https://www.youtube.com/watch?v=cKPlPJyQrt4)_
 
 Of course, free online resources are abundant; to name a few I use frequently:
 - [Real Python](https://realpython.com/)
 - [Programiz](https://www.programiz.com/python-programming)
+- [Dive into Python 3](https://diveintopython3.net/)
 - [Machine learning mastery](https://machinelearningmastery.com)
 - Libraries' documentation
