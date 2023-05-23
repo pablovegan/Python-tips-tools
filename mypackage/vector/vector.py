@@ -72,6 +72,10 @@ class Vector:
     def __repr__(self) -> str:
         """Return the vector representation.
 
+        Note:
+            The idea behind representations is that, when we execute the output of this
+            function, we should create an identical copy of this object.
+
         Returns:
             The representation of the vector.
 
@@ -80,10 +84,10 @@ class Vector:
 
             >>> vector = Vector(1, 2)
             >>> vector
-            vector.Vector(1, 2)
+            Vector(1, 2)
 
         """
-        return f"vector.Vector({self.x}, {self.y})"
+        return f"Vector({self.x}, {self.y})"
 
     def __str__(self) -> str:
         """This method is called when we want to print our vector as a string.
@@ -116,7 +120,7 @@ class Vector:
         Examples:
 
             >>> Vector(1, 0) + Vector(0, 1)
-            vector.Vector(1, 1)
+            Vector(1, 1)
 
         """
         if not isinstance(other_vector, Vector):
@@ -140,7 +144,7 @@ class Vector:
         Examples:
 
             >>> Vector(1, 0) * 4
-            vector.Vector(4, 0)
+            Vector(4, 0)
 
             >>> Vector(1, 0) * Vector(1, 1)
             1
@@ -209,7 +213,7 @@ class Vector:
 
         Examples:
             >>> Vector(1,1).projection(Vector(0,1))
-            vector.Vector(0.0, 1.0)
+            Vector(0.0, 1.0)
 
         """
         if subspace is None:

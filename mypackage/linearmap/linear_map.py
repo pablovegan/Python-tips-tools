@@ -8,14 +8,14 @@ Examples:
     >>> angle = 0.5
     >>> map = Rotation(angle)
     >>> map(Vector(1, 0))
-    vector.Vector(0.8775825618903728, 0.479425538604203)
+    Vector(0.8775825618903728, 0.479425538604203)
 
     And with the inverse method, we can apply the inverse transformation
 
     >>> shear_angle = 0.5
     >>> map = Shear(shear_angle)
     >>> map.inverse(Vector(1, 1))
-    vector.Vector(-0.830487721712452, 1)
+    Vector(-0.830487721712452, 1)
 
 """
 
