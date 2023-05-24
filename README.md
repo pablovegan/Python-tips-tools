@@ -411,7 +411,7 @@ $ black mypackage
 ```
 Black by default allows a maximum line length of 80. We can tweak this by adding an option:
 ```console
-$ black --line-length 120 mypackage
+$ black --line-length 100 mypackage
 ```
 
 Formatting can be done automatically in VSCode, just add this code to a `settings.json` file inside a `.vscode` folder in the main directory
