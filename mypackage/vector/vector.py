@@ -39,8 +39,8 @@ class NormError(ValueError):
     """
 
     def __init__(self, norm: float) -> None:
-        self.message = f"Norm = {norm}, but it cannot be greater than {MAX_NORM}."
-        super().__init__(self.message)
+        message = f"Norm = {norm}, but it cannot be greater than {MAX_NORM}."
+        super().__init__(message)
 
 
 class Vector:
