@@ -50,7 +50,7 @@ Since there are abundant online resources to learn Python, this document is quit
 
 ### Conda
 
-The first thing we should do when working on a new project is to create a virtual environment that suits our third-party library needs (with their corresponding versions), unless we already have one. I personally use the light version of conda, [`miniconda`](https://docs.conda.io/en/latest/miniconda.html), which only installs the standard Python libraries. Then you can always install whatever you need in a new environment to keep it all clean and tidy. Very interesting alternatives to `conda` exist, although I still haven't tried them: [`Poetry`](https://python-poetry.org/docs/basic-usage/) and [`Pipenv`](https://github.com/pypa/pipenv).
+The first thing we should do when working on a new project is to create a virtual environment that suits our third-party library needs (with their corresponding versions), unless we already have one. I personally use the light version of conda, [`miniconda`](https://docs.conda.io/en/latest/miniconda.html), which only installs the standard Python libraries. Then you can always install whatever you need in a new environment to keep it all clean and tidy. Other alternatives to `conda` exist, like [venv](https://docs.python.org/3/library/venv.html) (part of the standard library), [`Poetry`](https://python-poetry.org/docs/basic-usage/) and [`Pipenv`](https://github.com/pypa/pipenv).
 
 So, we start by creating and **activating** a new environment
 
