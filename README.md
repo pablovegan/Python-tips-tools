@@ -86,7 +86,7 @@ To simplify our life, we will install the third-party libraries we need from a .
 ```console
 $ pip install -r requirements-dev.txt
 ```
-_Tip: you can write down the dependencies [inside the `pyproject.toml`](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html) file to avoid having extra files._
+_Tip: you can specify the dependencies [inside the `pyproject.toml`](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html) file to avoid having extra files._
 
 ### Jupyter notebooks
 
