@@ -460,6 +460,8 @@ warn_unused_configs = true
 
 _Note: sometimes it complaints too much so you may just turn it off..._
 
+_Tip: this is not the only use of type annotations. You can also check that the correct types are inputed when innitializing an object with [`pydantic`](https://docs.pydantic.dev/latest/)._
+
 ## Bit more advanced stuff
 
 ### Code acceleration
