@@ -114,7 +114,7 @@ One tip for VSCode: you can hide cache folders from the file explorer in `Settin
 
 ## Python basics
 
-### Code structure
+### Project structure
 
 Once we have a folder for our project, we equip it with the following structure:
 
