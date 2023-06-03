@@ -86,7 +86,6 @@ To simplify our life, we will install the third-party libraries we need from a .
 ```console
 $ pip install -r requirements-dev.txt
 ```
-_Tip: you can specify the dependencies [inside the `pyproject.toml`](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html) file to avoid having extra files._
 
 ### Jupyter notebooks
 
@@ -144,7 +143,7 @@ First, we find the README, which contains whatever useful information the author
 
 Next we find [`pyproject.toml`](pyproject.toml), a configuration file with metadata about our project and configuration options for the tools that we use during development (e.g. linters and formatters). Usually you can copy configuration files from other projects (like this one) and tweak them to fit your needs.
 
-Third party dependencies for our package are specified in the [`requirements.txt`](requirements.txt) file, ideally with the version of each library to avoid conflicts with updates or older versions. The resting developer tools that we'd like to use are added in the [`requirements-dev.txt`](requirements-dev.txt) file.
+Third party dependencies for our package are specified in the [`requirements.txt`](requirements.txt) file, ideally with the version of each library to avoid conflicts with updates or older versions. The resting developer tools that we'd like to use are added in the [`requirements-dev.txt`](requirements-dev.txt) file. _Tip: you can specify the dependencies [inside the `pyproject.toml`](https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html) file to avoid having extra files._
 
 After a bunch of other files, we find our main package, with all our Python code organized in folders. Sometimes the package can be found inside a source folder, `src`, in a similar way to other programming languajes (like Java), but in Python is not really necessary so we can skip it.
 
