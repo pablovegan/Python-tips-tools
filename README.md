@@ -21,7 +21,7 @@ Since there are abundant online resources to learn Python, this document is quit
    * [Jupyter notebooks](#jupyter-notebooks)
    * [Text editor or IDE](#text-editor-or-ide)
 2. [Python basics](#python-basics)
-    - [Code structure](#code-structure)
+    - [Project structure](#project-structure)
     - [Packages or libraries](#packages-or-libraries)
     - [Modules](#modules)
     - [Objects and classes](#objects-and-classes)
