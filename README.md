@@ -465,11 +465,11 @@ _Tip: this is not the only use of type annotations. You can also check that the 
 
 ### Code acceleration
 
-Python is an [interpreted language](https://docs.python.org/3/glossary.html#term-interpreted), which means the source code is executed directly without compiling the program into machine code. Thus, Python relies on an interpreter, the most common being [CPython](https://realpython.com/cpython-source-code-guide/) (which is programmed in C and not to be confused with Cython).
+Python is an [interpreted language](https://docs.python.org/3/glossary.html#term-interpreted), which means the source code is executed directly without compiling the program into machine code. It is instead compiled into bytecode (`.pyc` files), which is run by a Python interpreter. There are multiple interpreters, the most common being [CPython](https://realpython.com/cpython-source-code-guide/), which is programmed in C, but there are options written in Rust ([RustPython](https://github.com/RustPython/RustPython)) and even Python itself ([PyPy](https://realpython.com/pypy-faster-python/))!
 
 One disadvantage of interpreted languages over compiled ones is that they are slower. But no need to worry, since there is a wide range of tools for accelerating our code:
 
-- Just-in-time compilers: [Numba](https://numba.pydata.org/numba-doc/latest/user/5minguide.html), [JAX](https://jax.readthedocs.io/en/latest/notebooks/quickstart.html) and [PyPy](https://realpython.com/pypy-faster-python/) (an alternative interpreter to CPython).
+- Just-in-time compilers: [Numba](https://numba.pydata.org/numba-doc/latest/user/5minguide.html), [JAX](https://jax.readthedocs.io/en/latest/notebooks/quickstart.html) and [PyPy](https://realpython.com/pypy-faster-python/) (an interpreter with a JIT compiler).
 - Parallelization with [`pathos.multiprocessing`](https://pathos.readthedocs.io/en/latest/pathos.html#module-pathos.multiprocessing) and [`mpi4py`](https://mpi4py.readthedocs.io/en/stable/tutorial.html) (Message Passing Interface for Python).
 - Extend Python with C code: [Cython](https://github.com/juanjosegarciaripoll/cython_example) (the [`cythonbuilder`](https://pypi.org/project/cythonbuilder/) library makes our life easier).
 
