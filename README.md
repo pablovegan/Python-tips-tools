@@ -206,7 +206,7 @@ iris = Friend(fav_movie="Shrek")
 print(f"{iris.fav_movie = }")  # access the fav_movie attribute of iris
 ```
 
-_Tip: the `__init__` method should initialize **all** the attributes of the class, even if they are defined inside other methods, case in which you just initialize the attributes to `None`. This allows anyone to see at a glance all the attributes of your class without having to read through all the code._
+_Tip: `__init__` should initialize **all** the attributes of the class, even if they are defined inside other methods, case in which you just initialize the attributes to `None`. This allows anyone to see at a glance all the attributes of your class without having to read through all the code._
 
 In Python, methods that start and end with the double underscores are called [**special methods**](https://docs.python.org/3/reference/datamodel.html#specialnames) (also called magic methods or _dunder_ methods). Special methods are called internally by Python, so they are not meant to be invoked directly by you. For example, when you add two integers using the + operator, Python is implicitly calling the `__add__()` method inside the `int` class.
 
