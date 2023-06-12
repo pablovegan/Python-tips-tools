@@ -206,6 +206,8 @@ iris = Friend(fav_movie="Shrek")
 print(f"{iris.fav_movie = }")  # access the fav_movie attribute of iris
 ```
 
+_Tip: the `__init__` method should initialize **all** the attributes of the class, even if they are defined inside other methods, case in which you just initialize the attributes to `None`. This allows anyone to see at a glance all the attributes of your class without having to read through all the code._
+
 In Python, methods that start and end with the double underscores are called [**special methods**](https://docs.python.org/3/reference/datamodel.html#specialnames) (also called magic methods or _dunder_ methods). Special methods are called internally by Python, so they are not meant to be invoked directly by you. For example, when you add two integers using the + operator, Python is implicitly calling the `__add__()` method inside the `int` class.
 
 Another common naming convention is related to the fact that Python doesn’t distinguish between private, protected and public attributes like Java and other languages do. In Python, all [attributes and methods are accessible](](https://realpython.com/python-classes/#public-vs-non-public-members)), so to distinguish the ones for internal use only from the ones intended for users (public API), we begin this "private" attributes with an underscore. An example is the `_get_inverse()` function in our [`linear_map.py`](mypackage/linearmap/linear_map.py) module. In the user interface (API), the inverse is accessed via a "public" attribute `inv_matrix` rather than the "private" method.
