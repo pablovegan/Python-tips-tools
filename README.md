@@ -486,6 +486,10 @@ $ pip install -e .
 ```
 The advantage of installing the local package in editable mode is that, when we make any change, the installed library is updated without reinstalling it.
 
+_Tip: you can install the library together with the optional dependencies specified in `pyproject.toml` with_
+```console
+$ pip install -e .[optional]
+```
 
 ### Creating documentation
 
