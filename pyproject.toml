@@ -10,7 +10,10 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "python-tips-tools"
 authors = [
-  {name = "Pablo V. Parellada"}
+  {name = "Pablo V. Parellada", email = "pablo.veganzones@uva.es"}
+]
+maintainers = [
+  {name = "Pablo V. Parellada", email = "pablo.veganzones@uva.es"}
 ]
 description = "This is an example python project."
 readme = "README.md"
