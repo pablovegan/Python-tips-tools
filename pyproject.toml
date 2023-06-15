@@ -1,7 +1,5 @@
 ######## Building
 
-### Setuptools
-
 [build-system]
 requires = [
     "setuptools",
@@ -47,14 +45,10 @@ dependencies = {file = ["requirements.txt"]}
 
 ######## Tools
 
-### Pytest
-
 [tool.pytest.ini_options]
 minversion = "7.3"
 testpaths = "tests"
 
-
-### Ruff
 
 [tool.ruff]
 line-length = 100
@@ -88,8 +82,6 @@ allow-star-arg-any = false
 ignore-fully-untyped = false
 
 
-### Black
-
 [tool.black]
 line-length = 100
 skip-string-normalization = false
@@ -107,8 +99,6 @@ exclude = '''
 )
 '''
 
-
-### MyPy
 
 [tool.mypy]
 warn_return_any = true
