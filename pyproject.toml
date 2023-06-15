@@ -8,7 +8,7 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "python-tips-tools-benasque"
+name = "python-tips-tools"
 authors = [
   {name = "Pablo V. Parellada"}
 ]
@@ -32,6 +32,37 @@ dynamic = ["version", "dependencies"]
 [project.urls]
 repository = "https://github.com/pablovegan/Python-tips-tools"
 documentation = "https://pablovegan.github.io/Python-tips-tools/"
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+    "pyinstrument"
+]
+lint = [
+    "ruff",
+    "black",
+    "black[jupyter]",
+    "mypy"
+]
+build = [
+    "setuptools",
+    "build",
+    "twine"
+    ]
+docs = [
+    "mkdocs",
+    "mkdocstrings",
+    "mkdocstrings[python]",
+    "mkdocs-material",
+    "Pygments",
+    "python-markdown-math",
+    "mkdocs-gen-files",
+    "mkdocs-literate-nav",
+    "mkdocs-section-index",
+    "mkdocs-same-dir",
+    "mkdocs-autorefs",
+]
+dev = ["python-tips-tools[test,lint,build,docs]"]
 
 [tool.setuptools]
 platforms = ["unix", "linux", "osx", "cygwin", "win32"]
