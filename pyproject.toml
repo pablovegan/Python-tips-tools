@@ -19,17 +19,14 @@ description = "This is an example python project."
 readme = "README.md"
 license = {file = "LICENSE"}
 requires-python = ">=3.10"
+keywords = ["tutorial"]
 classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
     "Operating System :: Microsoft :: Windows",
     "Operating System :: POSIX :: Linux",
-    "Operating System :: POSIX",
-    "Operating System :: Unix",
     "Operating System :: MacOS",
 ]
-
 dynamic = ["version", "dependencies"]
 
 [project.urls]
@@ -67,9 +64,13 @@ docs = [
 ]
 dev = ["python-tips-tools[test,lint,build,docs]"]
 
+[project.scripts]
+# add here command line interface scripts
+# my-script = "mypackage.module:function"
+
 [tool.setuptools]
 platforms = ["unix", "linux", "osx", "cygwin", "win32"]
-packages = ["mypackage"]  # optional
+packages = ["mypackage"]
 
 [tool.setuptools.dynamic]
 version = {attr = "mypackage._version.__version__"}
