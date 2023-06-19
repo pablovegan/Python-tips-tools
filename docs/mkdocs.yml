@@ -4,12 +4,13 @@ site_description: "Short Python tips and tools notes for the Superconducting Qub
 repo_url: https://github.com/pablovegan/Python-tips-tools-Benasque
 repo_name: pablovegan/Python-tips-tools-Benasque
 docs_dir: ./
-watch: [../README.md, ../mypackage]
+watch: [../README.md, ../mypackage, ../examples]
 
 
 nav:
   - Introduction: index.md
   # defer documentation to the gen-files and literate-nav plugins
+  - Vector example: ../examples/1-vector.ipynb
   - API documentation: reference/
 
 theme:
@@ -59,6 +60,9 @@ plugins:
               ignore_init_summary: yes
             merge_init_into_class: yes
             show_submodules: no
+  - mkdocs-jupyter:
+      execute: false
+      include_source: true
 
 markdown_extensions:
   - pymdownx.snippets:
