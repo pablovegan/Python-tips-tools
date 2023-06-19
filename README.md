@@ -491,7 +491,7 @@ The advantage of installing the local package in editable mode is that, when we 
 
 _Tip: you can install the library together with the optional dependencies specified in `pyproject.toml` with_
 ```console
-$ pip install -e .[optional]
+$ pip install -e .[dev]
 ```
 
 ### Creating documentation

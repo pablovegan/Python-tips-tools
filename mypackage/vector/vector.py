@@ -206,7 +206,7 @@ class Vector:
 
         Args:
             subspace (Vector, optional): vector that spans the subspace onto which to project
-            the vector. Defaults to None.
+                the vector. Defaults to None.
 
         Returns:
             Vector: The projected vector.
