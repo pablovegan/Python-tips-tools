@@ -1,5 +1,6 @@
 # Python tips and tools
 [![documentation](https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=flat)](https://pablovegan.github.io/Python-tips-tools/)
+[![release](https://img.shields.io/github/v/release/pablovegan/python-tips-tools.svg)](https://github.com/pablovegan/Python-tips-tools/releases/latest)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v1.json)](https://github.com/charliermarsh/ruff)
 [![black](https://img.shields.io/badge/code%20style-black-black)](https://github.com/psf/black)
@@ -139,7 +140,7 @@ Once we have a folder for our project, we equip it with the following structure:
     └── example.ipynb
 ```
 
-First, we find the README, which contains whatever useful information the author of the repository wants to transmit us. Usually it begins with a short description of the package, and follows with sections on how to install it, a quick usage guide, references, how to contribute and the license.
+First, we find the README, which contains whatever useful information the author of the repository wants to transmit us. Usually it begins with a short description of the package, and follows with sections on how to install it, a quick usage guide, references, how to contribute and the license (see [`README_template.md`](README_template.md) for an example).
 
 Next we find [`pyproject.toml`](pyproject.toml), a configuration file with metadata about our project and configuration options for the tools that we use during development (e.g. linters and formatters). Usually you can copy configuration files from other projects (like this one) and tweak them to fit your needs.
 
@@ -349,6 +350,8 @@ $ pytest tests/test_vector.py
 If you don't enjoy the command line, the [Python extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python) for VSCode allows us to run the tests easily from a graphic interface.
 
 *Note: In the workflows section we will see how to automate testing.*
+
+*Tip: sometimes it is easier to test functions generating random inputs and ensuring they fulfill certain properties. This can be done with [hypothesis](https://semaphoreci.com/blog/property-based-testing-python-hypothesis-pytest), a library used to test, for example, NumPy.*
 
 ### Debugging
 

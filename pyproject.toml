@@ -61,6 +61,7 @@ docs = [
     "mkdocs-section-index",
     "mkdocs-same-dir",
     "mkdocs-autorefs",
+    "mkdocs-jupyter"
 ]
 dev = ["python-tips-tools[test,lint,build,docs]"]
 

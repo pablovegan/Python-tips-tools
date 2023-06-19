@@ -30,3 +30,4 @@ mkdocs-literate-nav
 mkdocs-section-index
 mkdocs-same-dir
 mkdocs-autorefs
+mkdocs-jupyter
