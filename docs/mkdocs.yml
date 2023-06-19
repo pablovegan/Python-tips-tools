@@ -1,8 +1,8 @@
 site_name: Python tips and tools
 site_description: "Short Python tips and tools notes for the Superconducting Qubit Technology school at Benasque 2023."
 
-repo_url: https://github.com/pablovegan/Python-tips-tools-Benasque
-repo_name: pablovegan/Python-tips-tools-Benasque
+repo_url: https://github.com/pablovegan/Python-tips-tools
+repo_name: pablovegan/Python-tips-tools
 docs_dir: ./
 watch: [../README.md, ../mypackage]
 
