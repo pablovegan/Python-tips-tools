@@ -1,23 +1,27 @@
-site_name: Python tips tools SQT Benasque 2023
+site_name: Python tips and tools
 site_description: "Short Python tips and tools notes for the Superconducting Qubit Technology school at Benasque 2023."
 
-repo_url: https://github.com/pablovegan/Python-tips-tools-Benasque
-repo_name: pablovegan/Python-tips-tools-Benasque
+repo_url: https://github.com/pablovegan/Python-tips-tools
+repo_name: pablovegan/Python-tips-tools
 docs_dir: ./
-watch: [../README.md, ../mypackage, ../examples]
-
+watch: [../README.md, ../mypackage]
 
 nav:
   - Introduction: index.md
-  # defer documentation to the gen-files and literate-nav plugins
-  - Vector example: ../examples/1-vector.ipynb
-  - API documentation: reference/
+  - API documentation: reference/  # defer documentation to the gen-files and literate-nav plugins
+  - Tutorials:
+    - Vector: examples/1-vector.ipynb
+    - Linear map: examples/2-linear-map.ipynb
+    - Mutable objects: examples/3-mutable-objects.ipynb
+    - Exceptions: examples/4-exceptions.ipynb
+    - Jit compiler: examples/5-jit-compiler.ipynb
 
 theme:
   features:
     - navigation.tracking
     - toc.follow
     - navigation.top
+    - navigation.tabs
   icon:
     repo: fontawesome/brands/github
   name: "material"
@@ -63,6 +67,8 @@ plugins:
   - mkdocs-jupyter:
       execute: false
       include_source: true
+      ignore_h1_titles: True
+      theme: dark
 
 markdown_extensions:
   - pymdownx.snippets:

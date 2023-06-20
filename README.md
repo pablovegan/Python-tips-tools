@@ -16,11 +16,11 @@ Since there are abundant online resources to learn Python, this document is quit
 ### Table of Contents
 
 1. [Getting started](#getting-started)
-   * [Conda](#conda)
-   * [Create a project and initialize git](#create-a-project-and-initialize-git)
-   * [Pip and PyPI](#pip-and-pypi)
-   * [Jupyter notebooks](#jupyter-notebooks)
-   * [Text editor or IDE](#text-editor-or-ide)
+    - [Conda](#conda)
+    - [Create a project and initialize git](#create-a-project-and-initialize-git)
+    - [Pip and PyPI](#pip-and-pypi)
+    - [Jupyter notebooks](#jupyter-notebooks)
+    - [Text editor or IDE](#text-editor-or-ide)
 2. [Python basics](#python-basics)
     - [Project structure](#project-structure)
     - [Packages or libraries](#packages-or-libraries)
@@ -491,7 +491,7 @@ The advantage of installing the local package in editable mode is that, when we 
 
 _Tip: you can install the library together with the optional dependencies specified in `pyproject.toml` with_
 ```console
-$ pip install -e .[optional]
+$ pip install -e .[dev]
 ```
 
 ### Creating documentation
