@@ -119,6 +119,7 @@ ignore-fully-untyped = false
 
 
 [tool.black]
+target-version = ["py310"]  # minimium python version
 line-length = 100
 skip-string-normalization = false
 skip-magic-trailing-comma = false
