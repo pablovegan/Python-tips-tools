@@ -583,11 +583,7 @@ Vector pickled in data/vector.pkl!
 - [Iterators and generators](https://www.datacamp.com/tutorial/python-iterators-generators-tutorial): look up the functions `iter()` and `next()`, and the keyword `yield`. Generators are a central feature of Python and they are used in [coroutines](https://www.youtube.com/watch?v=rjBSOHXW5DY) and [context managers](https://realpython.com/python-with-statement/).
 - [Function and class decorators](https://www.programiz.com/python-programming/decorator): decorators are a simple sintax to transform certain functions or classes. An example of an interesting decorator is [`@classmethod`](https://www.programiz.com/python-programming/methods/built-in/classmethod), which allows us, for example, to initialize classes in alternative ways without overly complicating the `__init__` method.
 - [Dataclasses](https://realpython.com/python-data-classes/#basic-data-classes): a concise syntax for classes containing mainly data, similar to structures in C. The library [Pydantic](https://docs.pydantic.dev/latest/) implements automatic type checking when initializing a dataclass.
-<<<<<<< HEAD
-- [Pre-commits](https://pre-commit.com/): pre-commit hooks allow us to do certain actions before commiting changes with git. For example, we can lint our code with Ruff and fix it with Black whenever we make a commit.
-=======
 - [Pre-commits](https://pre-commit.com/): pre-commit hooks allow us to do certain actions before commiting changes with git. For example, we can lint our code with Ruff and fix it with Black whenever we make a commit. 
->>>>>>> 31c6ad4 (add command line interface)
 - [Logging](https://realpython.com/python-logging/): keep a record of what is happening in your program.
 
 
