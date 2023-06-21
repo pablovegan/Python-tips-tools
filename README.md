@@ -566,7 +566,7 @@ The green tick near the commits shows that the workflows were successful.
 - [Function and class decorators](https://www.programiz.com/python-programming/decorator): decorators are a simple sintax to transform certain functions or classes. An example of an interesting decorator is [`@classmethod`](https://www.programiz.com/python-programming/methods/built-in/classmethod), which allows us, for example, to initialize classes in alternative ways without overly complicating the `__init__` method.
 - [Dataclasses](https://realpython.com/python-data-classes/#basic-data-classes): a concise syntax for classes containing mainly data, similar to structures in C. The library [Pydantic](https://docs.pydantic.dev/latest/) implements automatic type checking when initializing a dataclass.
 - [Pre-commits](https://pre-commit.com/): pre-commit hooks allow us to do certain actions before commiting changes with git. For example, we can lint our code with Ruff and fix it with Black whenever we make a commit.
-- [Entry points](https://setuptools.pypa.io/en/latest/userguide/entry_point.html): invoke functions or scripts from command line without using `python -m`.
+- [Entry points](https://setuptools.pypa.io/en/latest/userguide/entry_point.html): invoke functions or scripts from [command line](https://realpython.com/command-line-interfaces-python-argparse/) without using `python -m`.
 - [Logging](https://realpython.com/python-logging/): keep a record of what is happening in your program.
 
 
