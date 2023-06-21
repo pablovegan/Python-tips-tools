@@ -1,23 +1,18 @@
 ######## Building
 
 [build-system]
-requires = [
-    "setuptools",
-    "setuptools-scm",
-]
+requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "python-tips-tools"
-authors = [
-  {name = "Pablo V. Parellada", email = "pablo.veganzones@uva.es"}
-]
+authors = [{ name = "Pablo V. Parellada", email = "pablo.veganzones@uva.es" }]
 maintainers = [
-  {name = "Pablo V. Parellada", email = "pablo.veganzones@uva.es"}
+    { name = "Pablo V. Parellada", email = "pablo.veganzones@uva.es" },
 ]
 description = "This is an example python project."
 readme = "README.md"
-license = {file = "LICENSE"}
+license = { file = "LICENSE" }
 requires-python = ">=3.10"
 keywords = ["tutorial"]
 classifiers = [
@@ -34,21 +29,9 @@ repository = "https://github.com/pablovegan/Python-tips-tools"
 documentation = "https://pablovegan.github.io/Python-tips-tools/"
 
 [project.optional-dependencies]
-test = [
-    "pytest",
-    "pyinstrument"
-]
-lint = [
-    "ruff",
-    "black",
-    "black[jupyter]",
-    "mypy"
-]
-build = [
-    "setuptools",
-    "build",
-    "twine"
-    ]
+test = ["pytest", "pyinstrument"]
+lint = ["ruff", "black", "black[jupyter]", "mypy"]
+build = ["setuptools", "build", "twine"]
 docs = [
     "mkdocs",
     "mkdocstrings",
@@ -61,22 +44,20 @@ docs = [
     "mkdocs-section-index",
     "mkdocs-same-dir",
     "mkdocs-autorefs",
-    "mkdocs-jupyter"
+    "mkdocs-jupyter",
 ]
 dev = ["python-tips-tools[test,lint,build,docs]"]
 
 [project.scripts]
-# add here command line interface scripts
-# my-script = "mypackage.module:function"
+vector = "mypackage.__main__:main"
 
 [tool.setuptools]
 platforms = ["unix", "linux", "osx", "cygwin", "win32"]
 packages = ["mypackage"]
 
 [tool.setuptools.dynamic]
-version = {attr = "mypackage._version.__version__"}
-dependencies = {file = ["requirements.txt"]}
-
+version = { attr = "mypackage._version.__version__" }
+dependencies = { file = ["requirements.txt"] }
 
 
 ######## Tools
@@ -89,10 +70,36 @@ testpaths = "tests"
 [tool.ruff]
 line-length = 100
 select = ["F", "E"]
-extend-select = ["W", "I002", "B", "UP", "PLE", "PLW", "NPY", "RUF", "PD", "SIM", "PT"]
+extend-select = [
+    "W",
+    "I002",
+    "B",
+    "UP",
+    "PLE",
+    "PLW",
+    "NPY",
+    "RUF",
+    "PD",
+    "SIM",
+    "PT",
+]
 unfixable = ["NPY002"]
 ignore = []
-fixable = ["E", "F", "W", "I", "B", "UP", "PLE", "PLW", "NPY", "RUF", "PD", "SIM", "PT"]
+fixable = [
+    "E",
+    "F",
+    "W",
+    "I",
+    "B",
+    "UP",
+    "PLE",
+    "PLW",
+    "NPY",
+    "RUF",
+    "PD",
+    "SIM",
+    "PT",
+]
 extend-exclude = ["tests", "test"]
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 

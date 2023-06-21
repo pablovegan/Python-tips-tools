@@ -559,14 +559,35 @@ The green tick near the commits shows that the workflows were successful.
 *Cool tip: we can add a badge at the beginning of our readme to show that the tests either passed or failed (this is updated automatically each time the tests are run).*
 
 
+### Command line interface
+
+Command line interfaces (CLI) allow us to invoke functions or scripts through the command line without using `python -m` to execute a module. To do this, we need to create a script contain the CLI (for example, [`__main__.py`](mypackage/__main__.py)) and set it as the [entry point](https://setuptools.pypa.io/en/latest/userguide/entry_point.html) in our [`pyproject.toml`](pyproject.toml) file
+```toml
+[project.scripts]
+vector = "mypackage.__main__:main"
+```
+
+Python's Standard library provides a package to handle command line arguments to create this CLIs: `argparse`. You can follow along this [tutorial](https://realpython.com/command-line-interfaces-python-argparse) to learn how to use it.
+
+As an example, we can use the command `vector` —which calls `main()` inside [`__main__.py`](mypackage/__main__.py)— to create and save a vector to a file:
+
+```console
+$ vector 1 2 --save vector.pkl
+Vector (1.0, 2.0) created!
+Vector pickled in data/vector.pkl!
+```
+
 ## Other things to look into
 - [List comprehensions](https://www.programiz.com/python-programming/list-comprehension). They generally replace lambda functions, `map()` and `filter()`.
 - [Exception handling](https://www.programiz.com/python-programming/exception-handling): `try-except` statements. They work very well with custom error classes. An example can be found in the [`4-exceptions.ipynb`](examples/4-exceptions.ipynb) notebook inside the `examples` folder.
 - [Iterators and generators](https://www.datacamp.com/tutorial/python-iterators-generators-tutorial): look up the functions `iter()` and `next()`, and the keyword `yield`. Generators are a central feature of Python and they are used in [coroutines](https://www.youtube.com/watch?v=rjBSOHXW5DY) and [context managers](https://realpython.com/python-with-statement/).
 - [Function and class decorators](https://www.programiz.com/python-programming/decorator): decorators are a simple sintax to transform certain functions or classes. An example of an interesting decorator is [`@classmethod`](https://www.programiz.com/python-programming/methods/built-in/classmethod), which allows us, for example, to initialize classes in alternative ways without overly complicating the `__init__` method.
 - [Dataclasses](https://realpython.com/python-data-classes/#basic-data-classes): a concise syntax for classes containing mainly data, similar to structures in C. The library [Pydantic](https://docs.pydantic.dev/latest/) implements automatic type checking when initializing a dataclass.
+<<<<<<< HEAD
 - [Pre-commits](https://pre-commit.com/): pre-commit hooks allow us to do certain actions before commiting changes with git. For example, we can lint our code with Ruff and fix it with Black whenever we make a commit.
-- [Entry points](https://setuptools.pypa.io/en/latest/userguide/entry_point.html): invoke functions or scripts from [command line](https://realpython.com/command-line-interfaces-python-argparse/) without using `python -m`.
+=======
+- [Pre-commits](https://pre-commit.com/): pre-commit hooks allow us to do certain actions before commiting changes with git. For example, we can lint our code with Ruff and fix it with Black whenever we make a commit. 
+>>>>>>> 31c6ad4 (add command line interface)
 - [Logging](https://realpython.com/python-logging/): keep a record of what is happening in your program.
 
 
