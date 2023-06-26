@@ -434,7 +434,7 @@ Formatting can be done automatically in VSCode, just add this code to a `setting
         "editor.insertSpaces": true,
         "editor.tabSize": 4,
         "editor.formatOnSave": true
-    },
+    }
 }
 ```
 
