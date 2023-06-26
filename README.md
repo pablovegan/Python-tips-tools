@@ -369,7 +369,7 @@ $ cd examples
 $ python 7-timing.py
 ```
 
-Alternatively, we can use the magic function `%timeit` inside a jupyter notebook to benchmark a function. You can find an example in [`5-jit-compiler.ipynb`](examples/5-jit-compiler.ipynb), where we compare the speed of a determinant and its [just-in-time compiled](https://numba.pydata.org/numba-doc/latest/user/5minguide.html) version.
+Alternatively, we can use the magic function `%timeit` inside a jupyter notebook to benchmark a line of code (`%%timeit` for a cell). You can find an example in [`5-jit-compiler.ipynb`](examples/5-jit-compiler.ipynb), where we compare the speed of a determinant and its [just-in-time compiled](https://numba.pydata.org/numba-doc/latest/user/5minguide.html) version.
 
 ### Profiling
 
