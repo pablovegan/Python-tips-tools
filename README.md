@@ -43,6 +43,7 @@ Since there are abundant online resources to learn Python, this document is quit
     - [Creating documentation](#creating-documentation)
     - [Building and uploading to PyPI](#building-and-uploading-to-pypi)
     - [Automating boring tasks with Github workflows](#automating-boring-tasks-with-github-workflows)
+    - [Command line interface](#command-line-interface)
 5. [Other things to look into](#other-things-to-look-into)
 6. [Online resources](#online-resources)
 
