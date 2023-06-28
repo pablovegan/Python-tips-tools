@@ -53,7 +53,10 @@ vector = "mypackage.__main__:main"
 
 [tool.setuptools]
 platforms = ["unix", "linux", "osx", "cygwin", "win32"]
-packages = ["mypackage"]
+
+[tool.setuptools.packages.find]
+include = ["mypackage*"]  # needed to include subpackages
+namespaces = false  # to disable scanning PEP 420 namespaces (true by default)
 
 [tool.setuptools.dynamic]
 version = { attr = "mypackage._version.__version__" }
