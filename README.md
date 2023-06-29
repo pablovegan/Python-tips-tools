@@ -478,6 +478,7 @@ One disadvantage of interpreted languages over compiled ones is that they are sl
 - Just-in-time compilers: [Numba](https://numba.pydata.org/numba-doc/latest/user/5minguide.html), [JAX](https://jax.readthedocs.io/en/latest/notebooks/quickstart.html) and [PyPy](https://realpython.com/pypy-faster-python/) (an interpreter with a JIT compiler).
 - Parallelization with [`pathos.multiprocessing`](https://pathos.readthedocs.io/en/latest/pathos.html#module-pathos.multiprocessing) and [`mpi4py`](https://mpi4py.readthedocs.io/en/stable/tutorial.html) (Message Passing Interface for Python).
 - Extend Python with C code: [Cython](https://github.com/juanjosegarciaripoll/cython_example) (the [`cythonbuilder`](https://pypi.org/project/cythonbuilder/) library makes our life easier).
+- Call [Rust functions from Python](https://www.youtube.com/watch?v=jlWhnrk8go0).
 
 Just-in-time compilers are one the most popular tools in Python nowadays, specially with the increasing interest in the library [JAX](https://jax.readthedocs.io/en/latest/notebooks/quickstart.html). You can see a simple example of JIT with Numba in the [`5-jit-compiler.ipynb`](examples/5-jit-compiler.ipynb) notebook.
 
