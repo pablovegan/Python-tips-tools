@@ -352,7 +352,7 @@ If you don't enjoy the command line, the [Python extension](https://marketplace.
 
 *Note: In the workflows section we will see how to automate testing.*
 
-*Tip: sometimes it is easier to test functions generating random inputs and ensuring they fulfill certain properties. This can be done with [hypothesis](https://semaphoreci.com/blog/property-based-testing-python-hypothesis-pytest), a library used to test, for example, NumPy.*
+*Tip: sometimes it is easier to test functions generating random inputs and ensuring they fulfill certain properties (called property-based testing or fuzzy testing). This can be done with [hypothesis](https://semaphoreci.com/blog/property-based-testing-python-hypothesis-pytest), a library used to test, for example, NumPy.*
 
 ### Debugging
 
