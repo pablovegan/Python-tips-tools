@@ -587,6 +587,7 @@ Vector pickled in data/vector.pkl!
 - [Dataclasses](https://realpython.com/python-data-classes/#basic-data-classes): a concise syntax for classes containing mainly data, similar to structures in C. The library [Pydantic](https://docs.pydantic.dev/latest/) implements automatic type checking when initializing a dataclass.
 - [Pre-commits](https://pre-commit.com/): pre-commit hooks allow us to do certain actions before commiting changes with git. For example, we can lint our code with Ruff and fix it with Black whenever we make a commit. 
 - [Logging](https://realpython.com/python-logging/): keep a record of what is happening in your program.
+- [Literals, keywords and builtins](http://python-history.blogspot.com/2013/11/story-of-none-true-false.html)
 
 
 ## Online resources
