@@ -1,0 +1,6 @@
+* [mypackage](index.md)
+    * [\_version](_version.md)
+    * [linearmap](linearmap/index.md)
+        * [linear_map](linearmap/linear_map.md)
+    * [vector](vector/index.md)
+        * [vector](vector/vector.md)
