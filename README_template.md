@@ -9,8 +9,6 @@
 
 A simple example package for 2D linear algebra.
 
-![alt text](https://raw.githubusercontent.com/pablovegan/QubitApproximant/c8a28f62f1a215949d6fa41a8080fb2c138921a7/docs/images/gaussian.png)
-
 ## Documentation and examples
 Documentation and examples can be found in https://pablovegan.github.io/QubitApproximant/.
 
