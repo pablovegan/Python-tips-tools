@@ -1,11 +1,11 @@
 # Python tips and tools
-[![documentation](https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=flat)](https://pablovegan.github.io/Python-tips-tools/)
 [![release](https://img.shields.io/github/v/release/pablovegan/python-tips-tools.svg)](https://github.com/pablovegan/Python-tips-tools/releases/latest)
+[![DOI](https://zenodo.org/badge/629879183.svg)](https://zenodo.org/badge/latestdoi/629879183)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v1.json)](https://github.com/charliermarsh/ruff)
 [![black](https://img.shields.io/badge/code%20style-black-black)](https://github.com/psf/black)
 [![Test](https://github.com/pablovegan/Python-tips-tools/actions/workflows/tests.yml/badge.svg)](https://github.com/pablovegan/Python-tips-tools/actions/workflows/tests.yml)
-
+[![documentation](https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=flat)](https://pablovegan.github.io/Python-tips-tools/)
 
 
 Howdy! I present you some notes meant as a companion to the Python tips and tools talk for the [Superconducting Qubit Technology school](https://www.benasque.org/2023sqt/) at Benasque 2023.
