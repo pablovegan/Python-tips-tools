@@ -1,0 +1,1669 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Short Python tips and tools notes for the Superconducting Qubit Technology school at Benasque 2023.">
+      
+      
+      
+      
+      
+        <link rel="next" href="reference/">
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.19">
+    
+    
+      
+        <title>Python tips and tools</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.eebd395e.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="indigo">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#python-tips-and-tools" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="Python tips and tools" class="md-header__button md-logo" aria-label="Python tips and tools" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Python tips and tools
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Introduction
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="red" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+              </label>
+            
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="white"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+              </label>
+            
+          
+        </form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/pablovegan/Python-tips-tools" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    pablovegan/Python-tips-tools
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="." class="md-tabs__link md-tabs__link--active">
+      Introduction
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="reference/" class="md-tabs__link">
+        API documentation
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="examples/1-vector/" class="md-tabs__link">
+        Tutorials
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="Python tips and tools" class="md-nav__button md-logo" aria-label="Python tips and tools" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Python tips and tools
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/pablovegan/Python-tips-tools" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    pablovegan/Python-tips-tools
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Introduction
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        Introduction
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    Table of Contents
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    Getting started
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conda" class="md-nav__link">
+    Conda
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-project-and-initialize-git" class="md-nav__link">
+    Create a project and initialize git
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pip-and-pypi" class="md-nav__link">
+    Pip and PyPI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jupyter-notebooks" class="md-nav__link">
+    Jupyter notebooks
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-editor-or-ide" class="md-nav__link">
+    Text editor or IDE
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-basics" class="md-nav__link">
+    Python basics
+  </a>
+  
+    <nav class="md-nav" aria-label="Python basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#project-structure" class="md-nav__link">
+    Project structure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packages-or-libraries" class="md-nav__link">
+    Packages or libraries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modules" class="md-nav__link">
+    Modules
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objects-and-classes" class="md-nav__link">
+    Objects and classes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-hints" class="md-nav__link">
+    Type hints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docstrings" class="md-nav__link">
+    Docstrings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools" class="md-nav__link">
+    Tools
+  </a>
+  
+    <nav class="md-nav" aria-label="Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    Testing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging" class="md-nav__link">
+    Debugging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timing" class="md-nav__link">
+    Timing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profiling" class="md-nav__link">
+    Profiling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linting" class="md-nav__link">
+    Linting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formatting" class="md-nav__link">
+    Formatting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-checker" class="md-nav__link">
+    Type checker
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bit-more-advanced-stuff" class="md-nav__link">
+    Bit more advanced stuff
+  </a>
+  
+    <nav class="md-nav" aria-label="Bit more advanced stuff">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-acceleration" class="md-nav__link">
+    Code acceleration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-the-library" class="md-nav__link">
+    Installing the library
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-documentation" class="md-nav__link">
+    Creating documentation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-and-uploading-to-pypi" class="md-nav__link">
+    Building and uploading to PyPI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automating-boring-tasks-with-github-workflows" class="md-nav__link">
+    Automating boring tasks with Github workflows
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-line-interface" class="md-nav__link">
+    Command line interface
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-things-to-look-into" class="md-nav__link">
+    Other things to look into
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#online-resources" class="md-nav__link">
+    Online resources
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          API documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          API documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="reference/">mypackage</a>
+          
+            <label for="__nav_2_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_1">
+          <span class="md-nav__icon md-icon"></span>
+          mypackage
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/_version/" class="md-nav__link">
+        _version
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_2" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="reference/linearmap/">linearmap</a>
+          
+            <label for="__nav_2_1_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_1_2">
+          <span class="md-nav__icon md-icon"></span>
+          linearmap
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/linearmap/linear_map/" class="md-nav__link">
+        linear_map
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1_3" >
+      
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="reference/vector/">vector</a>
+          
+            <label for="__nav_2_1_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_1_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2_1_3">
+          <span class="md-nav__icon md-icon"></span>
+          vector
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="reference/vector/vector/" class="md-nav__link">
+        vector
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Tutorials
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Tutorials
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="examples/1-vector/" class="md-nav__link">
+        Vector
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="examples/2-linear-map/" class="md-nav__link">
+        Linear map
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="examples/3-mutable-objects/" class="md-nav__link">
+        Mutable objects
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="examples/4-exceptions/" class="md-nav__link">
+        Exceptions
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="examples/5-jit-compiler/" class="md-nav__link">
+        Jit compiler
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    Table of Contents
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    Getting started
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#conda" class="md-nav__link">
+    Conda
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-project-and-initialize-git" class="md-nav__link">
+    Create a project and initialize git
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pip-and-pypi" class="md-nav__link">
+    Pip and PyPI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jupyter-notebooks" class="md-nav__link">
+    Jupyter notebooks
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-editor-or-ide" class="md-nav__link">
+    Text editor or IDE
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python-basics" class="md-nav__link">
+    Python basics
+  </a>
+  
+    <nav class="md-nav" aria-label="Python basics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#project-structure" class="md-nav__link">
+    Project structure
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packages-or-libraries" class="md-nav__link">
+    Packages or libraries
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#modules" class="md-nav__link">
+    Modules
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#objects-and-classes" class="md-nav__link">
+    Objects and classes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-hints" class="md-nav__link">
+    Type hints
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#docstrings" class="md-nav__link">
+    Docstrings
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tools" class="md-nav__link">
+    Tools
+  </a>
+  
+    <nav class="md-nav" aria-label="Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#testing" class="md-nav__link">
+    Testing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#debugging" class="md-nav__link">
+    Debugging
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timing" class="md-nav__link">
+    Timing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#profiling" class="md-nav__link">
+    Profiling
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linting" class="md-nav__link">
+    Linting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formatting" class="md-nav__link">
+    Formatting
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-checker" class="md-nav__link">
+    Type checker
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bit-more-advanced-stuff" class="md-nav__link">
+    Bit more advanced stuff
+  </a>
+  
+    <nav class="md-nav" aria-label="Bit more advanced stuff">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-acceleration" class="md-nav__link">
+    Code acceleration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-the-library" class="md-nav__link">
+    Installing the library
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-documentation" class="md-nav__link">
+    Creating documentation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-and-uploading-to-pypi" class="md-nav__link">
+    Building and uploading to PyPI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#automating-boring-tasks-with-github-workflows" class="md-nav__link">
+    Automating boring tasks with Github workflows
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-line-interface" class="md-nav__link">
+    Command line interface
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-things-to-look-into" class="md-nav__link">
+    Other things to look into
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#online-resources" class="md-nav__link">
+    Online resources
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="python-tips-and-tools">Python tips and tools</h1>
+<p><a href="https://github.com/pablovegan/Python-tips-tools/releases/latest"><img alt="release" src="https://img.shields.io/github/v/release/pablovegan/python-tips-tools.svg" /></a>
+<a href="https://zenodo.org/badge/latestdoi/629879183"><img alt="DOI" src="https://zenodo.org/badge/629879183.svg" /></a>
+<a href="https://www.gnu.org/licenses/gpl-3.0"><img alt="License: GPL v3" src="https://img.shields.io/badge/License-GPLv3-blue.svg" /></a>
+<a href="https://github.com/charliermarsh/ruff"><img alt="Ruff" src="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v1.json" /></a>
+<a href="https://github.com/psf/black"><img alt="black" src="https://img.shields.io/badge/code%20style-black-black" /></a>
+<a href="https://github.com/pablovegan/Python-tips-tools/actions/workflows/tests.yml"><img alt="Test" src="https://github.com/pablovegan/Python-tips-tools/actions/workflows/tests.yml/badge.svg" /></a>
+<a href="https://pablovegan.github.io/Python-tips-tools/"><img alt="documentation" src="https://img.shields.io/badge/docs-mkdocs%20material-blue.svg?style=flat" /></a></p>
+<p>Howdy! I present you some notes meant as a companion to the Python tips and tools talk for the <a href="https://www.benasque.org/2023sqt/">Superconducting Qubit Technology school</a> at Benasque 2023.</p>
+<p>Since there are abundant online resources to learn Python, this document is quite succint and schematic. I tried to keep the files simple enough so that the essence of a Python project can be understood, but rich enough so that you, hopefully, learn new things! (No, we are not going to print "hello world" or explain <code>for</code> loops).</p>
+<h3 id="table-of-contents">Table of Contents</h3>
+<ol>
+<li><a href="#getting-started">Getting started</a><ul>
+<li><a href="#conda">Conda</a></li>
+<li><a href="#create-a-project-and-initialize-git">Create a project and initialize git</a></li>
+<li><a href="#pip-and-pypi">Pip and PyPI</a></li>
+<li><a href="#jupyter-notebooks">Jupyter notebooks</a></li>
+<li><a href="#text-editor-or-ide">Text editor or IDE</a></li>
+</ul>
+</li>
+<li><a href="#python-basics">Python basics</a><ul>
+<li><a href="#project-structure">Project structure</a></li>
+<li><a href="#packages-or-libraries">Packages or libraries</a></li>
+<li><a href="#modules">Modules</a></li>
+<li><a href="#objects-and-classes">Objects and classes</a></li>
+<li><a href="#variables">Variables</a></li>
+<li><a href="#type-hints">Type hints</a></li>
+<li><a href="#docstrings">Docstrings</a></li>
+</ul>
+</li>
+<li><a href="#tools">Tools</a><ul>
+<li><a href="#testing">Testing</a></li>
+<li><a href="#debugging">Debugging</a></li>
+<li><a href="#timing">Timing</a></li>
+<li><a href="#profiling">Profiling</a></li>
+<li><a href="#linting">Linting</a></li>
+<li><a href="#formatting">Formatting</a></li>
+<li><a href="#type-checker">Type checker</a></li>
+</ul>
+</li>
+<li><a href="#bit-more-advanced-stuff">Bit more advanced stuff</a><ul>
+<li><a href="#code-acceleration">Code acceleration</a></li>
+<li><a href="#installing-the-library">Installing the library</a></li>
+<li><a href="#creating-documentation">Creating documentation</a></li>
+<li><a href="#building-and-uploading-to-pypi">Building and uploading to PyPI</a></li>
+<li><a href="#automating-boring-tasks-with-github-workflows">Automating boring tasks with Github workflows</a></li>
+<li><a href="#command-line-interface">Command line interface</a></li>
+</ul>
+</li>
+<li><a href="#other-things-to-look-into">Other things to look into</a></li>
+<li><a href="#online-resources">Online resources</a></li>
+</ol>
+<h2 id="getting-started">Getting started</h2>
+<h3 id="conda">Conda</h3>
+<p>The first thing we should do when working on a new project is to create a virtual environment that suits our third-party library needs (with their corresponding versions), unless we already have one. I personally use the light version of conda, <a href="https://docs.conda.io/en/latest/miniconda.html"><code>miniconda</code></a>, which only installs the standard Python libraries. Then you can always install whatever you need in a new environment to keep it all clean and tidy. Other alternatives to <code>conda</code> exist, like <a href="https://docs.python.org/3/library/venv.html">venv</a> (part of the standard library), <a href="https://python-poetry.org/docs/basic-usage/"><code>Poetry</code></a> and <a href="https://github.com/pypa/pipenv"><code>Pipenv</code></a>.</p>
+<p>So, we start by creating and <strong>activating</strong> a new <a href="https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">environment</a></p>
+<p><div class="highlight"><pre><span></span><code><span class="gp">$ </span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>env_name<span class="w"> </span><span class="nv">python</span><span class="o">==</span><span class="m">3</span>.10
+<span class="gp">$ </span>conda<span class="w"> </span>activate<span class="w"> </span>env_name
+</code></pre></div>
+<em>Note: always remember to activate your environment before using Python or installing new libraries. Do not install third party libraries in the base environment!</em></p>
+<h3 id="create-a-project-and-initialize-git">Create a project and initialize git</h3>
+<p>Next, we create our project folder and initialize <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">git</a> inside it, so we can use <a href="https://realpython.com/python-git-github-intro/">version control</a>.
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>mkdir<span class="w"> </span>my_project
+<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>my_project
+<span class="gp">$ </span>git<span class="w"> </span>init
+</code></pre></div></p>
+<p>or, instead, we can clone this repository
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/pablovegan/Python-tips-tools.git
+</code></pre></div></p>
+<p><em>Note: be sure to push and pull your changes to and from the cloud (e.g. <a href="https://github.com/">Github</a> or <a href="https://about.gitlab.com/">Gitlab</a>) when switching between different devices (for example, your desktop computer and your laptop). Otherwise, you can have merge conflicts and, trust me, you don't want that...</em></p>
+<h3 id="pip-and-pypi">Pip and PyPI</h3>
+<p>Once Python is installed, we can use either <code>pip</code> or <code>conda</code> to install new libraries in our environment. <code>pip</code> downloads packages from the <a href="https://pypi.org/">PyPI repository</a> (Python Package Index), which usually has more libraries than the Conda repository.</p>
+<p>To simplify our life, we will install the third-party libraries we need from a .txt file named <a href="requirements-dev.txt"><code>requirements-dev.txt</code></a>, which also installs the dependencies in the <a href="requirements.txt"><code>requirements.txt</code></a> file (intended just for users of the library, not developers).
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements-dev.txt
+</code></pre></div></p>
+<h3 id="jupyter-notebooks">Jupyter notebooks</h3>
+<p>If we also want to run <a href="https://jupyter.org/try">jupyter</a> notebooks, we must install the package <code>ipykernel</code>: 
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>ipykernel
+</code></pre></div></p>
+<h3 id="text-editor-or-ide">Text editor or IDE</h3>
+<p>I'm a <a href="https://code.visualstudio.com/">Visual Studio Code</a> (VSCode) enjoyer because it is free, lightweight and has lots of useful extensions, but you may also try other IDEs and editors like <a href="">PyCharm</a>, <a href="https://www.sublimetext.com/">Sublime</a> or <a href="https://www.vim.org/">Vim</a> (for the nostalgic).</p>
+<p>Here are some of the extensions I use in VSCode:</p>
+<ul>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode">IntelliCode</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-toolsai.jupyter">Jupyter</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff">Ruff</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=GitHub.vscode-pull-request-github">GitHub Pull requests and issues</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens">Gitlens</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring">autoDocstring</a></li>
+</ul>
+<p>One tip for VSCode: you can hide cache folders from the file explorer in <code>Settings -&gt; Files: Exclude</code>.</p>
+<h2 id="python-basics">Python basics</h2>
+<h3 id="project-structure">Project structure</h3>
+<p>Once we have a folder for our project, we equip it with the following structure:</p>
+<div class="highlight"><pre><span></span><code>├── README.md
+├── pyproject.toml
+├── requirements.txt
+├── ... other files ...
+├── docs
+├── mypackage
+│   ├── __init__.py
+│   ├── vector
+│   │   ├── __init__.py
+│   │   └── vector.py
+│   └── linearmap
+│       ├── __init__.py
+│       └── linear_map.py
+├── tests
+│   ├── __init__.py
+│   ├── test_linear_map.py
+│   └── test_vector.py
+└── examples
+    └── example.ipynb
+</code></pre></div>
+<p>First, we find the README, which contains whatever useful information the author of the repository wants to transmit us. Usually it begins with a short description of the package, and follows with sections on how to install it, a quick usage guide, references, how to contribute and the license (see <a href="README_template.md"><code>README_template.md</code></a> for an example).</p>
+<p>Next we find <a href="pyproject.toml"><code>pyproject.toml</code></a>, a configuration file with metadata about our project and configuration options for the tools that we use during development (e.g. linters and formatters). Usually you can copy configuration files from other projects (like this one) and tweak them to fit your needs.</p>
+<p>Third party dependencies for our package are specified in the <a href="requirements.txt"><code>requirements.txt</code></a> file, ideally with the version of each library to avoid conflicts with updates or older versions. The resting developer tools that we'd like to use are added in the <a href="requirements-dev.txt"><code>requirements-dev.txt</code></a> file. <em>Tip: you can specify the dependencies <a href="https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html">inside the <code>pyproject.toml</code></a> file to avoid having extra files.</em></p>
+<p>After a bunch of other files, we find our main package, with all our Python code organized in folders. Sometimes the package can be found inside a source folder, <code>src</code>, in a similar way to other programming languajes (like Java), but in Python is not really necessary so we can skip it.</p>
+<p>In the <code>tests</code> folder we store the code needed to assert that our library is working as intented to. This shouldn't be mixed with the <code>examples</code> folder; sometimes we tend to test our code in jupyter notebooks, but it is better to define a set of tests that we expect our library to pass every single time, and then just use it for whatever examples we want.</p>
+<p>For the moment, we will not worry about the <code>docs</code> folder (files to create documentation) or the <code>.github</code> folder (contains workflows) found in this repository; we will get to it in the <a href="#bit-more-advanced-stuff">advanced stuff</a> section.</p>
+<h3 id="packages-or-libraries">Packages or libraries</h3>
+<p>A <a href="https://docs.python.org/3/reference/import.html#packages"><strong>package</strong></a> or <strong>library</strong> is a collection of Python <code>.py</code> modules organized in directories. The main directory is the package and the subdirectories are its subpackages, with their names following the <code>lowercasenames</code> convention, without underscores.</p>
+<p>As you may have noticed in the project structure, every folder inside our package has a <code>__init__.py</code> file (read "dunder init"). The code inside it will be called whenever we <a href="https://realpython.com/python-import/">import</a> the library. Usually, it only contains imports of functions or classes from other <code>.py</code> files or directories at the same level, but it can include any piece of code.</p>
+<p>The <code>tests</code> folder can also contain a <code>__init__.py</code> file, but we can leave it empty since we are not going to import the tests package.</p>
+<h3 id="modules">Modules</h3>
+<p>Simply, a module is a <code>.py</code> file consisting of Python code. A module can define <a href="https://www.youtube.com/watch?v=vIkpCOY-yGs">functions</a>, classes and variables...</p>
+<p>Python modules should more or less follow this structure:</p>
+<ol>
+<li>Module docstrings should appear at the very beginning, just before the imports. </li>
+<li><a href="https://realpython.com/python-import/">Imports</a> should follow this order:</li>
+<li><code>__future__</code></li>
+<li><code>standard_libraries</code></li>
+<li><code>third_party</code></li>
+<li><code>first_party</code></li>
+<li>
+<p><code>local_folder</code></p>
+<p>with each group separated by one empty line. Also, one should not import from more than one library per line. </p>
+<p><em>Tip: You can use <a href="https://github.com/PyCQA/isort"><code>isort</code></a> to sort automatically all your imports</em>.</p>
+</li>
+<li>
+<p>Module constants, separated from the imports by two empty lines. Constants should follow the <code>UPPER_CASE_WITH_UNDERSCORES</code> <a href="https://peps.python.org/pep-0008/#naming-conventions">naming convention</a>.</p>
+</li>
+<li>Functions, separated again by two empty lines. Function names should follow the <code>lower_case_with_underscores</code> convention.</li>
+<li>Exception classes.</li>
+<li>Normal classes. Classes names should stick to the <code>CapitalizedWords</code> convention.</li>
+</ol>
+<p>There is no exact rule on how much code should be in each module, but, ideally, each module should have one purpose (as with functions). For example, the purpose of our modules <a href="mypackage/vector/vector.py"><code>vector.py</code></a> and <a href="mypackage/linearmap/linear_map.py"><code>linear_map.py</code></a> are defining the <code>Vector</code> class and creating some linear transforms for those vectors with the <code>LinearMap</code> class and its subclasses, respectively.</p>
+<h3 id="objects-and-classes">Objects and classes</h3>
+<p>Python is an object oriented language; everything in Python is an <a href="https://www.programiz.com/python-programming/class"><strong>object</strong></a> (even packages!), i.e. any data with a state (attributes) and defined behavior (methods). Attributes are values associated with an object; they are usually referenced by name using dotted expressions.</p>
+<p>A <a href="https://docs.python.org/3/glossary.html#term-class">class</a> is a template for creating user-defined objects and normally contains methods which operate on instances of the class. <a href="https://docs.python.org/3/glossary.html#term-method">Methods</a> are <a href="https://www.youtube.com/watch?v=vIkpCOY-yGs">functions</a> defined inside a class body. (For an in-depth introduction to classes in Python <a href="https://realpython.com/python-classes/">see</a>).</p>
+<p>Every class in Python has, ultimately, <code>type</code> as a base class (more on subclasses and inheritance later on). When we instantiate a new object of a certain class (for example, <code>obj = myclass()</code>), the <code>__call__</code> method of <code>type</code> is <a href="https://realpython.com/python-metaclasses/#custom-metaclasses">invoked</a> in the background, which in turn calls the <code>__new__</code> and <code>__init__</code> methods: the former creates a new empty object of the class, while the latter initializes the object.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Friend</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The class represents a friend with their main interests.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="n">fav_movie</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Method to initialize our friend with a &#39;fav_movie&#39; attribute.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fav_movie</span> <span class="o">=</span> <span class="n">fav_movie</span>
+
+
+<span class="n">iris</span> <span class="o">=</span> <span class="n">Friend</span><span class="p">(</span><span class="n">fav_movie</span><span class="o">=</span><span class="s2">&quot;Shrek&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">iris</span><span class="o">.</span><span class="n">fav_movie</span><span class="w"> </span><span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>  <span class="c1"># access the fav_movie attribute of iris</span>
+</code></pre></div>
+<p><em>Tip: <code>__init__</code> should initialize <strong>all</strong> the attributes of the class, even if they are defined inside other methods, case in which you just initialize the attributes to <code>None</code>. This allows anyone to see at a glance all the attributes of your class without having to read through all the code.</em></p>
+<p>In Python, methods that start and end with the double underscores are called <a href="https://docs.python.org/3/reference/datamodel.html#specialnames"><strong>special methods</strong></a> (also called magic methods or <em>dunder</em> methods). Special methods are called internally by Python, so they are not meant to be invoked directly by you. For example, when you add two integers using the + operator, Python is implicitly calling the <code>__add__()</code> method inside the <code>int</code> class.</p>
+<p>Another common naming convention is related to the fact that Python doesn’t distinguish between private, protected and public attributes like Java and other languages do. In Python, all <a href="](https://realpython.com/python-classes/#public-vs-non-public-members)">attributes and methods are accessible</a>, so to distinguish the ones for internal use only from the ones intended for users (public API), we begin this "private" attributes with an underscore. An example is the <code>_get_inverse()</code> function in our <a href="mypackage/linearmap/linear_map.py"><code>linear_map.py</code></a> module. In the user interface (API), the inverse is accessed via a "public" attribute <code>inv_matrix</code> rather than the "private" method.</p>
+<p>Two important properties of python classes are inheritance and polymorphism. <a href="https://www.programiz.com/python-programming/inheritance">Inheritance</a> allows us to create a subclass that can access the methods of the parent class (or parent classes in the case of <a href="https://www.programiz.com/python-programming/multiple-inheritance">multiple inheritance</a>). <a href="https://www.programiz.com/python-programming/polymorphism">Polymorphism</a> allows different classes to use a single method, operator or object, to represent different types in different scenarios; for example, <code>__add__()</code> changes its functionality depending on whether the summed objects are integers, strings or lists.</p>
+<p>Inheritance leads us to the interesting concept of <a href="https://www.pythontutorial.net/python-oop/python-abstract-class/">abstract classes</a>: classes that are meant to be inherited but never instantiated. These abstract classes allow us to define a template with abstract methods that we can later code explicitly in each of its subclasses. To create an abstract class, we subclass Python's <a href="https://realpython.com/python-classes/#creating-abstract-base-classes-abcs-and-interfaces">Abstract Base Class</a> (ABC), which allows the use of the <code>@abstractmethod</code> decorator to indicate that we left a method undefined on purpose:</p>
+<p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+
+
+<span class="k">class</span> <span class="nc">Shape</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Shape abstract class.&quot;&quot;&quot;</span>
+
+    <span class="nd">@abstractmethod</span>
+    <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate the area of the shape.&quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">print_area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Print the area of the shape.&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">area</span><span class="p">())</span>
+
+
+<span class="k">class</span> <span class="nc">Square</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A square shape.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">side</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">side</span> <span class="o">=</span> <span class="n">side</span>
+
+    <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">side</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">side</span>
+</code></pre></div>
+As another example, the <a href="mypackage/linearmap/linear_map.py"><code>linear_map.py</code></a> module of our library implements the <code>Rotation</code> and <code>Shear</code> transforms as subclasses of the abstract class <code>LinearMap</code>.</p>
+<p><em>Tip: improve object-oriented programming applying the <a href="https://realpython.com/solid-principles-python/">SOLID principles</a>.</em></p>
+<p>Last but not least, we need to be aware of that Python objects fall into two categories: <a href="https://realpython.com/python-mutable-vs-immutable-types/">mutable or immutable</a>. An immutable object is the one that cannot be changed after it is created; even when you think you are changing the object, you are really making new objects from old ones. Immutable objects include numbers, strings, and tuples. Almost everything else is mutable, including lists, dicts, and user-defined objects. Mutable means that the value has methods that can change the value in-place. To learn more about this, check out the example notebook <a href="examples/3-mutable-objects/"><code>3-mutable-objects.ipynb</code></a>.</p>
+<h3 id="variables">Variables</h3>
+<p>A Python <a href="https://realpython.com/python-variables/"><strong>variable</strong></a> is a symbolic name that is a reference or pointer to an object. In Python, unlike other programming languages like C, different variables can point to the same object/memory address. Each object has a <a href="https://docs.python.org/3/extending/extending.html#reference-counts">counter</a> that keeps track of how many variables (names) have been bound to this object. When an object runs out of references, it is no longer accessible and Python will reclaim the allocated memory so it can be used for something else.</p>
+<p>And how are variables passed to functions? If you have heard about the <em>pass by reference</em> and <em>pass by value</em> paradigms, you may be wondering which one Python follows. Well, the truth is... neither! Python passes variables by <a href="https://realpython.com/python-pass-by-reference/#passing-arguments-in-python"><strong>assignment</strong></a>; that is, when you call a Python function, each function argument becomes a (local)variable to which the passed object is assigned. Thus, a local and a global variable can point to the same object in memory, with <a href="examples/3-mutable-objects/">important consequences</a> if the object is mutable.</p>
+<p>In general, variable names and attributes should follow the <code>lower_case_with_underscores</code> naming convention (as with functions). Only constants defined on a module level should be written in <code>UPPER_CASE_WITH_UNDERSCORES</code>. Variable names should be readable and meaningful, avoiding undescriptive names like single letters or cryptic abbreviations.</p>
+<h3 id="type-hints">Type hints</h3>
+<p>Python is both a <strong>strongly typed</strong> and a <strong>dynamically typed</strong> language. <a href="https://dev.to/icncsx/python-is-strongly-dynamically-typed-what-does-that-mean-5810">Strongly typed</a> means that the type of an object doesn't change in unexpected ways.</p>
+<p>In a <a href="">dynamically typed language</a>, the interpreter does not assign a type to the variable per se because the type can change at runtime. If you ask a variable its type, it will give you the type of the object it is currently assigned to at that moment. Therefore, Python <a href="https://docs.python.org/3/c-api/memory.html">manages memory dynamically</a>, which allows for flexibility in programming, but with a price in performance.</p>
+<p>Nonetheless, recent versions of Python allow one to add indicative "static" <a href="https://realpython.com/python-type-checking/">type hints</a> to our variables. For example</p>
+<div class="highlight"><pre><span></span><code><span class="n">a</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">b</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">2.0</span>
+
+<span class="k">def</span> <span class="nf">shouting</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">text</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot;!!&quot;</span>
+</code></pre></div>
+<p>They can be helpful to make the code clear, create documentation or even catch errors using tools like <code>mypy</code>.</p>
+<p>More elaborate type hints such as <code>Callable</code> or <code>Sequence</code> can be found in the <a href="https://docs.python.org/es/3/library/typing.html"><code>typing</code></a> library. Note that, after Python 3.10, the operator <code>|</code> can be used as an "or" between different types (same use as <code>Union</code>). For example, this function accepts either a float or an integer and outputs an integer.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">float_to_int</span><span class="p">(</span><span class="n">variable</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="docstrings">Docstrings</h3>
+<p>Quoting <a href="https://realpython.com/documenting-python-code/">Documenting Python Code: A Complete Guide</a>:</p>
+<blockquote>
+<p>When you write code, you write it for two primary audiences: your users and your developers (including yourself). Both audiences are equally important. If you’re like me, you’ve probably opened up old codebases and wondered to yourself, “What in the world was I thinking?” If you’re having a problem reading your own code, imagine what your users or other developers are experiencing when they’re trying to use or contribute to your code.</p>
+</blockquote>
+<p>Probably, at some point in your life, you had to go through —or even worse, work on— some awful code, so you are hopefully convinced of the necessity of writing clean and well explained code.</p>
+<p>There are two ways to explain your code: comments and documenting. Comments can be found inside the raw code files and their target audience are developers of the Python code. They can explain a tricky step in an algorithm or a bug fix. That said, ideally, functions should be readable and require few to no inline comments explaining what the code does.</p>
+<p>Documenting code is describing its use and functionality to your users. While it may be helpful in the development process, the main intended audience is the users. Documentation is often found in a <a href="https://pablovegan.github.io/Python-tips-tools/reference/vector/vector/">website</a> and <a href="mypackage/vector/vector.py">inside the code</a> as strings, also known as <strong>docstrings</strong>.</p>
+<p>Docstrings should always be added to your modules, classes and functions. The idea when coding is to make simple functions with just one purpose and document them clearly: summarize the function; indicate its arguments, return values and exceptions raised; add notes, examples and references. Remember that we learn better from the concrete, so adding examples to your documentation is always a good idea:</p>
+<div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Examples:</span>
+<span class="sd">    Use case of our library:</span>
+
+<span class="sd">    &gt;&gt;&gt; some executable code block</span>
+<span class="sd">    the result</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</code></pre></div>
+<p><em>Note: An easy way to check if the example code gives the expected result without jumping into a jupyter notebook to test it is using the tool <code>doctest</code>, which is part of the standard library. Simply, from the command line, execute</em></p>
+<p><div class="highlight"><pre><span></span><code><span class="gp">$ </span>python<span class="w"> </span>-m<span class="w"> </span>doctest<span class="w"> </span>mypackage/linearmap/linear_map.py
+</code></pre></div>
+<em>to see the mismatches, if any.</em></p>
+<p>These docstrings can follow different conventions; one of the most popular ones is the <a href="https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html">Google style</a>. I personally like it because it is very clear and compact (<a href="https://numpydoc.readthedocs.io/en/latest/example.html">Numpy style</a>, in contrast, occupies more lines).</p>
+<p>To create them in a fast and easy way, I use the <a href="https://marketplace.visualstudio.com/items?itemName=njpwerner.autodocstring">autoDocstring</a> extension for VSCode. Once our function is type annotated, we type <code>"""</code> and click in <code>Generate Docstrings</code>; it will automatically create the template using the annotated inputs and outputs of the function, as well as the exceptions raised.</p>
+<h2 id="tools">Tools</h2>
+<h3 id="testing">Testing</h3>
+<p>How do we know if the functions in our library work as they are supposed to? Sure, we can always have a bunch of jupyter notebooks lying around, but there is a better way: <a href="https://realpython.com/python-testing/">unit testing</a>. Unit testing is a method for testing software that looks at the smallest testable pieces of code, called units, which are tested for correct operation. Usually in Python, units are functions and class methods.</p>
+<p>Testing is a world on its own, especially in the so-called <em>Test Driven Development</em> (TDD), and we will barely touch the surface in this demo... but it is enough for the needs of most physicists. Just as a sneak peak: we can test how different units fit together (integration testing), test a whole application (system testing), test in different operating systems, etc.</p>
+<p>The tool we will use for unit testing is <code>pytest</code>. To keep our code organized, outside our library we create another folder called <a href="tests"><code>tests</code></a>. Inside it, we place different modules <code>test_*.py</code>; in our case, we have one for each subpackage: <a href="tests/test_vector.py"><code>test_vector.py</code></a> and <a href="tests/test_linear_map.py"><code>test_linear_map.py</code></a>. Inside each of these, we test all the functions and methods in the module (don't forget to test the exceptions as well!). The syntax is really easy, you just need to use the <code>@pytest.mark.parametrize</code> decorator to tell pytest which inputs and expected results you want to test. For example, to assert that 1+2=3 and 3.0-1=2.0:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">parametrize</span><span class="p">(</span>
+    <span class="p">(</span><span class="s2">&quot;arg_1&quot;</span><span class="p">,</span> <span class="s2">&quot;arg_2&quot;</span><span class="p">,</span> <span class="s2">&quot;result&quot;</span><span class="p">),</span>
+    <span class="p">(</span>
+        <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+        <span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">),</span>
+    <span class="p">),</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">test_sum</span><span class="p">(</span><span class="n">arg_1</span><span class="p">,</span> <span class="n">arg_2</span><span class="p">,</span> <span class="n">result</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">arg_1</span> <span class="o">+</span> <span class="n">arg_2</span> <span class="o">==</span> <span class="n">result</span>
+</code></pre></div>
+<p>To run all the tests inside the <code>tests</code> folder simply run, from the command line,
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>pytest<span class="w"> </span>tests
+</code></pre></div>
+Or to perform only one test:
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>pytest<span class="w"> </span>tests/test_vector.py
+</code></pre></div>
+If you don't enjoy the command line, the <a href="https://marketplace.visualstudio.com/items?itemName=ms-python.python">Python extension</a> for VSCode allows us to run the tests easily from a graphic interface.</p>
+<p><em>Note: In the workflows section we will see how to automate testing.</em></p>
+<p><em>Tip: sometimes it is easier to test functions generating random inputs and ensuring they fulfill certain properties (called property-based testing or fuzzy testing). This can be done with <a href="https://semaphoreci.com/blog/property-based-testing-python-hypothesis-pytest">hypothesis</a>, a library used to test, for example, NumPy.</em></p>
+<h3 id="debugging">Debugging</h3>
+<p>How many times have you found yourself adding dozens of <code>print()</code> statements to your code to catch an error? You are not the only one... But turns out there is a much better way: use the <a href="https://python.land/creating-python-programs/python-in-vscode">debugger</a> in your IDE. You can add breakpoints, execute single lines, see what value each variable has, step into the functions inside your library, see the call stack... A good idea is to debug your tests, since they, ideally, are the final check to see if your code is really working.</p>
+<p><em>Note: if you don't have an IDE at hand, you can run, through the command line, <a href="https://realpython.com/python-debugging-pdb/">The Python Debugger</a>, which is included in the standard library.</em></p>
+<h3 id="timing">Timing</h3>
+<p>Even if our code runs without errors, it might not be very useful if it takes too long to do the task. To benchmark our code and find possible bottlenecks, we can use the library <code>timeit</code>, which executes a piece of code a number of times and returns the CPU time taken to run it. As an example, we can run the script <a href="examples/7-timing.py"><code>7-timing.py</code></a> to benchmark how long it takes to sum two vectors:
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>examples
+<span class="gp">$ </span>python<span class="w"> </span><span class="m">7</span>-timing.py
+</code></pre></div></p>
+<p>Alternatively, we can use the magic function <code>%timeit</code> inside a jupyter notebook to benchmark a line of code (<code>%%timeit</code> for a cell). You can find an example in <a href="examples/5-jit-compiler/"><code>5-jit-compiler.ipynb</code></a>, where we compare the speed of a determinant and its <a href="https://numba.pydata.org/numba-doc/latest/user/5minguide.html">just-in-time compiled</a> version.</p>
+<h3 id="profiling">Profiling</h3>
+<p>Profiling allows us to disaggregate the time taken to run a function into its different components. For example, when adding two vectors, does it take longer to check that the summand is a vector instance or to actually sum the two vectors? </p>
+<p>To profile our code we can write a simple script using the <code>Profiler</code> class from the <code>pyinstrument</code> library. To get a sense of how profiling works, you can run the script <a href="examples/8-profiling.py"><code>8-profiling.py</code></a>:
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>examples
+<span class="gp">$ </span>python<span class="w"> </span><span class="m">8</span>-profiling.py
+</code></pre></div></p>
+<h3 id="linting">Linting</h3>
+<p>Linters like <a href="https://flake8.pycqa.org/en/latest/"><code>Flake8</code></a> or <a href="https://github.com/charliermarsh/ruff"><code>Ruff</code></a> (Ruff is very very fast and implements a lot of checks) help us find mismatches between our code and the conventions stablished by the python community in the <a href="https://peps.python.org/pep-0008/">PEP8 guidelines</a>. In summary, an indispensable tool for a programmer.</p>
+<p><code>Ruff</code> can be easily run from the command line to highlight all the errors in our library
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>ruff<span class="w"> </span>check<span class="w"> </span>.
+</code></pre></div>
+We can also lint one specific file 
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>ruff<span class="w"> </span>check<span class="w"> </span>mypackage/vector/vector.py
+</code></pre></div></p>
+<p><code>Ruff</code>, unlike other linters, also has the option to fix some of the problems encountered in the code
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>ruff<span class="w"> </span>check<span class="w"> </span>--fix<span class="w"> </span>mypackage/vector/vector.py
+</code></pre></div>
+Unless we are one of those old school programmers that read their email on the terminal, we can avoid using the command line by installing the <a href="https://marketplace.visualstudio.com/items?itemName=charliermarsh.ruff">Ruff extension</a> for VSCode (or whatever tool your IDE provides).</p>
+<p>You can <a href="https://beta.ruff.rs/docs/configuration/">configure</a> the line lenght, what rules to ignore and other options in the <a href="pyproject.toml"><code>pyproject.toml</code></a> file. For example,</p>
+<div class="highlight"><pre><span></span><code><span class="k">[tool.ruff]</span>
+<span class="n">line-length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span>
+<span class="n">select</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;F&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;E&quot;</span><span class="p">]</span>
+</code></pre></div>
+<h3 id="formatting">Formatting</h3>
+<p>Keeping track of all the errors and fixing them can be painful... This is where automatic tools to format the code enter. The two most popular are <a href="https://pypi.org/project/autopep8/"><code>autopep8</code></a> and <a href="https://github.com/psf/black"><code>black</code></a>. I prefer <code>black</code> because it requires less configuration. To format our library simply type in the command line
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>black<span class="w"> </span>mypackage
+</code></pre></div>
+Black by default allows a maximum line length of 80. We can tweak this by adding an option:
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>black<span class="w"> </span>--line-length<span class="w"> </span><span class="m">100</span><span class="w"> </span>mypackage
+</code></pre></div></p>
+<p>Formatting can be done automatically in VSCode, just add this code to a <code>settings.json</code> file inside a <code>.vscode</code> folder in the main directory
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;editor.formatOnSave&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;python.formatting.provider&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;black&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;python.formatting.blackArgs&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">&quot;--line-length&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">&quot;100&quot;</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">&quot;[python]&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;editor.defaultFormatter&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;editor.insertSpaces&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;editor.tabSize&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;editor.formatOnSave&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>As with <code>Ruff</code>, <code>Black</code> configuration is written in the <a href="pyproject.toml"><code>pyproject.toml</code></a> file:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[tool.black]</span>
+<span class="n">line-length</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span>
+</code></pre></div>
+<p><em>Tip: install black[jupyter] to format code inside notebooks.</em></p>
+<h3 id="type-checker">Type checker</h3>
+<p>The most popular type checker is <a href="https://mypy.readthedocs.io/en/stable/getting_started.html"><code>mypy</code></a>. Provided that we type hinted our functions and variables, this tool checks any mismatches between the expected input and output types and the actual ones. It can also highlight deeper errors in your code structure, like violations of <a href="https://realpython.com/solid-principles-python/#liskov-substitution-principle-lsp">Liskov substitution principle</a>.</p>
+<p><div class="highlight"><pre><span></span><code><span class="gp">$ </span>mypy<span class="w"> </span>mypackage
+</code></pre></div>
+As with all the tools we are using, we can add options for <code>mypy</code> in <a href="pyproject.toml"><code>pyproject.toml</code></a>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">[tool.mypy]</span>
+<span class="n">warn_return_any</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">warn_unused_configs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</code></pre></div>
+<p><em>Note: sometimes it complaints too much so you may just turn it off...</em></p>
+<p><em>Tip: this is not the only use of type annotations. You can also check that the correct types are inputed when innitializing an object with <a href="https://docs.pydantic.dev/latest/"><code>pydantic</code></a>.</em></p>
+<h2 id="bit-more-advanced-stuff">Bit more advanced stuff</h2>
+<h3 id="code-acceleration">Code acceleration</h3>
+<p>Python is an <a href="https://docs.python.org/3/glossary.html#term-interpreted">interpreted language</a>, which means the source code is executed directly without compiling the program into machine code. It is instead compiled into bytecode (<code>.pyc</code> files), which is run by a Python interpreter. There are multiple interpreters, the most common being <a href="https://realpython.com/cpython-source-code-guide/">CPython</a>, which is programmed in C, but there are options written in Rust (<a href="https://github.com/RustPython/RustPython">RustPython</a>) and even Python itself (<a href="https://realpython.com/pypy-faster-python/">PyPy</a>)!</p>
+<p>One disadvantage of interpreted languages over compiled ones is that they are slower. But no need to worry, since there is a wide range of tools for accelerating our code:</p>
+<ul>
+<li>Just-in-time compilers: <a href="https://numba.pydata.org/numba-doc/latest/user/5minguide.html">Numba</a>, <a href="https://jax.readthedocs.io/en/latest/notebooks/quickstart.html">JAX</a> and <a href="https://realpython.com/pypy-faster-python/">PyPy</a> (an interpreter with a JIT compiler).</li>
+<li>Parallelization with <a href="https://pathos.readthedocs.io/en/latest/pathos.html#module-pathos.multiprocessing"><code>pathos.multiprocessing</code></a> and <a href="https://mpi4py.readthedocs.io/en/stable/tutorial.html"><code>mpi4py</code></a> (Message Passing Interface for Python).</li>
+<li>Extend Python with C code: <a href="https://github.com/juanjosegarciaripoll/cython_example">Cython</a> (the <a href="https://pypi.org/project/cythonbuilder/"><code>cythonbuilder</code></a> library makes our life easier).</li>
+<li>Call <a href="https://www.youtube.com/watch?v=jlWhnrk8go0">Rust functions from Python</a>.</li>
+</ul>
+<p>Just-in-time compilers are one the most popular tools in Python nowadays, specially with the increasing interest in the library <a href="https://jax.readthedocs.io/en/latest/notebooks/quickstart.html">JAX</a>. You can see a simple example of JIT with Numba in the <a href="examples/5-jit-compiler/"><code>5-jit-compiler.ipynb</code></a> notebook.</p>
+<h3 id="installing-the-library">Installing the library</h3>
+<p>Before we install our local library, we need to specify some metadata and configuration settings; this is done in the <a href="pyproject.toml"><code>pyproject.toml</code></a> file (check out the <a href="https://setuptools.pypa.io/en/latest/userguide/pyproject_config.html">setuptools documentation</a>). Then we can use <code>pip</code> with the editable option <code>-e</code> to install our library (where <code>.</code> points to the current —main— folder):</p>
+<p><div class="highlight"><pre><span></span><code><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.
+</code></pre></div>
+The advantage of installing the local package in editable mode is that, when we make any change, the installed library is updated without reinstalling it.</p>
+<p><em>Tip: you can install the library together with the optional dependencies specified in <code>pyproject.toml</code> with</em>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>.<span class="o">[</span>dev<span class="o">]</span>
+</code></pre></div></p>
+<h3 id="creating-documentation">Creating documentation</h3>
+<p>If you want to create nice looking documentation and then upload it to a website (for free in Github Pages) you can follow <a href="https://realpython.com/python-project-documentation-with-mkdocs/">this tutorial</a> using <code>mkdocs</code>. As a quick no-brainer guide:</p>
+<ol>
+<li>
+<p>Add a <a href="docs"><code>docs</code></a> folder. Usually, it contains an <a href="docs/index.md"><code>index.md</code></a> markdown file that copies whatever you have in the <code>README.md</code> and displays it as the main page of the documentation website. It may also contain additional markdown files that will make different sections of the website (each file is assigned a section in <a href="mkdocs.yml"><code>mkdocs.yml</code></a>).</p>
+</li>
+<li>
+<p>Create a config file <a href="docs/mkdocs.yml"><code>mkdocs.yml</code></a>. You can simply copy the file in this repo and change the basic info like the site's name or URL.</p>
+</li>
+<li>
+<p>To create the documentation for our functions and methods using the docstrings, we use the script <a href="docs/scripts/gen_ref_nav.py"><code>gen_ref_nav.py</code></a>. Inside the script, you only need to change the name of the folder containing your library in the <code>PATH_LIBRARY</code> variable. Again, you can simply copy the docs folder in this repo and modify the script.</p>
+</li>
+<li>
+<p>Add a Github workflow to build and deploy the website in Github Pages. You can just copy the workflow in <a href=".github/workflows/documentation.yml"><code>.github/workflows/documentation.yml</code></a> (more on workflows later on). Whenever you push changes to Github, the documentation will be updated.</p>
+</li>
+<li>
+<p>(Optional). Before uploading our documentation to the website, we can build it and host it locally on our computer to see the final result. Simply run from the command line
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>mkdocs<span class="w"> </span>serve<span class="w"> </span>--config-file<span class="w"> </span>docs/mkdocs.yml
+</code></pre></div></p>
+</li>
+</ol>
+<p>This repository's documentation can be found in <a href="https://pablovegan.github.io/Python-tips-tools/">https://pablovegan.github.io/Python-tips-tools/</a>.</p>
+<h3 id="building-and-uploading-to-pypi">Building and uploading to PyPI</h3>
+<p>When we install packages using <code>pip</code> we are actually downloading them from the <a href="https://pypi.org/">PyPI repository</a> (Python Package Index). Anyone can upload packages to PyPI... but be careful, since the package will stay forever in the repository. If you want to play with the uploading process you should always upload the package to <a href="https://test.pypi.org/">https://test.pypi.org/</a>.</p>
+<p>To upload our library we use the Python package <code>twine</code>. Here is a <a href="https://twine.readthedocs.io/en/stable/">short guide</a> on how to build and upload our library:</p>
+<ol>
+<li>Build our library using <code>setuptools</code> and the <a href="pyproject.toml"><code>pyproject.toml</code></a> configuration file:
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>python<span class="w"> </span>-m<span class="w"> </span>build
+</code></pre></div></li>
+<li>Upload the built library to <a href="https://test.pypi.org/">TestPyPI</a>. You will need to enter the user and password of your TestPyPI account (different from your PyPI account)
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>twine<span class="w"> </span>upload<span class="w"> </span>-r<span class="w"> </span>testpypi<span class="w"> </span>dist/*
+</code></pre></div></li>
+<li>Once you are confident that you want to upload your package to PyPI, use the command
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>twine<span class="w"> </span>upload<span class="w"> </span>dist/*
+</code></pre></div></li>
+</ol>
+<p>Once the package is in PyIP, you can install it in your environment:
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>python-tips-tools
+</code></pre></div>
+(I only <a href="https://test.pypi.org/project/python-tips-tools-benasque/">uploaded my package</a> to TestPyPI, since it is not very usefull as a standalone library).</p>
+<p><em>Note: the process of uploading the package to PyPI can be automated with a <a href="https://github.com/marketplace/actions/pypi-publish">workflow</a>.</em></p>
+<h3 id="automating-boring-tasks-with-github-workflows">Automating boring tasks with Github workflows</h3>
+<p>Ordinary tasks in a developer's day such as testing in multiple operating systems and Python versions, releasing packages and uploading them to PyPI, updating the documentation in a website, etc., can all be automated using <a href="https://docs.github.com/en/actions/using-workflows/about-workflows">workflows</a>. Most cloud repositories like Github or Gitlab have them available and are really easy to use (at least the basic ones).</p>
+<p>In this repo, I added two Github workflows: one to test our library in a linux machine (provided by Github) with Python version 3.10 and another to upload the documentation to Github Pages. The workflows can be found under the folder <a href=".github/workflows/"><code>.github/workflows</code></a> in <code>*.yml</code> files. As an example, the structure of the <a href=".github/workflows/tests.yml"><code>test.yml</code></a> file is:</p>
+<ol>
+<li>Apply the action when we git push to the repository.</li>
+<li>Create an Ubuntu Linux machine with python 3.10 installed.</li>
+<li>Install <code>pytest</code> as well as the dependencies in the <a href="requirements.txt"><code>requirements.txt</code></a> file.</li>
+<li>Run the tests inside the <a href="tests"><code>tests</code></a> folder using <code>pytest</code>.</li>
+</ol>
+<p>The green tick near the commits shows that the workflows were successful.</p>
+<p><img alt="Github workflows" src="https://raw.githubusercontent.com/pablovegan/Python-tips-tools/master/docs/images/github_workflows.png" /></p>
+<p><em>Cool tip: we can add a badge at the beginning of our readme to show that the tests either passed or failed (this is updated automatically each time the tests are run).</em></p>
+<h3 id="command-line-interface">Command line interface</h3>
+<p>Command line interfaces (CLI) allow us to invoke functions or scripts through the command line without using <code>python -m</code> to execute a module. To do this, we need to create a script contain the CLI (for example, <a href="mypackage/__main__.py"><code>__main__.py</code></a>) and set it as the <a href="https://setuptools.pypa.io/en/latest/userguide/entry_point.html">entry point</a> in our <a href="pyproject.toml"><code>pyproject.toml</code></a> file
+<div class="highlight"><pre><span></span><code><span class="k">[project.scripts]</span>
+<span class="n">vector</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;mypackage.__main__:main&quot;</span>
+</code></pre></div></p>
+<p>Python's Standard library provides a package to handle command line arguments to create this CLIs: <code>argparse</code>. You can follow along this <a href="https://realpython.com/command-line-interfaces-python-argparse">tutorial</a> to learn how to use it.</p>
+<p>As an example, we can use the command <code>vector</code> —which calls <code>main()</code> inside <a href="mypackage/__main__.py"><code>__main__.py</code></a>— to create and save a vector to a file:</p>
+<div class="highlight"><pre><span></span><code><span class="gp">$ </span>vector<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span>--save<span class="w"> </span>vector.pkl
+<span class="go">Vector (1.0, 2.0) created!</span>
+<span class="go">Vector pickled in data/vector.pkl!</span>
+</code></pre></div>
+<h2 id="other-things-to-look-into">Other things to look into</h2>
+<ul>
+<li><a href="https://www.programiz.com/python-programming/list-comprehension">List comprehensions</a>. They generally replace lambda functions, <code>map()</code> and <code>filter()</code>.</li>
+<li><a href="https://www.programiz.com/python-programming/exception-handling">Exception handling</a>: <code>try-except</code> statements. They work very well with custom error classes. An example can be found in the <a href="examples/4-exceptions/"><code>4-exceptions.ipynb</code></a> notebook inside the <code>examples</code> folder.</li>
+<li><a href="https://www.datacamp.com/tutorial/python-iterators-generators-tutorial">Iterators and generators</a>: look up the functions <code>iter()</code> and <code>next()</code>, and the keyword <code>yield</code>. Generators are a central feature of Python and they are used in <a href="https://www.youtube.com/watch?v=rjBSOHXW5DY">coroutines</a> and <a href="https://realpython.com/python-with-statement/">context managers</a>.</li>
+<li><a href="https://www.programiz.com/python-programming/decorator">Function and class decorators</a>: decorators are a simple sintax to transform certain functions or classes. An example of an interesting decorator is <a href="https://www.programiz.com/python-programming/methods/built-in/classmethod"><code>@classmethod</code></a>, which allows us, for example, to initialize classes in alternative ways without overly complicating the <code>__init__</code> method.</li>
+<li><a href="https://realpython.com/python-data-classes/#basic-data-classes">Dataclasses</a>: a concise syntax for classes containing mainly data, similar to structures in C. The library <a href="https://docs.pydantic.dev/latest/">Pydantic</a> implements automatic type checking when initializing a dataclass.</li>
+<li><a href="https://pre-commit.com/">Pre-commits</a>: pre-commit hooks allow us to do certain actions before commiting changes with git. For example, we can lint our code with Ruff and fix it with Black whenever we make a commit. </li>
+<li><a href="https://realpython.com/python-logging/">Logging</a>: keep a record of what is happening in your program.</li>
+<li><a href="http://python-history.blogspot.com/2013/11/story-of-none-true-false.html">Literals, keywords and builtins</a></li>
+</ul>
+<h2 id="online-resources">Online resources</h2>
+<p>Most of the material in this repo is covered in the excelent course <a href="https://www.udemy.com/course/python-coding-guidelines-tooling-testing-and-packaging/?couponCode=FRANNECK_APR_2023">Python: Coding Guidelines, Tools, Tests and Packages</a>. I also encourage you to watch the sublime talks by James Powell <em><a href="https://www.youtube.com/watch?v=1SHi1kriJI4">Objectionable Content</a></em> and <em><a href="https://www.youtube.com/watch?v=cKPlPJyQrt4">So you want to be a Python expert?</a></em></p>
+<p>Of course, free online resources are abundant; to name a few I use frequently:
+- <a href="https://realpython.com/">Real Python</a>
+- <a href="https://www.programiz.com/python-programming">Programiz</a>
+- <a href="https://diveintopython3.net/">Dive into Python 3</a>
+- <a href="https://machinelearningmastery.com">Machine learning mastery</a>
+- Libraries' documentation</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tracking", "toc.follow", "navigation.top", "navigation.tabs"], "search": "assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+    
+  </body>
+</html>
