@@ -262,7 +262,7 @@ In general, variable names and attributes should follow the `lower_case_with_und
 ### Type hints
 Python is both a **strongly typed** and a **dynamically typed** language. [Strongly typed](https://dev.to/icncsx/python-is-strongly-dynamically-typed-what-does-that-mean-5810) means that the type of an object doesn't change in unexpected ways.
 
-In a [dynamically typed language](), the interpreter does not assign a type to the variable per se because the type can change at runtime. If you ask a variable its type, it will give you the type of the object it is currently assigned to at that moment. Therefore, Python [manages memory dynamically](https://docs.python.org/3/c-api/memory.html), which allows for flexibility in programming, but with a price in performance.
+In a [dynamically typed language](), the interpreter does not assign a type to the variable because the type can change at runtime. If you ask a variable its type, it will give you the type of the object it is currently assigned to at that moment. Therefore, Python [manages memory dynamically](https://docs.python.org/3/c-api/memory.html), which allows for flexibility in programming, but with a price in performance.
 
 Nonetheless, recent versions of Python allow one to add indicative "static" [type hints](https://realpython.com/python-type-checking/) to our variables. For example
 
@@ -475,7 +475,7 @@ Python is an [interpreted language](https://docs.python.org/3/glossary.html#term
 
 One disadvantage of interpreted languages over compiled ones is that they are slower. But no need to worry, since there is a wide range of tools for accelerating our code:
 
-- Just-in-time compilers: [Numba](https://numba.pydata.org/numba-doc/latest/user/5minguide.html), [JAX](https://jax.readthedocs.io/en/latest/notebooks/quickstart.html) and [PyPy](https://realpython.com/pypy-faster-python/) (an interpreter with a JIT compiler).
+- Just-in-time (JIT) compilers: [Numba](https://numba.pydata.org/numba-doc/latest/user/5minguide.html), [JAX](https://jax.readthedocs.io/en/latest/notebooks/quickstart.html) and [PyPy](https://realpython.com/pypy-faster-python/) (an interpreter with a JIT compiler). ([Python 3.13](https://docs.python.org/3/whatsnew/3.13.html#whatsnew313-jit-compiler) now includes a JIT compiler).
 - Parallelization with [`pathos.multiprocessing`](https://pathos.readthedocs.io/en/latest/pathos.html#module-pathos.multiprocessing) and [`mpi4py`](https://mpi4py.readthedocs.io/en/stable/tutorial.html) (Message Passing Interface for Python).
 - Extend Python with C code: [Cython](https://github.com/juanjosegarciaripoll/cython_example) (the [`cythonbuilder`](https://pypi.org/project/cythonbuilder/) library makes our life easier).
 - Call [Rust functions from Python](https://www.youtube.com/watch?v=jlWhnrk8go0).
