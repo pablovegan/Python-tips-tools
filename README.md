@@ -411,37 +411,29 @@ select = ["F", "E"]
 
 ### Formatting
 
-Keeping track of all the errors and fixing them can be painful... This is where automatic tools to format the code enter. The two most popular are [`autopep8`](https://pypi.org/project/autopep8/) and [`black`](https://github.com/psf/black). I prefer `black` because it requires less configuration. To format our library simply type in the command line
+Keeping track of all the errors and fixing them can be painful... This is where automatic tools to format the code enter. To format our library with `Ruff` simply type in the command line
 ```console
-$ black mypackage
+$ ruff format mypackage
 ```
 Black by default allows a maximum line length of 80. We can tweak this by adding an option:
 ```console
-$ black --line-length 100 mypackage
+$ ruff format mypackage --line-length=100
 ```
 
 Formatting can be done automatically in VSCode, just add this code to a `settings.json` file inside a `.vscode` folder in the main directory
 ```json
 {
+  "[python]": {
     "editor.formatOnSave": true,
-    "python.formatting.provider": "black",
-    "python.formatting.blackArgs": [
-        "--line-length",
-        "100"
-    ],
-    "[python]": {
-        "editor.defaultFormatter": null,
-        "editor.insertSpaces": true,
-        "editor.tabSize": 4,
-        "editor.formatOnSave": true
-    }
+    "editor.defaultFormatter": "charliermarsh.ruff"
+  }
 }
 ```
 
-As with `Ruff`, `Black` configuration is written in the [`pyproject.toml`](pyproject.toml) file:
+We can configure `Ruff` in the [`pyproject.toml`](pyproject.toml) file:
 
 ```toml
-[tool.black]
+[tool.ruff]
 line-length = 100
 ```
 
